@@ -7,10 +7,19 @@
         mc:Ignorable="d"
         Title="Simple Calculator GUI" Height="450" Width="800">
     <Grid>
-        <TextBlock Text="Enter your pretty operands below!" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="75" FontSize="36" />
-        <TextBox x:Name="FirstOperand" Width="180" Height="36" HorizontalAlignment="Left" Margin="125" FontSize="22" />
-        <TextBox x:Name="SecondOperand" Width="180" Height="36" HorizontalAlignment="Right" Margin="125" FontSize="22" />
-        <ComboBox x:Name="OperatorSelector" Width="50" Height="36" FontSize="22" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="1" Text="Enter your pretty operands below!" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="36" />
+        <TextBox Grid.Row="3" Name="FirstOperand" Width="180" Height="36" HorizontalAlignment="Left" Margin="125, 0, 0, 0" FontSize="22" />
+        <TextBox Grid.Row="3" Name="SecondOperand" Width="180" Height="36" HorizontalAlignment="Right" Margin="0, 0, 125, 0" FontSize="22" />
+        <ComboBox Grid.Row="3" Name="OperatorSelector" Width="50" Height="36" FontSize="22" >
             <ComboBoxItem Content="+" />
             <ComboBoxItem Content="-" />
             <ComboBoxItem Content="*" />
@@ -20,5 +29,7 @@
             <ComboBoxItem Content="%" />
             <ComboBoxItem Content="|" />
         </ComboBox>
+        <Button Click="DoCalculate" Grid.Row="4" Height="36" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Calculate" FontSize="22" />
+        <TextBlock Name="Result" Grid.Row="5" Height="48" FontSize="28" Text="" TextAlignment="Center" />
     </Grid>
 </Window>
