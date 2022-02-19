@@ -8,13 +8,13 @@
         Title="Simple Calculator GUI" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="1" Text="Enter your pretty operands below!" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="36" />
         <TextBox Grid.Row="3" Name="FirstOperand" Width="180" Height="36" HorizontalAlignment="Left" Margin="125, 0, 0, 0" FontSize="22" />
