@@ -33,9 +33,12 @@ public class ConsoleCalculatorEntry {
 	}
 
 	private static string Calculate(string numA, string numB, char operation) {
-		double dA = double.Parse(numA), dB = double.Parse(numB);
+		if (!double.TryParse(numA, out double dA) | !double.TryParse(numB, out double dB)) {
+			throw new Exception("At least one operand could not be parsed as valid number.");
+		}
 		var isFloatingPointArithmetic = numA.Contains('.') || numB.Contains('.') || Math.Abs(dA) > long.MaxValue || Math.Abs(dB) > long.MaxValue;
-		long lA = isFloatingPointArithmetic ? 0 : long.Parse(numA), lB = isFloatingPointArithmetic ? 0 : long.Parse(numB);
+		isFloatingPointArithmetic |= !long.TryParse(numA, out long lA) | !long.TryParse(numB, out long lB);
+
 		switch (operation) {
 		case '+':
 			if (isFloatingPointArithmetic)
