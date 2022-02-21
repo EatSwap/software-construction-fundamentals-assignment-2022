@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleCalculator", "Consol
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorGUI", "CalculatorGUI\CalculatorGUI.csproj", "{F401FDAE-5E7C-4E91-B0BE-F3EB2B4753DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsCalculator", "WindowsFormsCalculator\WindowsFormsCalculator.csproj", "{2A7E99C1-1105-48A1-BF53-0C6AB586A7D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{F401FDAE-5E7C-4E91-B0BE-F3EB2B4753DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F401FDAE-5E7C-4E91-B0BE-F3EB2B4753DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F401FDAE-5E7C-4E91-B0BE-F3EB2B4753DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A7E99C1-1105-48A1-BF53-0C6AB586A7D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A7E99C1-1105-48A1-BF53-0C6AB586A7D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A7E99C1-1105-48A1-BF53-0C6AB586A7D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A7E99C1-1105-48A1-BF53-0C6AB586A7D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
