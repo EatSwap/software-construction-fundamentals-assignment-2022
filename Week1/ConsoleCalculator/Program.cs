@@ -4,7 +4,7 @@ namespace ConsoleCalculator;
 
 public class ConsoleCalculatorEntry {
 	public static void Main() {
-		var expressionMatching = new Regex("\\s*(?<numA>[-+]?\\d*\\.?\\d+([eE][-+]?\\d+)?)\\s*(?<op>[+\\-*\\/%^&|])\\s*(?<numB>[-+]?\\d*\\.?\\d+([eE][-+]?\\d+)?)\\s*$");
+		var expressionMatching = new Regex("^\\s*(?<numA>[-+]?\\d*\\.?\\d+([eE][-+]?\\d+)?)\\s*(?<op>[+\\-*\\/%^&|])\\s*(?<numB>[-+]?\\d*\\.?\\d+([eE][-+]?\\d+)?)\\s*$");
 
 		Console.Write("Type your expression, then press <Enter>: ");
 		var line = Console.ReadLine();
@@ -56,6 +56,8 @@ public class ConsoleCalculatorEntry {
 			else
 				return "" + lA * lB;
 		case '/':
+			if (dB == 0.0)
+				throw new Exception("cannot divide by zero");
 			return "" + dA / dB;
 		case '^':
 			if (isFloatingPointArithmetic)
@@ -68,6 +70,8 @@ public class ConsoleCalculatorEntry {
 			else
 				return "" + (lA & lB);
 		case '%':
+			if (dB == 0.0 || (!isFloatingPointArithmetic && lB == 0))
+				throw new Exception("cannot divide by zero");
 			if (isFloatingPointArithmetic)
 				return "" + dA % dB;
 			else
@@ -79,6 +83,6 @@ public class ConsoleCalculatorEntry {
 				return "" + (lA | lB);
 		}
 
-		throw new Exception("code considered unreachable reached");
+		throw new Exception("unrecognised operator " + operation);
 	}
 }
