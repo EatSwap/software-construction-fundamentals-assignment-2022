@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrimeFactor", "PrimeFactor\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArrayArithmetic", "ArrayArithmetic\ArrayArithmetic.csproj", "{641596C3-77C6-4475-B400-1C1723AF743B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SieveOfEratosthenes", "SieveOfEratosthenes\SieveOfEratosthenes.csproj", "{42FDC6E8-7855-4D17-BD0C-E449E6320FF8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{641596C3-77C6-4475-B400-1C1723AF743B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{641596C3-77C6-4475-B400-1C1723AF743B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{641596C3-77C6-4475-B400-1C1723AF743B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42FDC6E8-7855-4D17-BD0C-E449E6320FF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42FDC6E8-7855-4D17-BD0C-E449E6320FF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42FDC6E8-7855-4D17-BD0C-E449E6320FF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42FDC6E8-7855-4D17-BD0C-E449E6320FF8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
