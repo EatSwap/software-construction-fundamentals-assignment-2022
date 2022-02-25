@@ -8,16 +8,36 @@ public class Toeplitz {
 			return true;
 		}
 
-		var m = matrix.Length;
-		var n = matrix[0].Length;
+		int m = matrix.Length, n = matrix[0].Length;
 
-		var k = m < n ? m : n;
-		var baseLine = matrix[0][0];
-		for (int i = 1; i < k; ++i) {
+		for (int i = 0; i < m; ++i) {
 			if (matrix[i].Length != n) {
 				throw new Exception("argument is not a matrix");
-			} else if (matrix[i][i] != baseLine) {
-				return false;
+			}
+		}
+		
+		int k = m < n ? m : n, lim = m < n ? n - m : m - n;
+		
+		if (m < n) {
+			// Extend at x direction
+			for (int i = 0; i <= lim; ++i) {
+				var baseLine = matrix[0][i];
+				for (int j = 1; j < k; ++j) {
+					if (matrix[j][i + j] != baseLine) {
+						return false;
+					}
+				}
+			}
+		}
+		else {
+			// Extend at y direction
+			for (int i = 0; i <= lim; ++i) {
+				var baseLine = matrix[i][0];
+				for (int j = 1; j < k; ++j) {
+					if (matrix[i + j][j] != baseLine) {
+						return false;
+					}
+				}
 			}
 		}
 
