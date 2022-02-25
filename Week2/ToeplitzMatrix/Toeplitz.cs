@@ -2,11 +2,10 @@
 
 public class Toeplitz {
 	public static bool IsToeplitz(int[][] matrix) {
-		if (matrix.Length == 0 || matrix[0].Length == 0) {
+		if (matrix.Length == 0 || matrix[0].Length == 0)
 			return false;
-		} else if (matrix.Length == 1) {
+		else if (matrix.Length == 1)
 			return true;
-		}
 
 		int m = matrix.Length, n = matrix[0].Length;
 
@@ -18,9 +17,6 @@ public class Toeplitz {
 					return false;
 			return true;
 		};
-
-		if (!verdict(0, 0))
-			return false;
 		
 		// In x direction
 		for (int i = 1; i < n; ++i)
@@ -32,6 +28,6 @@ public class Toeplitz {
 			if (!verdict(i, 0))
 				return false;
 
-		return true;
+		return verdict(0, 0);
 	}
 }
