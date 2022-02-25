@@ -18,25 +18,11 @@ public class Toeplitz {
 		
 		int k = m < n ? m : n, lim = m < n ? n - m : m - n;
 		
-		if (m < n) {
-			// Extend at x direction
-			for (int i = 0; i <= lim; ++i) {
-				var baseLine = matrix[0][i];
-				for (int j = 1; j < k; ++j) {
-					if (matrix[j][i + j] != baseLine) {
-						return false;
-					}
-				}
-			}
-		}
-		else {
-			// Extend at y direction
-			for (int i = 0; i <= lim; ++i) {
-				var baseLine = matrix[i][0];
-				for (int j = 1; j < k; ++j) {
-					if (matrix[i + j][j] != baseLine) {
-						return false;
-					}
+		for (int i = 0; i <= lim; ++i) {
+			var baseLine = matrix[m < n ? 0 : i][m < n ? i : 0];
+			for (int j = 1; j < k; ++j) {
+				if (matrix[(m < n ? 0 : i) + j][(m < n ? i : 0) + j] != baseLine) {
+					return false;
 				}
 			}
 		}
