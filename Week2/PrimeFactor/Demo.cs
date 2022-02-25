@@ -1,6 +1,6 @@
 namespace PrimeFactor; 
 
-public class Entry {
+public class Demo {
 	public static void Main() {
 		Console.Write("Give me a integer: ");
 		var line = Console.ReadLine();
