@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArrayArithmetic", "ArrayAri
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SieveOfEratosthenes", "SieveOfEratosthenes\SieveOfEratosthenes.csproj", "{42FDC6E8-7855-4D17-BD0C-E449E6320FF8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToeplitzMatrix", "ToeplitzMatrix\ToeplitzMatrix.csproj", "{C1EA5B79-024E-496B-B74E-1110587337C1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{42FDC6E8-7855-4D17-BD0C-E449E6320FF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42FDC6E8-7855-4D17-BD0C-E449E6320FF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42FDC6E8-7855-4D17-BD0C-E449E6320FF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1EA5B79-024E-496B-B74E-1110587337C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1EA5B79-024E-496B-B74E-1110587337C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1EA5B79-024E-496B-B74E-1110587337C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1EA5B79-024E-496B-B74E-1110587337C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
