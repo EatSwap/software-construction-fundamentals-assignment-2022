@@ -1,19 +1,19 @@
 ﻿namespace ToeplitzMatrix;
 
 public class Toeplitz {
-	public static bool IsToeplitz(int[][] matrix) {
-		if (matrix.Length == 0 || matrix[0].Length == 0)
+	public static bool IsToeplitz(int[,] matrix) {
+		int m = matrix.Length, n = matrix.GetLength(0);
+		
+		if (m == 0 || n == 0)
 			return false;
-		else if (matrix.Length == 1)
+		else if (m == 1)
 			return true;
-
-		int m = matrix.Length, n = matrix[0].Length;
-
+		
 		// Does not check if x, y are valid
 		var verdict = (int x, int y) => {
-			int baseLine = matrix[x][y];
-			for (int i = 0; i + x < m && i + y < n; ++i)
-				if (matrix[i + x][i + y] != baseLine)
+			int baseLine = matrix[x, y];
+			for (int i = 1; i + x < m && i + y < n; ++i)
+				if (matrix[i + x, i + y] != baseLine)
 					return false;
 			return true;
 		};
