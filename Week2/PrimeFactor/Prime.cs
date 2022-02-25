@@ -4,6 +4,9 @@ public class Prime {
 	public static long[] GetPrimeFactors(long x) {
 		var ret = new List<long>();
 
+		if (x == 1)
+			return new long[] {1};
+
 		long limit = Convert.ToInt64(Math.Sqrt(Convert.ToDouble(x))) + 1;
 		for (long i = 2; x > 1 && i <= limit; ++i) {
 			while (x % i == 0) {
