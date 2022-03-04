@@ -1,43 +1,36 @@
 namespace ShapeDemo; 
 
 public class Demo {
+	private static readonly string[] ShapeTypes = {
+		"SQUARE",
+		"RECTANGLE",
+		"CIRCLE",
+		"TRIANGLE",
+	};
+
+	// Does not have a beautiful way to get this?
+	// Please help!
+	private static readonly int[] ParameterCount = {1, 2, 1, 3};
+	
 	public static void Main() {
-		var shapeTypes = new [] {
-			"SQUARE",
-			"RECTANGLE",
-			"CIRCLE",
-			"TRIANGLE",
-		};
-		
-		var parameterCount = new [] {
-			1,
-			2,
-			1,
-			3,
-		};
-		
 		var shapeFactory = new ShapeFactory();
 		var rndEngine = new Random();
 
 		for (int i = 0; i < 10; ++i) {
-			int type = rndEngine.Next(shapeTypes.Length);
+			int type = rndEngine.Next(ShapeTypes.Length);
 			
-			int paramCount = parameterCount[type];
+			int paramCount = ParameterCount[type];
 			var parameters = new double[paramCount];
-			if ("TRIANGLE" == shapeTypes[type]) {
+			if ("TRIANGLE" == ShapeTypes[type])
 				do {
-					for (int j = 0; j < paramCount; ++j) {
+					for (int j = 0; j < paramCount; ++j)
 						parameters[j] = rndEngine.NextDouble() * 100;
-					}
 				} while(!Triangle.IsTriangle(parameters[0], parameters[1], parameters[2]));
-			}
-			else {
-				for (int j = 0; j < paramCount; ++j) {
+			else
+				for (int j = 0; j < paramCount; ++j)
 					parameters[j] = rndEngine.NextDouble() * 100;
-				}
-			}
 			
-			var s = shapeFactory.GetShape(shapeTypes[type], parameters);
+			var s = shapeFactory.GetShape(ShapeTypes[type], parameters);
 			Console.WriteLine(s.ToString());
 		}
 		
