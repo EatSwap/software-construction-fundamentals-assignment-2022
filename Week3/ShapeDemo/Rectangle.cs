@@ -25,15 +25,13 @@ public class Rectangle : Shape {
 		}
 	}
 
-	public override double Area() {
-		return _length * _width;
-	}
+	public override double Area => _length * _width;
 
-	public override string Type() {
-		return "Rectangle";
-	}
-	
+	public override string Type => "Rectangle";
+
+	public override int ParameterCount => 2;
+
 	public override string ToString() {
-		return $"I am a {Type()} and I have area {Area()}";
+		return $"I am a {Type} and I have area {Area}";
 	}
 }

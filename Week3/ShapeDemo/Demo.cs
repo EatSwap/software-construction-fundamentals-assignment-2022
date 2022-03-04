@@ -42,6 +42,20 @@ public class Demo {
 		}
 		
 		Console.WriteLine();
-		Console.WriteLine(shapeFactory.GetShape("tRiAnGlE", 2, 3, 4).ToString());
+
+		var tri = shapeFactory.GetShape("tRiAnGlE", 3, 4, 5);
+		Console.WriteLine(tri.ToString());
+		var tri2 = new Triangle(3, 4, 5);
+		Console.WriteLine(tri2.ToString());
+		tri2.Side3 = 6;
+		Console.WriteLine(tri2.ToString());
+		try {
+			// Should fails
+			tri2.Side3 = 100;
+		}
+		catch (ArgumentException e) {
+			Console.WriteLine(e);
+		}
+		Console.WriteLine(tri2.ToString());
 	}
 }

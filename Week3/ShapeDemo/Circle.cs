@@ -15,15 +15,13 @@ public class Circle : Shape {
 		}
 	}
 
-	public override double Area() {
-		return Math.PI * _radius * _radius;
-	}
+	public override double Area => Math.PI * _radius * _radius;
 
-	public override string Type() {
-		return "Circle";
-	}
-	
+	public override string Type => "Circle";
+
+	public override int ParameterCount => 3;
+
 	public override string ToString() {
-		return $"I am a {Type()} and I have area {Area()}";
+		return $"I am a {Type} and I have area {Area}";
 	}
 }
