@@ -46,4 +46,10 @@ public class GenericList<T> : IEnumerable<T> {
 	IEnumerator IEnumerable.GetEnumerator() {
 		return GetEnumerator();
 	}
+
+	public void ForEach(Action<T> func) {
+		foreach (var t in this) {
+			func(t);
+		}
+	}
 }
