@@ -77,10 +77,9 @@ public class Clock {
 	public void PlusOneSecond() {
 		second = (1 + second) % 60;
 		minute = second == 0 ? (1 + minute) % 60 : minute;
-		hour = minute == 0 && second == 0 ? (1 + hour) % 60 : hour;
+		hour = minute == 0 && second == 0 ? (1 + hour) % 24 : hour;
 		Tick(this, new TickArgs(hour, minute, second));
 		if (second == alarmSecond && minute == alarmMinute && hour == alarmHour)
 			Alarm(this);
 	}
 }
-
