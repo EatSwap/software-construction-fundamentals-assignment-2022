@@ -14,4 +14,8 @@ public class Customer {
 	public override int GetHashCode() {
 		return Name.GetHashCode();
 	}
+	
+	public override bool Equals(object? obj) {
+		return obj is Customer rhs && Name.Equals(rhs.Name);
+	}
 }

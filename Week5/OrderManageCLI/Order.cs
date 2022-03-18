@@ -4,9 +4,15 @@ using System.Text;
 namespace OrderManageCLI; 
 
 public class Order : IEnumerable {
-	private Customer _customer;
+	private static long orderNum = 0;
+	
+	private readonly Customer _customer;
 
 	public Customer Customer => _customer;
+
+	private readonly long _orderId;
+	
+	public long OrderId => _orderId;
 
 	private List<OrderDetails> _orderDetailsList;
 
@@ -15,11 +21,26 @@ public class Order : IEnumerable {
 	}
 
 	public double TotalPrice() {
-		double ret = 0.0;
-		foreach (var i in _orderDetailsList) {
-			ret += i.Price;
-		}
+		var ret = 0.0;
+		_orderDetailsList.ForEach(od => ret += od.Price);
 		return ret;
+	}
+
+	public bool HasGoods(Goods? g) {
+		return _orderDetailsList.Any(i => i.Item.Equals(g));
+	}
+	
+	public void AddRecord(OrderDetails od) {
+		if (_orderDetailsList.Contains(od))
+			throw new Exception($"Order #{_orderId} AddRecord: Specified order details already exists!");
+		_orderDetailsList.Add(od);
+	}
+
+	public void RemoveRecord(OrderDetails od) {
+		if (_orderDetailsList.Contains(od))
+			_orderDetailsList.Remove(od);
+		else
+			throw new Exception($"Order #{_orderId} RemoveRecord: OrderDetails not found");
 	}
 
 	public Order(Customer? c, params OrderDetails[] details) {
@@ -28,15 +49,13 @@ public class Order : IEnumerable {
 		foreach (var detail in details) {
 			_orderDetailsList.Add(detail);
 		}
+		_orderId = ++orderNum;
 	}
 
 	public override bool Equals(object? obj) {
-		if (obj == null)
-			return false;
-		Order? rhs = obj as Order;
-		return rhs != null && this._customer.Equals(rhs._customer) &&
-		       this._orderDetailsList.All(rhs._orderDetailsList.Contains) &&
-		       this._orderDetailsList.Count == rhs._orderDetailsList.Count;
+		return obj is Order rhs && _customer.Equals(rhs._customer) &&
+		       _orderDetailsList.All(rhs._orderDetailsList.Contains) &&
+		       _orderDetailsList.Count == rhs._orderDetailsList.Count;
 	}
 
 	public override int GetHashCode() {
@@ -52,9 +71,8 @@ public class Order : IEnumerable {
 		for (int i = 0; i < n; ++i) {
 			if (i > 0)
 				detailsStr.Append(',');
-			detailsStr.AppendFormat("#{0}=[{1}]", i, _orderDetailsList[i].ToString());
+			detailsStr.Append($"#{i}=[{_orderDetailsList[i].ToString()}]");
 		}
-
 		return $"Order[Customer=[{_customer.ToString()}],OrderDetails=[{detailsStr.ToString()}],TotalPrice={TotalPrice()}]";
 	}
 }

@@ -8,10 +8,7 @@ public class OrderDetails {
 	public double Price => Item.Price * Count;
 
 	public override bool Equals(object? obj) {
-		if (obj == null)
-			return false;
-		OrderDetails? rhs = obj as OrderDetails;
-		return rhs != null && this.Item.Equals(rhs.Item) && this.Count == rhs.Count;
+		return obj is OrderDetails rhs && Item.Equals(rhs.Item) && Count == rhs.Count;
 	}
 
 	public override int GetHashCode() {
