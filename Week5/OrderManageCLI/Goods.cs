@@ -5,12 +5,13 @@ public class Goods {
 	
 	public double Price { get; set; }
 
-	public Goods(string name = "") {
-		this.Name = name;
+	public Goods(string name = "", double price = 0.0) {
+		Name = name;
+		Price = price;
 	}
 
 	public override string ToString() {
-		return $"Goods[{Name}]";
+		return $"Goods[Name={Name},Price={Price}]";
 	}
 
 	public override int GetHashCode() {

@@ -4,15 +4,15 @@ using System.Text;
 namespace OrderManageCLI; 
 
 public class Order : IEnumerable {
-	private static long orderNum = 0;
-	
-	private readonly Customer _customer;
+	private static long _orderNum = 0;
 
-	public Customer Customer => _customer;
+	public Customer Customer { get; set; }
 
 	private readonly long _orderId;
 	
 	public long OrderId => _orderId;
+	
+	public DateTime OrderTime { get; set; }
 
 	private List<OrderDetails> _orderDetailsList;
 
@@ -43,23 +43,24 @@ public class Order : IEnumerable {
 			throw new Exception($"Order #{_orderId} RemoveRecord: OrderDetails not found");
 	}
 
-	public Order(Customer? c, params OrderDetails[] details) {
-		_customer = c == null ? new Customer() : c;
+	public Order(Customer? c, DateTime orderTime, params OrderDetails[] details) {
+		Customer = c == null ? new Customer() : c;
 		_orderDetailsList = new List<OrderDetails>();
 		foreach (var detail in details) {
 			_orderDetailsList.Add(detail);
 		}
-		_orderId = ++orderNum;
+		_orderId = ++_orderNum;
+		OrderTime = orderTime;
 	}
 
 	public override bool Equals(object? obj) {
-		return obj is Order rhs && _customer.Equals(rhs._customer) &&
+		return obj is Order rhs && Customer.Equals(rhs.Customer) &&
 		       _orderDetailsList.All(rhs._orderDetailsList.Contains) &&
 		       _orderDetailsList.Count == rhs._orderDetailsList.Count;
 	}
 
 	public override int GetHashCode() {
-		int ret = _customer.GetHashCode();
+		int ret = Customer.GetHashCode();
 		foreach (var i in _orderDetailsList)
 			ret ^= i.GetHashCode();
 		return ret;
@@ -73,6 +74,6 @@ public class Order : IEnumerable {
 				detailsStr.Append(',');
 			detailsStr.Append($"#{i}=[{_orderDetailsList[i].ToString()}]");
 		}
-		return $"Order[Customer=[{_customer.ToString()}],OrderDetails=[{detailsStr.ToString()}],TotalPrice={TotalPrice()}]";
+		return $"Order[Customer=[{Customer.ToString()}],OrderTime=[{OrderTime.ToString("R")}],OrderDetails=[{detailsStr.ToString()}],TotalPrice={TotalPrice()}]";
 	}
 }
