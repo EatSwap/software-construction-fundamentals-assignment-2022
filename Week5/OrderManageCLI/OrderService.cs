@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq.Dynamic.Core;
 
 namespace OrderManageCLI; 
 
@@ -35,20 +36,37 @@ public class OrderService {
 		_orders.Sort(comparer);
 	}
 	
-	public List<Order> FindOrders(Func<Order, bool> match) {
-		return _orders.Where(match).OrderBy(o => o.TotalPrice()).ToList();
+	public List<Order> Find(Func<Order, bool> match, string orderBy = "TotalPrice DESC") {
+		return _orders.Where(match).AsQueryable().OrderBy(orderBy).ToList();
+	}
+	
+	public List<Order> Find(Func<Order, bool> match, Comparison<Order> sortFunc) {
+		var ret = _orders.Where(match).ToList();
+		ret.Sort(sortFunc);
+		return ret;
 	}
 
 	// Find by customer
-	public List<Order> FindOrders(Customer c) {
-		return this.FindOrders(o => c.Equals(o.Customer));
+	public List<Order> Find(Customer c) {
+		return Find(o => c.Equals(o.Customer));
 	}
 	
 	// Find by product
-	public List<Order> FindOrders(Goods g) {
-		return this.FindOrders(o => o.HasGoods(g));
+	public List<Order> Find(Goods g) {
+		return Find(o => o.HasGoods(g));
+	}
+
+	// Search any order in [begin, end)
+	public List<Order> FindByRange(DateTime begin, DateTime end) {
+		return Find(o => o.OrderTime >= begin && o.OrderTime < end);
 	}
 	
+	// Search any order in [begin, end)
+	public List<Order> FindByRange(double begin, double end) {
+		return Find(o => o.TotalPrice() >= begin && o.TotalPrice() < end);
+	}
+	
+
 	// Find by ID
 	public Order? FindOrder(int id) {
 		var ret = _orders.Where(o => o.OrderId == id).ToList();
@@ -68,7 +86,7 @@ public class OrderService {
 	}
 	
 	public bool ModifyOrder(Order oldOrder, Order newOrder) {
-		var idx = _orders.FindIndex(o => o.Equals(oldOrder));
+		var idx = _orders.FindIndex(o => o.EqualsIgnoreId(oldOrder));
 		if (idx < 0)
 			return false;
 		_orders[idx] = newOrder;
@@ -84,7 +102,7 @@ public class OrderService {
 	}
 	
 	public bool DeleteOrder(Order order) {
-		var idx = _orders.FindIndex(o => o.Equals(order));
+		var idx = _orders.FindIndex(o => o.EqualsIgnoreId(order));
 		if (idx < 0)
 			return false;
 		_orders.RemoveAt(idx);

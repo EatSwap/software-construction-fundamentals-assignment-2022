@@ -53,10 +53,17 @@ public class Order : IEnumerable {
 		OrderTime = orderTime;
 	}
 
-	public override bool Equals(object? obj) {
+	public bool EqualsIgnoreId(object? obj) {
 		return obj is Order rhs && Customer.Equals(rhs.Customer) &&
 		       _orderDetailsList.All(rhs._orderDetailsList.Contains) &&
 		       _orderDetailsList.Count == rhs._orderDetailsList.Count;
+	}
+	
+	public override bool Equals(object? obj) {
+		return obj is Order rhs && Customer.Equals(rhs.Customer) &&
+		       _orderDetailsList.All(rhs._orderDetailsList.Contains) &&
+		       _orderDetailsList.Count == rhs._orderDetailsList.Count &&
+		       _orderId == rhs._orderId;
 	}
 
 	public override int GetHashCode() {
