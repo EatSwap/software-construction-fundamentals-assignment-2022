@@ -48,8 +48,8 @@ public class Demo {
 				case 5:
 					SearchOrders(ref orderService);
 					break;
-				default:
-					break;
+				case 6:
+					return;
 			}
 		}
 	}
@@ -340,11 +340,12 @@ public class Demo {
 
 		// Find the order
 		var ret = orderService.Find(c);
-		
+
 		// Print the order
 		if (ret.Count == 0) {
 			Console.WriteLine(OrderNotFoundMsg);
 		} else {
+			ConsoleReader.ReadOrderByAndSort(ref ret);
 			foreach (var i in ret)
 				Console.WriteLine(i.ToString());
 		}
@@ -366,6 +367,7 @@ public class Demo {
 		if (ret.Count == 0) {
 			Console.WriteLine(OrderNotFoundMsg);
 		} else {
+			ConsoleReader.ReadOrderByAndSort(ref ret);
 			foreach (var i in ret)
 				Console.WriteLine(i.ToString());
 		}
@@ -390,6 +392,7 @@ public class Demo {
 		if (ret.Count == 0) {
 			Console.WriteLine(OrderNotFoundMsg);
 		} else {
+			ConsoleReader.ReadOrderByAndSort(ref ret);
 			foreach (var i in ret)
 				Console.WriteLine(i.ToString());
 		}
@@ -412,6 +415,7 @@ public class Demo {
 		if (ret.Count == 0) {
 			Console.WriteLine(OrderNotFoundMsg);
 		} else {
+			ConsoleReader.ReadOrderByAndSort(ref ret);
 			foreach (var i in ret)
 				Console.WriteLine(i.ToString());
 		}
@@ -434,6 +438,7 @@ public class Demo {
 		if (ret.Count == 0) {
 			Console.WriteLine(OrderNotFoundMsg);
 		} else {
+			ConsoleReader.ReadOrderByAndSort(ref ret);
 			foreach (var i in ret)
 				Console.WriteLine(i.ToString());
 		}

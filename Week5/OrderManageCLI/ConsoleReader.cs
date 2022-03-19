@@ -140,10 +140,42 @@ public class ConsoleReader {
 	}
 
 	public static void ReadOrderByAndSort(ref List<Order> orders) {
-		Console.WriteLine("Please choose one of the following:");
+		Console.WriteLine("Here you can choose your favourite ordering option:");
 		
-		int choice = ChoiceReader("By customer name", "By customer address", "By order time", "By order amount");
+		int choice = ChoiceReader(
+			"By customer name [ASCENDING]",
+			"By customer name [DESCENDING]",
+			"By customer address [ASCENDING]",
+			"By customer address [DESCENDING]",
+			"By order time [ASCENDING]",
+			"By order time [DESCENDING]",
+			"By order amount [ASCENDING]",
+			"By order amount [DESCENDING]",
+			"By Order ID [ASCENDING]",
+			"By Order ID [DESCENDING]"
+		);
 
-		// todo: implement this
+		switch (choice) {
+			case 1:
+			case 2:
+				orders.Sort((a, b) => (choice % 2 == 0 ? -1 : 1) * a.Customer.Name.CompareTo(b.Customer.Name));
+				break;
+			case 3:
+			case 4:
+				orders.Sort(((a, b) => (choice % 2 == 0 ? -1 : 1) * a.Customer.Address.CompareTo(b.Customer.Address)));
+				break;
+			case 5:
+			case 6:
+				orders.Sort((a, b) => (choice % 2 == 0 ? -1 : 1) * a.OrderTime.CompareTo(b.OrderTime));
+				break;
+			case 7:
+			case 8:
+				orders.Sort((a, b) => (choice % 2 == 0 ? -1 : 1) * a.TotalPrice().CompareTo(b.TotalPrice()));
+				break;
+			case 9:
+			case 10: 
+				orders.Sort((a, b) => (choice % 2 == 0 ? -1 : 1) * a.OrderId.CompareTo(b.OrderId));
+				break;
+		}
 	}
 }
