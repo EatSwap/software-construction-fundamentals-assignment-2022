@@ -74,6 +74,6 @@ public class Order : IEnumerable {
 				detailsStr.Append(',');
 			detailsStr.Append($"#{i}=[{_orderDetailsList[i].ToString()}]");
 		}
-		return $"Order[Customer=[{Customer.ToString()}],OrderTime=[{OrderTime.ToString("R")}],OrderDetails=[{detailsStr.ToString()}],TotalPrice={TotalPrice()}]";
+		return $"Order[ID={_orderId},Customer=[{Customer.ToString()}],OrderTime=[{OrderTime.ToString("R")}],OrderDetails=[{detailsStr.ToString()}],TotalPrice={TotalPrice()}]";
 	}
 }
