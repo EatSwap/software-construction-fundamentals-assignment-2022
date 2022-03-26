@@ -4,22 +4,31 @@ namespace OrderManageCLI;
 
 public class OrderService {
 	public List<Order> Orders { get; } = new();
+	
+	public int Count => Orders.Count;
 
 	public void AddOrder(Order order) {
-		if (Orders.Contains(order))
+		if (Orders.Where(o => o.EqualsIgnoreId(order)).ToList().Count > 0)
 			throw new Exception("OrderService: Order already exists");
 		if (Orders.FindIndex(o => o.OrderId == order.OrderId) != -1)
 			throw new Exception("OrderService: Duplicated OrderId");
 		Orders.Add(order);
 	}
 
-	public void RemoveOrder(Order order) {
-		if (!Orders.Contains(order))
+	public void RemoveOrder(Order? order) {
+		if (order == null || !Orders.Contains(order))
 			throw new Exception("OrderService: Order not found");
 		Orders.Remove(order);
 	}
+	
+	public void RemoveOrder(long orderId) {
+		var o = FindOrder(orderId);
+		if (o == null)
+			throw new Exception("OrderService: Order not found");
+		RemoveOrder(o);
+	}
 
-	public void RemoveOrder(int index) {
+	public void RemoveOrderByIndex(int index) {
 		if (index < 0 || index >= Orders.Count)
 			throw new IndexOutOfRangeException($"Index {index} is out of range: [0, {Orders.Count})");
 		Orders.RemoveAt(index);
@@ -65,13 +74,17 @@ public class OrderService {
 
 
 	// Find by ID
-	public Order? FindOrder(int id) {
+	public Order? FindOrder(long id) {
 		var ret = Orders.Where(o => o.OrderId == id).ToList();
 		return ret.Count == 0 ? null : ret[0];
 	}
 
-	public bool HasOrder(int id) {
+	public bool HasOrder(long id) {
 		return FindOrder(id) != null;
+	}
+	
+	public bool HasOrder(Order? order) {
+		return order != null && Orders.Contains(order);
 	}
 
 	public bool ModifyOrder(int id, Order newOrder) {

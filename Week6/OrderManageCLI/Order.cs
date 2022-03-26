@@ -18,7 +18,7 @@ public class Order : IEnumerable {
 
 	public Customer Customer { get; set; }
 
-	public long OrderId { get; }
+	public long OrderId { get; set; }
 
 	public DateTime OrderTime { get; set; }
 
@@ -63,7 +63,7 @@ public class Order : IEnumerable {
 	}
 
 	public override int GetHashCode() {
-		var ret = Customer.GetHashCode();
+		var ret = Customer.GetHashCode() ^ OrderId.GetHashCode();
 		foreach (var i in _orderDetailsList)
 			ret ^= i.GetHashCode();
 		return ret;
