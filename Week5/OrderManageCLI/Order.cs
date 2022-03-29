@@ -3,7 +3,7 @@ using System.Text;
 
 namespace OrderManageCLI;
 
-public class Order : IEnumerable {
+public class Order {
 	private static long _orderNum;
 
 	private readonly List<OrderDetails> _orderDetailsList;
@@ -18,9 +18,13 @@ public class Order : IEnumerable {
 
 	public Customer Customer { get; set; }
 
-	public long OrderId { get; }
+	public long OrderId { get; set; }
 
 	public DateTime OrderTime { get; set; }
+	
+	public List<OrderDetails> OrderDetails => _orderDetailsList;
+
+	public int Count => _orderDetailsList.Count;
 
 	public IEnumerator GetEnumerator() {
 		return _orderDetailsList.GetEnumerator();
@@ -63,7 +67,7 @@ public class Order : IEnumerable {
 	}
 
 	public override int GetHashCode() {
-		var ret = Customer.GetHashCode();
+		var ret = Customer.GetHashCode() ^ OrderId.GetHashCode();
 		foreach (var i in _orderDetailsList)
 			ret ^= i.GetHashCode();
 		return ret;
