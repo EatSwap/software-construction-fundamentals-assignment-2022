@@ -4,7 +4,7 @@ using System.Text;
 namespace OrderManageCLI;
 
 public class Order {
-	private static long _orderNum;
+	private static long _orderNum = 0;
 
 	private readonly List<OrderDetails> _orderDetailsList;
 
@@ -14,6 +14,13 @@ public class Order {
 		foreach (var detail in details) _orderDetailsList.Add(detail);
 		OrderId = ++_orderNum;
 		OrderTime = orderTime;
+	}
+
+	public Order() {
+		_orderDetailsList = new List<OrderDetails>();
+		Customer = new Customer();
+		OrderId = -1;
+		OrderTime = new DateTime();
 	}
 
 	public Customer Customer { get; set; }

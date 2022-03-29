@@ -1,7 +1,9 @@
 ﻿using System.Linq.Dynamic.Core;
+using System.Xml.Serialization;
 
 namespace OrderManageCLI;
 
+[Serializable]
 public class OrderService {
 	public List<Order> Orders { get; } = new();
 	
@@ -133,5 +135,41 @@ public class OrderService {
 
 	public IEnumerator<Order> GetEnumerator() {
 		return Orders.GetEnumerator();
+	}
+
+	protected bool Equals(OrderService other) {
+		return Orders.All(other.Orders.Contains) && other.Orders.Count == Orders.Count;	
+	}
+
+	public override bool Equals(object? obj) {
+		if (ReferenceEquals(null, obj)) return false;
+		if (ReferenceEquals(this, obj)) return true;
+		if (obj.GetType() != this.GetType()) return false;
+		return Equals((OrderService) obj);
+	}
+
+	public override int GetHashCode() {
+		return Orders.GetHashCode();
+	}
+
+	public bool Export(string fileName) {
+		try {
+			var formatter = new XmlSerializer(typeof(OrderService));
+			using var stream = new FileStream(fileName, FileMode.Create);
+			formatter.Serialize(stream, this);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	
+	public static OrderService? Import(string fileName) {
+		try {
+			var formatter = new XmlSerializer(typeof(OrderService));
+			using var stream = new FileStream(fileName, FileMode.Open);
+			return formatter.Deserialize(stream) as OrderService;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 }

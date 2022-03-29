@@ -5,6 +5,11 @@ public class Goods {
 		Name = name;
 		Price = price;
 	}
+	
+	public Goods() {
+		Name = "";
+		Price = 0.0;
+	}
 
 	public string Name { get; set; }
 

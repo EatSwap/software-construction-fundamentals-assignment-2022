@@ -10,6 +10,11 @@ public class OrderDetails {
 		Item = new Goods(itemName, itemPrice);
 		Count = count;
 	}
+	
+	public OrderDetails() {
+		Item = new Goods();
+		Count = 0;
+	}
 
 	public Goods Item { get; set; }
 

@@ -1,6 +1,11 @@
 ﻿namespace OrderManageCLI;
 
 public class Customer {
+	public Customer() {
+		Name = "";
+		Address = "";
+	}
+	
 	public Customer(string name = "", string address = "") {
 		Name = name;
 		Address = address;

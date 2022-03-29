@@ -8,7 +8,7 @@ namespace OrderManageTest;
 [TestClass]
 public class OrderServiceTest {
 	[TestMethod]
-	public void OrderService() {
+	public void OrderServiceT() {
 		var os = new OrderService();
 		var order = new Order(new Customer("Name 1", "Address 1"), DateTime.Now, new OrderDetails("Product 1", 1, 1));
 		os.AddOrder(order);
@@ -216,5 +216,15 @@ public class OrderServiceTest {
 		foreach (var i in os) {
 			Assert.IsTrue(!i.HasGoods(item2Find) || i.OrderTime == new DateTime(2029, 3, 31));
 		}
+		
+		// Equals
+		Assert.IsTrue(os.Equals(os));
+		
+		// (De)Serialise
+		ok = os.Export("export.xml");
+		Assert.IsTrue(ok);
+		var os2 = OrderService.Import("export.xml");
+		Assert.IsNotNull(os2);
+		Assert.AreEqual(os, os2);
 	}
 }
