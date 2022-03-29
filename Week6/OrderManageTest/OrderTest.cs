@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OrderManageCLI;
@@ -22,7 +23,7 @@ public class OrderTest {
 		var order3 = new Order(c, dt, new OrderDetails(p, 11));
 		var order4 = new Order(c, dt, new OrderDetails(p2, 12));
 		var order5 = new Order(c2, dt, new OrderDetails(p, 12));
-		var order6 = new Order(c, dt, new OrderDetails(p, 12));
+		var order6 = new Order(c, dt, new OrderDetails(p, 12), new OrderDetails(p, 120));
 
 		Assert.AreEqual(order1, order2);
 		Assert.AreNotEqual(order1, order3);
@@ -47,6 +48,7 @@ public class OrderTest {
 	
 	private string RandomString() => Guid.NewGuid().ToString();
 
+	[TestMethod]
 	public void OrderFindAndTraverse() {
 		var dt = DateTime.Now;
 		var c = new Customer("Tom", "123456789");
@@ -54,10 +56,50 @@ public class OrderTest {
 
 		var randEngine = new Random();
 		
+		var details = new List<OrderDetails>();
+		
 		for (int i = 0; i < 10; i++) {
 			var p = new Goods(RandomString(), randEngine.NextDouble());
 			var toAdd = new OrderDetails(p, 1 + randEngine.Next(100));
 			o.AddRecord(toAdd);
+			details.Add(toAdd);
+		}
+
+		// GetEmulator
+		foreach (var i in o) {
+			Assert.IsTrue(details.Contains((OrderDetails) i));
+		}
+		
+		// Add duplicate
+		try {
+			o.AddRecord(details[0]);
+			Assert.Fail("Should throw exception");
+		} catch (Exception) {
+			// pass
+		}
+		
+		// HasGoods	
+		foreach (var i in details) {
+			Assert.IsTrue(o.HasGoods(i.Item));
+		}
+		
+		// Remove
+		var cnt = details.Count;
+		foreach (var i in details) {
+			try {
+				o.RemoveRecord(i);
+			} catch (Exception e) {
+				Assert.Fail(e.Message);
+			}
+			Assert.AreEqual(--cnt, o.Count);
+		}
+		
+		// Remove non-exist
+		try {
+			o.RemoveRecord(details[0]);
+			Assert.Fail("Should throw exception");
+		} catch (Exception) {
+			// pass
 		}
 	}
 }

@@ -3,7 +3,7 @@ using System.Text;
 
 namespace OrderManageCLI;
 
-public class Order : IEnumerable {
+public class Order {
 	private static long _orderNum;
 
 	private readonly List<OrderDetails> _orderDetailsList;
@@ -21,6 +21,10 @@ public class Order : IEnumerable {
 	public long OrderId { get; set; }
 
 	public DateTime OrderTime { get; set; }
+	
+	public List<OrderDetails> OrderDetails => _orderDetailsList;
+
+	public int Count => _orderDetailsList.Count;
 
 	public IEnumerator GetEnumerator() {
 		return _orderDetailsList.GetEnumerator();

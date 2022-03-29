@@ -27,13 +27,7 @@ public class OrderService {
 			throw new Exception("OrderService: Order not found");
 		RemoveOrder(o);
 	}
-
-	public void RemoveOrderByIndex(int index) {
-		if (index < 0 || index >= Orders.Count)
-			throw new IndexOutOfRangeException($"Index {index} is out of range: [0, {Orders.Count})");
-		Orders.RemoveAt(index);
-	}
-
+	
 	public void RemoveAllOrders() {
 		Orders.Clear();
 	}
@@ -42,7 +36,7 @@ public class OrderService {
 		Orders.Sort(comparer);
 	}
 
-	public List<Order> Find(Func<Order, bool> match, string orderBy = "TotalPrice DESC") {
+	public List<Order> Find(Func<Order, bool> match, string orderBy = "TotalPrice() DESC") {
 		return Orders.Where(match).AsQueryable().OrderBy(orderBy).ToList();
 	}
 
@@ -87,7 +81,7 @@ public class OrderService {
 		return order != null && Orders.Contains(order);
 	}
 
-	public bool ModifyOrder(int id, Order newOrder) {
+	public bool ModifyOrder(long id, Order newOrder) {
 		var idx = Orders.FindIndex(o => o.OrderId == id);
 		if (idx < 0)
 			return false;
@@ -103,7 +97,7 @@ public class OrderService {
 		return true;
 	}
 
-	public bool DeleteOrder(int id) {
+	public bool DeleteOrder(long id) {
 		var idx = Orders.FindIndex(o => o.OrderId == id);
 		if (idx < 0)
 			return false;
