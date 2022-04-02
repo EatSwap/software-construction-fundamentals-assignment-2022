@@ -29,6 +29,7 @@
             this.mainLayoutTable = new System.Windows.Forms.TableLayoutPanel();
             this.drawingPanel = new System.Windows.Forms.Panel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.labelTh2 = new System.Windows.Forms.Label();
@@ -46,7 +47,6 @@
             this.textBoxTh2 = new System.Windows.Forms.TextBox();
             this.labelPenColour = new System.Windows.Forms.Label();
             this.comboBoxPenColour = new System.Windows.Forms.ComboBox();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.mainLayoutTable.SuspendLayout();
             this.drawingPanel.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -88,6 +88,11 @@
             this.statusStrip1.Size = new System.Drawing.Size(480, 22);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
             // 
             // toolStripStatusLabel1
             // 
@@ -434,18 +439,12 @@
             this.comboBoxPenColour.Size = new System.Drawing.Size(95, 21);
             this.comboBoxPenColour.TabIndex = 14;
             // 
-            // toolStripProgressBar1
-            // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(693, 421);
             this.Controls.Add(this.mainLayoutTable);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "Cayley Tree";
             this.Load += new System.EventHandler(this.Form1_Load);
