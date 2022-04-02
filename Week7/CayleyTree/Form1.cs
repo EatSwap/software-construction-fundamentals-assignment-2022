@@ -5,22 +5,18 @@ using System.Windows.Forms;
 
 namespace CayleyTree {
 	public partial class Form1 : Form {
-		private double per1 = 0.6;
-		private double per2 = 0.7;
-
-		private double th1 = 30 * Math.PI / 180;
-		private double th2 = 20 * Math.PI / 180;
+		private bool canPaint;
 
 		private int n = 11;
 
+		private Pen pen = new Pen(Color.Black);
+		private double per1 = 0.6;
+		private double per2 = 0.7;
+
 		private double stemLength = 100.0;
 
-		private Pen pen = new Pen(Color.Black);
-
-		private bool canPaint = false;
-
-		private int pivotX = 200;
-		private int pivotY = 310;
+		private double th1 = 30 * Math.PI / 180;
+		private double th2 = 20 * Math.PI / 180;
 
 		public Form1() {
 			InitializeComponent();
@@ -36,20 +32,16 @@ namespace CayleyTree {
 			toolStripProgressBar1.Step = 1;
 		}
 
-		private static void ShowErrorMessage(string message) {
-			MessageBox.Show(message, "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
-		}
+		private static void ShowErrorMessage(string message) => MessageBox.Show(message, "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
 
 		private static double TryParseDouble(string str, string componentName, double maxRange) {
-			if (double.TryParse(str, out double d) && d <= maxRange) {
+			if (double.TryParse(str, out var d) && d <= maxRange)
 				return d;
-			} else {
-				ShowErrorMessage($"{componentName} 的输入须在 [0, {maxRange}] 范围内！");
-				throw new ArgumentOutOfRangeException();
-			}
+			ShowErrorMessage($"{componentName} 的输入须在 [0, {maxRange}] 范围内！");
+			throw new ArgumentOutOfRangeException();
 		}
 
-        private void drawingPanel_Paint(object sender, PaintEventArgs e) {
+		private void drawingPanel_Paint(object sender, PaintEventArgs e) {
 			if (!canPaint) return;
 
 			toolStripProgressBar1.Maximum = (1 << n) - 1;
@@ -69,30 +61,27 @@ namespace CayleyTree {
 
 			var stopWatch = new Stopwatch();
 			stopWatch.Start();
-			DrawCayleyTree(n, pivotX, pivotY, this.stemLength, -Math.PI / 2);
+			DrawCayleyTree(n, drawingPanel.Width / 2, drawingPanel.Height, stemLength, -Math.PI / 2);
 			stopWatch.Stop();
 
 			toolStripStatusLabel1.Text = $@"Total steps: {(1 << n) - 1}, Time Elapsed: {stopWatch.ElapsedMilliseconds} ms";
 		}
 
-        private void remakeButton_Click(object sender, EventArgs e) {
-			// Try parsing recursion depth
+		private void remakeButton_Click(object sender, EventArgs e) {
 			try {
 				n = (int) TryParseDouble(textBoxRecursionDepth.Text, "递归深度", 30);
 				stemLength = TryParseDouble(textBoxStemLength.Text, "主干长度", 1000);
 				per1 = TryParseDouble(textBoxPer1.Text, "右分支长度比", 1.0);
 				per2 = TryParseDouble(textBoxPer2.Text, "左分支长度比", 1.0);
-				th1 = (Math.PI / 180) * TryParseDouble(textBoxTh1.Text, "右分支角度", 180.0);
-				th2 = (Math.PI / 180) * TryParseDouble(textBoxTh2.Text, "左分支角度", 180.0);
+				th1 = Math.PI / 180 * TryParseDouble(textBoxTh1.Text, "右分支角度", 180.0);
+				th2 = Math.PI / 180 * TryParseDouble(textBoxTh2.Text, "左分支角度", 180.0);
 				pen = new Pen(Color.FromName(comboBoxPenColour.Text));
 			} catch (ArgumentOutOfRangeException) {
 				canPaint = false;
 				return;
 			}
 			canPaint = true;
-			pivotX = drawingPanel.Width / 2;
-			pivotY = drawingPanel.Height;
 			drawingPanel.Refresh();
-        }
-    }
+		}
+	}
 }
