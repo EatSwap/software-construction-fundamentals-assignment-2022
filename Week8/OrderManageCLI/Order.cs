@@ -28,10 +28,14 @@ public class Order {
 	public long OrderId { get; set; }
 
 	public DateTime OrderTime { get; set; }
-	
+
 	public List<OrderDetails> OrderDetails => _orderDetailsList;
 
 	public int Count => _orderDetailsList.Count;
+
+	public double Price => this.TotalPrice();
+
+	public string PriceStr => this.Price.ToString("0.00");
 
 	public IEnumerator GetEnumerator() {
 		return _orderDetailsList.GetEnumerator();
