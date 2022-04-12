@@ -47,4 +47,8 @@ public partial class MainForm : Form {
         ;
     }
 
+    private void DataGridViewOrders_SelectionChanged(object sender, EventArgs e) {
+        var order = dataGridViewOrders.CurrentRow.DataBoundItem as Order;
+        bindingSourceOrderDetails.DataSource = order?.OrderDetails;
+    }
 }
