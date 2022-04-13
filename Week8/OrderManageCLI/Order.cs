@@ -35,6 +35,10 @@ public class Order {
 
 	public double Price => this.TotalPrice();
 
+	public string CustomerName => this.Customer.Name;
+
+	public string CustomerAddress => this.Customer.Address;
+
 	public string PriceStr => this.Price.ToString("0.00");
 
 	public IEnumerator GetEnumerator() {
