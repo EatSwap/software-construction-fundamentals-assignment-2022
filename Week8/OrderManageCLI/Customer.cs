@@ -2,32 +2,24 @@
 
 public class Customer {
 	public Customer() {
-		Name = "";
-		Address = "";
+		this.Name = "";
+		this.Address = "";
 	}
-	
+
 	public Customer(string? name = null, string? address = null) {
-		Name = name ?? string.Empty;
-		Address = address ?? string.Empty;
+		this.Name = name ?? string.Empty;
+		this.Address = address ?? string.Empty;
 	}
 
 	public string Name { get; set; }
 
 	public string Address { get; set; }
 
-	public override string ToString() {
-		return $"Customer[Name=[{Name}],Address[{Address}]]";
-	}
+	public override string ToString() => $"Customer[Name=[{this.Name}],Address[{this.Address}]]";
 
-	public override int GetHashCode() {
-		return Name.GetHashCode() ^ Address.GetHashCode();
-	}
+	public override int GetHashCode() => this.Name.GetHashCode() ^ this.Address.GetHashCode();
 
-	public override bool Equals(object? obj) {
-		return obj is Customer rhs && Name.Equals(rhs.Name) && Address.Equals(rhs.Address);
-	}
-	
-	public Customer Clone() {
-		return new Customer(Name, Address);
-	}
+	public override bool Equals(object? obj) => obj is Customer rhs && this.Name.Equals(rhs.Name) && this.Address.Equals(rhs.Address);
+
+	public Customer Clone() => new Customer(this.Name, this.Address);
 }

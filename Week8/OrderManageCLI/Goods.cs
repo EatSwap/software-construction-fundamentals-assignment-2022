@@ -2,32 +2,24 @@
 
 public class Goods {
 	public Goods(string name = "", double price = 0.0) {
-		Name = name;
-		Price = price;
+		this.Name = name;
+		this.Price = price;
 	}
-	
+
 	public Goods() {
-		Name = "";
-		Price = 0.0;
+		this.Name = "";
+		this.Price = 0.0;
 	}
 
 	public string Name { get; set; }
 
 	public double Price { get; set; }
 
-	public override string ToString() {
-		return $"Goods[Name={Name},Price={Price}]";
-	}
+	public override string ToString() => $"Goods[Name={this.Name},Price={this.Price}]";
 
-	public override int GetHashCode() {
-		return Name.GetHashCode() ^ Price.GetHashCode();
-	}
+	public override int GetHashCode() => this.Name.GetHashCode() ^ this.Price.GetHashCode();
 
-	public override bool Equals(object? obj) {
-		return obj is Goods rhs && Name.Equals(rhs.Name) && Price.Equals(rhs.Price);
-	}
-	
-	public Goods Clone() {
-		return new Goods(Name, Price);
-	}
+	public override bool Equals(object? obj) => obj is Goods rhs && this.Name.Equals(rhs.Name) && this.Price.Equals(rhs.Price);
+
+	public Goods Clone() => new Goods(this.Name, this.Price);
 }

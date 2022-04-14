@@ -3,7 +3,7 @@ namespace OrderManageCLI;
 public class ConsoleReader {
 	public static OrderDetails? ReadOrderDetails(string prompt = "") {
 		Console.Write($"OrderDetails: Enter your goods name, empty to terminate [{prompt}] > ");
-		var goodsName = Console.ReadLine();
+		string? goodsName = Console.ReadLine();
 		if (string.IsNullOrWhiteSpace(goodsName))
 			return null;
 
@@ -26,19 +26,19 @@ public class ConsoleReader {
 
 	public static Order? ReadOrder() {
 		Console.Write("Order: Enter your customer name, empty to terminate > ");
-		var customerName = Console.ReadLine();
+		string? customerName = Console.ReadLine();
 		if (string.IsNullOrWhiteSpace(customerName))
 			return null;
 
 		Console.Write("Order: Enter your customer address > ");
-		var customerAddress = Console.ReadLine();
+		string? customerAddress = Console.ReadLine();
 		while (string.IsNullOrWhiteSpace(customerAddress)) {
 			Console.WriteLine("You must enter a valid address!");
 			Console.Write("Order: Enter your customer address > ");
 		}
 
 		Console.Write("Order: Enter your order time, empty for now > ");
-		var orderTimeStr = Console.ReadLine();
+		string? orderTimeStr = Console.ReadLine();
 		DateTime orderTime;
 		while (!DateTime.TryParse(orderTimeStr, out orderTime)) {
 			if (string.IsNullOrWhiteSpace(orderTimeStr)) {
@@ -52,7 +52,7 @@ public class ConsoleReader {
 
 		var orderDetailsList = new List<OrderDetails>();
 		while (true) {
-			var orderDetails = ReadOrderDetails($"{orderDetailsList.Count + 1}");
+			OrderDetails? orderDetails = ReadOrderDetails($"{orderDetailsList.Count + 1}");
 			if (orderDetails == null)
 				break;
 			orderDetailsList.Add(orderDetails);
@@ -77,14 +77,14 @@ public class ConsoleReader {
 
 	public static Customer ReadCustomer() {
 		Console.Write("Customer: Enter the customer's name > ");
-		var name = Console.ReadLine();
+		string? name = Console.ReadLine();
 		while (string.IsNullOrWhiteSpace(name)) {
 			Console.WriteLine("You must enter a valid name!");
 			Console.Write("Customer: Enter your name > ");
 		}
 
 		Console.Write("Customer: Enter the customer's address > ");
-		var address = Console.ReadLine();
+		string? address = Console.ReadLine();
 		while (string.IsNullOrWhiteSpace(address)) {
 			Console.WriteLine("You must enter a valid address!");
 			Console.Write("Customer: Enter your address > ");
@@ -95,7 +95,7 @@ public class ConsoleReader {
 
 	public static Goods ReadProduct() {
 		Console.Write("Product: Enter the product's name > ");
-		var name = Console.ReadLine();
+		string? name = Console.ReadLine();
 		while (string.IsNullOrWhiteSpace(name)) {
 			Console.WriteLine("You must enter a valid name!");
 			Console.Write("Product: Enter your name > ");
@@ -113,7 +113,7 @@ public class ConsoleReader {
 
 	public static DateTime ReadDate(string name) {
 		Console.Write($"Date: Enter the {name}, empty for now > ");
-		var dateStr = Console.ReadLine();
+		string? dateStr = Console.ReadLine();
 		DateTime date;
 		while (!DateTime.TryParse(dateStr, out date)) {
 			if (string.IsNullOrWhiteSpace(dateStr)) {
@@ -130,7 +130,7 @@ public class ConsoleReader {
 
 	public static double ReadDouble(string name) {
 		Console.Write($"{name}: Enter the {name}, empty for 0.0 > ");
-		var priceStr = Console.ReadLine();
+		string? priceStr = Console.ReadLine();
 		double price;
 		while (!double.TryParse(priceStr, out price) || price < 0.0) {
 			if (string.IsNullOrWhiteSpace(priceStr)) {
@@ -148,7 +148,7 @@ public class ConsoleReader {
 	public static void ReadOrderByAndSort(ref List<Order> orders) {
 		Console.WriteLine("Here you can choose your favourite ordering option:");
 
-		var choice = ChoiceReader(
+		int choice = ChoiceReader(
 			"By customer name [ASCENDING]",
 			"By customer name [DESCENDING]",
 			"By customer address [ASCENDING]",

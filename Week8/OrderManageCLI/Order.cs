@@ -1,26 +1,25 @@
-﻿using System.Collections;
+﻿namespace OrderManageCLI;
+
+using System.Collections;
 using System.Text;
 
-namespace OrderManageCLI;
-
 public class Order {
-	private static long _orderNum = 0;
-
-	private List<OrderDetails> _orderDetailsList;
+	private static long _orderNum;
 
 	public Order(Customer? c, DateTime orderTime, params OrderDetails[] details) {
-		Customer = c == null ? new Customer() : c;
-		_orderDetailsList = new List<OrderDetails>();
-		foreach (var detail in details) _orderDetailsList.Add(detail);
-		OrderId = ++_orderNum;
-		OrderTime = orderTime;
+		this.Customer = c == null ? new Customer() : c;
+		this.OrderDetails = new List<OrderDetails>();
+		foreach (OrderDetails detail in details)
+			this.OrderDetails.Add(detail);
+		this.OrderId = ++_orderNum;
+		this.OrderTime = orderTime;
 	}
 
 	public Order() {
-		_orderDetailsList = new List<OrderDetails>();
-		Customer = new Customer();
-		OrderId = -1;
-		OrderTime = new DateTime();
+		this.OrderDetails = new List<OrderDetails>();
+		this.Customer = new Customer();
+		this.OrderId = -1;
+		this.OrderTime = new DateTime();
 	}
 
 	public Customer Customer { get; set; }
@@ -29,12 +28,9 @@ public class Order {
 
 	public DateTime OrderTime { get; set; }
 
-	public List<OrderDetails> OrderDetails {
-		get => _orderDetailsList;
-		set => _orderDetailsList = value;
-	}
+	public List<OrderDetails> OrderDetails { get; set; }
 
-	public int Count => _orderDetailsList.Count;
+	public int Count => this.OrderDetails.Count;
 
 	public double Price => this.TotalPrice();
 
@@ -44,68 +40,57 @@ public class Order {
 
 	public string PriceStr => this.Price.ToString("0.00");
 
-	public IEnumerator GetEnumerator() {
-		return _orderDetailsList.GetEnumerator();
-	}
+	public IEnumerator GetEnumerator() => this.OrderDetails.GetEnumerator();
 
 	public double TotalPrice() {
 		var ret = 0.0;
-		_orderDetailsList.ForEach(od => ret += od.Price);
+		this.OrderDetails.ForEach(od => ret += od.Price);
 		return ret;
 	}
 
 	public bool HasGoods(Goods? g) {
-		return _orderDetailsList.Any(i => i.Item.Equals(g));
+		return this.OrderDetails.Any(i => i.Item.Equals(g));
 	}
 
 	public void AddRecord(OrderDetails od) {
-		if (_orderDetailsList.Contains(od))
-			throw new Exception($"Order #{OrderId} AddRecord: Specified order details already exists!");
-		_orderDetailsList.Add(od);
+		if (this.OrderDetails.Contains(od))
+			throw new Exception($"Order #{this.OrderId} AddRecord: Specified order details already exists!");
+		this.OrderDetails.Add(od);
 	}
 
 	public void RemoveRecord(OrderDetails od) {
-		if (_orderDetailsList.Contains(od))
-			_orderDetailsList.Remove(od);
+		if (this.OrderDetails.Contains(od))
+			this.OrderDetails.Remove(od);
 		else
-			throw new Exception($"Order #{OrderId} RemoveRecord: OrderDetails not found");
+			throw new Exception($"Order #{this.OrderId} RemoveRecord: OrderDetails not found");
 	}
 
-	public bool EqualsIgnoreId(object? obj) {
-		return obj is Order rhs && Customer.Equals(rhs.Customer) &&
-		       _orderDetailsList.All(rhs._orderDetailsList.Contains) &&
-		       _orderDetailsList.Count == rhs._orderDetailsList.Count;
-	}
+	public bool EqualsIgnoreId(object? obj) => obj is Order rhs && this.Customer.Equals(rhs.Customer) && this.OrderDetails.All(rhs.OrderDetails.Contains) && this.OrderDetails.Count == rhs.OrderDetails.Count;
 
-	public override bool Equals(object? obj) {
-		return obj is Order rhs && Customer.Equals(rhs.Customer) &&
-		       _orderDetailsList.All(rhs._orderDetailsList.Contains) &&
-		       _orderDetailsList.Count == rhs._orderDetailsList.Count &&
-		       OrderId == rhs.OrderId;
-	}
+	public override bool Equals(object? obj) => obj is Order rhs && this.Customer.Equals(rhs.Customer) && this.OrderDetails.All(rhs.OrderDetails.Contains) && this.OrderDetails.Count == rhs.OrderDetails.Count && this.OrderId == rhs.OrderId;
 
 	public override int GetHashCode() {
-		var ret = Customer.GetHashCode() ^ OrderId.GetHashCode();
-		foreach (var i in _orderDetailsList)
+		int ret = this.Customer.GetHashCode() ^ this.OrderId.GetHashCode();
+		foreach (OrderDetails i in this.OrderDetails)
 			ret ^= i.GetHashCode();
 		return ret;
 	}
 
 	public override string ToString() {
-		var n = _orderDetailsList.Count;
+		int n = this.OrderDetails.Count;
 		var detailsStr = new StringBuilder();
 		for (var i = 0; i < n; ++i) {
 			if (i > 0)
 				detailsStr.Append(',');
-			detailsStr.Append($"#{i}=[{_orderDetailsList[i].ToString()}]");
+			detailsStr.Append($"#{i}=[{this.OrderDetails[i].ToString()}]");
 		}
 
-		return $"Order[ID={OrderId},Customer=[{Customer.ToString()}],OrderTime=[{OrderTime.ToString("R")}],OrderDetails=[{detailsStr.ToString()}],TotalPrice={TotalPrice()}]";
+		return $"Order[ID={this.OrderId},Customer=[{this.Customer.ToString()}],OrderTime=[{this.OrderTime.ToString("R")}],OrderDetails=[{detailsStr.ToString()}],TotalPrice={this.TotalPrice()}]";
 	}
-	
+
 	public Order Clone() {
-		var ret = new Order(Customer.Clone(), OrderTime);
-		foreach (var i in _orderDetailsList)
+		var ret = new Order(this.Customer.Clone(), this.OrderTime);
+		foreach (OrderDetails i in this.OrderDetails)
 			ret.AddRecord(i.Clone());
 		ret.OrderId = this.OrderId;
 		--_orderNum;

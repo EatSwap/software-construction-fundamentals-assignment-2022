@@ -4,9 +4,9 @@ using OrderManageCLI;
 
 public partial class MainForm : Form {
 	private readonly OrderService orderService = new();
-	private List<OrderDetails> currentOrderDetailsList = new();
 
 	public Order CurrentOrder;
+	private List<OrderDetails> currentOrderDetailsList = new();
 
 	public MainForm() {
 		this.InitializeComponent();
@@ -46,20 +46,20 @@ public partial class MainForm : Form {
 
 		for (var i = 0; i < 100; ++i) {
 			randomOrders[i] = new Order(new Customer($"Name {i}", $"Address {i}"), new DateTime(1923 + rnd.Next(100), 1 + rnd.Next(12), 1 + rnd.Next(28)), getOrderDetails());
-			orderService.AddOrder(randomOrders[i]);
+			this.orderService.AddOrder(randomOrders[i]);
 		}
 	}
 
 	private void MainForm_Load(object sender, EventArgs e) {
 		this.GenerateRandomOrders();
-		bindingSourceOrders.DataSource = orderService.Orders;
+		this.bindingSourceOrders.DataSource = this.orderService.Orders;
 
-		CurrentOrderTime = DateTime.Now;
+		this.CurrentOrderTime = DateTime.Now;
 
 		// Create Tab
-		textBoxCreateCustomerName.DataBindings.Add("Text", this, nameof(CurrentCustomerAddress));
-		textBoxCreateCustomerAddress.DataBindings.Add("Text", this, nameof(CurrentCustomerName));
-		dateTimePickerCreateOrderTime.DataBindings.Add("Value", this, nameof(CurrentOrderTime));
+		this.textBoxCreateCustomerName.DataBindings.Add("Text", this, nameof(this.CurrentCustomerAddress));
+		this.textBoxCreateCustomerAddress.DataBindings.Add("Text", this, nameof(this.CurrentCustomerName));
+		this.dateTimePickerCreateOrderTime.DataBindings.Add("Value", this, nameof(this.CurrentOrderTime));
 	}
 
 	private void MainForm_Resize(object sender, EventArgs e) {
@@ -68,17 +68,17 @@ public partial class MainForm : Form {
 
 	private void DataGridViewOrders_SelectionChanged(object sender, EventArgs e) {
 		try {
-			var order = dataGridViewOrders.CurrentRow?.DataBoundItem as Order;
+			var order = this.dataGridViewOrders.CurrentRow?.DataBoundItem as Order;
 			if (order != null) {
 				this.CurrentOrder = order.Clone();
-				textBoxModifyCustomerName.DataBindings.Clear();
-				textBoxModifyCustomerName.DataBindings.Add("Text", this.CurrentOrder.Customer, nameof(CurrentOrder.Customer.Name));
-				textBoxModisyCustomerAddress.DataBindings.Clear();
-				textBoxModisyCustomerAddress.DataBindings.Add("Text", this.CurrentOrder.Customer, nameof(CurrentOrder.Customer.Address));
-				dateTimePickerModifyOrderTime.DataBindings.Clear();
-				dateTimePickerModifyOrderTime.DataBindings.Add("Value", this.CurrentOrder, nameof(CurrentOrder.OrderTime));
+				this.textBoxModifyCustomerName.DataBindings.Clear();
+				this.textBoxModifyCustomerName.DataBindings.Add("Text", this.CurrentOrder.Customer, nameof(this.CurrentOrder.Customer.Name));
+				this.textBoxModisyCustomerAddress.DataBindings.Clear();
+				this.textBoxModisyCustomerAddress.DataBindings.Add("Text", this.CurrentOrder.Customer, nameof(this.CurrentOrder.Customer.Address));
+				this.dateTimePickerModifyOrderTime.DataBindings.Clear();
+				this.dateTimePickerModifyOrderTime.DataBindings.Add("Value", this.CurrentOrder, nameof(this.CurrentOrder.OrderTime));
 			}
-			bindingSourceOrderDetails.DataSource = order?.OrderDetails;
+			this.bindingSourceOrderDetails.DataSource = order?.OrderDetails;
 		} catch {
 			// Does nothing
 			// I still cannot understand where this "IndexOutOfBoundException" comes.
@@ -86,29 +86,29 @@ public partial class MainForm : Form {
 	}
 
 	private void buttonCreateModifyDetails_Click(object sender, EventArgs e) {
-		var modifyForm = new OrderDetailsModifier(currentOrderDetailsList);
+		var modifyForm = new OrderDetailsModifier(this.currentOrderDetailsList);
 		modifyForm.ShowDialog();
-		currentOrderDetailsList = modifyForm.OrderDetailsList;
+		this.currentOrderDetailsList = modifyForm.OrderDetailsList;
 	}
 
 	private void buttonCreateOrder_Click(object sender, EventArgs e) {
-		if (string.IsNullOrEmpty(CurrentCustomerName) || string.IsNullOrEmpty(CurrentCustomerAddress)) {
+		if (string.IsNullOrEmpty(this.CurrentCustomerName) || string.IsNullOrEmpty(this.CurrentCustomerAddress)) {
 			Utility.ShowErrorDialogue("Customer information cannot be empty!");
 			return;
 		}
 		try {
-			orderService.AddOrder(new Order(new Customer(CurrentCustomerName, CurrentCustomerAddress), CurrentOrderTime, currentOrderDetailsList.ToArray()));
+			this.orderService.AddOrder(new Order(new Customer(this.CurrentCustomerName, this.CurrentCustomerAddress), this.CurrentOrderTime, this.currentOrderDetailsList.ToArray()));
 		} catch (ArgumentException ex) {
 			Utility.ShowErrorDialogue(ex.Message);
 			return;
 		}
 
-		CurrentCustomerAddress = string.Empty;
-		CurrentCustomerName = string.Empty;
-		CurrentOrderTime = DateTime.Now;
-		currentOrderDetailsList.Clear();
-		bindingSourceOrders.ResetBindings(false);
-		bindingSourceOrderDetails.ResetBindings(false);
+		this.CurrentCustomerAddress = string.Empty;
+		this.CurrentCustomerName = string.Empty;
+		this.CurrentOrderTime = DateTime.Now;
+		this.currentOrderDetailsList.Clear();
+		this.bindingSourceOrders.ResetBindings(false);
+		this.bindingSourceOrderDetails.ResetBindings(false);
 	}
 
 	private void buttonModifyOrderDetails_Click(object sender, EventArgs e) {
@@ -118,14 +118,14 @@ public partial class MainForm : Form {
 	}
 
 	private void buttonModifySave_Click(object sender, EventArgs e) {
-		orderService.ModifyOrder(CurrentOrder.OrderId, CurrentOrder);
+		this.orderService.ModifyOrder(this.CurrentOrder.OrderId, this.CurrentOrder);
 		this.bindingSourceOrders.ResetBindings(false);
 		this.bindingSourceOrderDetails.ResetBindings(false);
 		Utility.ShowInfoDialogue("Your changes has been saved.");
 	}
 
 	private void buttonModifyDelete_Click(object sender, EventArgs e) {
-		orderService.DeleteOrder(CurrentOrder.OrderId);
+		this.orderService.DeleteOrder(this.CurrentOrder.OrderId);
 		this.bindingSourceOrders.ResetBindings(false);
 		this.bindingSourceOrderDetails.ResetBindings(false);
 		Utility.ShowInfoDialogue("Selected order has been deleted.");

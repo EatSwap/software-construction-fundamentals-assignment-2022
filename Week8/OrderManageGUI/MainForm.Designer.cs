@@ -1,29 +1,29 @@
 ﻿namespace OrderManageGUI;
 
 partial class MainForm {
-    /// <summary>
-    ///  Required designer variable.
-    /// </summary>
-    private System.ComponentModel.IContainer components = null;
+	/// <summary>
+	///  Required designer variable.
+	/// </summary>
+	private System.ComponentModel.IContainer components = null;
 
-    /// <summary>
-    ///  Clean up any resources being used.
-    /// </summary>
-    /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-    protected override void Dispose(bool disposing) {
-        if (disposing && (components != null)) {
-            components.Dispose();
-        }
-        base.Dispose(disposing);
-    }
+	/// <summary>
+	///  Clean up any resources being used.
+	/// </summary>
+	/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+	protected override void Dispose(bool disposing) {
+		if (disposing && (components != null)) {
+			components.Dispose();
+		}
+		base.Dispose(disposing);
+	}
 
-    #region Windows Form Designer generated code
+	#region Windows Form Designer generated code
 
-    /// <summary>
-    ///  Required method for Designer support - do not modify
-    ///  the contents of this method with the code editor.
-    /// </summary>
-    private void InitializeComponent() {
+	/// <summary>
+	///  Required method for Designer support - do not modify
+	///  the contents of this method with the code editor.
+	/// </summary>
+	private void InitializeComponent() {
 			this.components = new System.ComponentModel.Container();
 			this.statusStrip = new System.Windows.Forms.StatusStrip();
 			this.menuStrip = new System.Windows.Forms.MenuStrip();
@@ -93,7 +93,7 @@ partial class MainForm {
 			// menuStrip
 			// 
 			this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.placeHolderToolStripMenuItem});
+			this.placeHolderToolStripMenuItem});
 			this.menuStrip.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip.Name = "menuStrip";
 			this.menuStrip.Size = new System.Drawing.Size(839, 24);
@@ -103,7 +103,7 @@ partial class MainForm {
 			// placeHolderToolStripMenuItem
 			// 
 			this.placeHolderToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.goodToolStripMenuItem});
+			this.goodToolStripMenuItem});
 			this.placeHolderToolStripMenuItem.Name = "placeHolderToolStripMenuItem";
 			this.placeHolderToolStripMenuItem.Size = new System.Drawing.Size(83, 20);
 			this.placeHolderToolStripMenuItem.Text = "PlaceHolder";
@@ -111,7 +111,7 @@ partial class MainForm {
 			// goodToolStripMenuItem
 			// 
 			this.goodToolStripMenuItem.Name = "goodToolStripMenuItem";
-			this.goodToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+			this.goodToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.goodToolStripMenuItem.Text = "Good";
 			// 
 			// panelTableContainer
@@ -435,11 +435,11 @@ partial class MainForm {
 			this.dataGridViewOrders.AutoGenerateColumns = false;
 			this.dataGridViewOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dataGridViewOrders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.orderIdDataGridViewTextBoxColumn,
-            this.customerDataGridViewTextBoxColumn,
-            this.CustomerAddress,
-            this.orderTimeDataGridViewTextBoxColumn,
-            this.PriceStr});
+			this.orderIdDataGridViewTextBoxColumn,
+			this.customerDataGridViewTextBoxColumn,
+			this.CustomerAddress,
+			this.orderTimeDataGridViewTextBoxColumn,
+			this.PriceStr});
 			this.dataGridViewOrders.DataSource = this.bindingSourceOrders;
 			this.dataGridViewOrders.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dataGridViewOrders.Location = new System.Drawing.Point(3, 3);
@@ -498,10 +498,10 @@ partial class MainForm {
 			this.dataGridViewOrderDetails.AutoGenerateColumns = false;
 			this.dataGridViewOrderDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dataGridViewOrderDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ItemName,
-            this.UnitPriceStr,
-            this.countDataGridViewTextBoxColumn,
-            this.dataGridViewTextBoxColumn1});
+			this.ItemName,
+			this.UnitPriceStr,
+			this.countDataGridViewTextBoxColumn,
+			this.dataGridViewTextBoxColumn1});
 			this.dataGridViewOrderDetails.DataSource = this.bindingSourceOrderDetails;
 			this.dataGridViewOrderDetails.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dataGridViewOrderDetails.Location = new System.Drawing.Point(3, 179);
@@ -572,41 +572,41 @@ partial class MainForm {
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
-    }
+	}
 
-    #endregion
+	#endregion
 
-    private StatusStrip statusStrip;
-    private MenuStrip menuStrip;
-    private ToolStripMenuItem placeHolderToolStripMenuItem;
-    private ToolStripMenuItem goodToolStripMenuItem;
-    private Panel panelTableContainer;
-    private TableLayoutPanel tableLayoutPanelMain;
-    private TabControl tabControl1;
-    private TabPage tabPageCreate;
-    private TabPage tabPageModify;
-    private BindingSource bindingSourceOrders;
-    private DataGridView dataGridViewOrders;
-    private DataGridView dataGridViewOrderDetails;
-    private BindingSource bindingSourceOrderDetails;
-    private DataGridViewTextBoxColumn orderIdDataGridViewTextBoxColumn;
-    private DataGridViewTextBoxColumn customerDataGridViewTextBoxColumn;
-    private DataGridViewTextBoxColumn CustomerAddress;
-    private DataGridViewTextBoxColumn orderTimeDataGridViewTextBoxColumn;
-    private DataGridViewTextBoxColumn PriceStr;
-    private DataGridViewTextBoxColumn ItemName;
-    private DataGridViewTextBoxColumn UnitPriceStr;
-    private DataGridViewTextBoxColumn countDataGridViewTextBoxColumn;
-    private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-    private TableLayoutPanel tableLayoutPanel1;
-    private Label labelCreateCustomerName;
-    private TextBox textBoxCreateCustomerName;
-    private Label labelCreateCustomerAddress;
-    private TextBox textBoxCreateCustomerAddress;
-    private Label labelCreateOrderTime;
-    private DateTimePicker dateTimePickerCreateOrderTime;
-    private Label labelCreateOrderDetails;
-    private Button buttonCreateOrderDetails;
+	private StatusStrip statusStrip;
+	private MenuStrip menuStrip;
+	private ToolStripMenuItem placeHolderToolStripMenuItem;
+	private ToolStripMenuItem goodToolStripMenuItem;
+	private Panel panelTableContainer;
+	private TableLayoutPanel tableLayoutPanelMain;
+	private TabControl tabControl1;
+	private TabPage tabPageCreate;
+	private TabPage tabPageModify;
+	private BindingSource bindingSourceOrders;
+	private DataGridView dataGridViewOrders;
+	private DataGridView dataGridViewOrderDetails;
+	private BindingSource bindingSourceOrderDetails;
+	private DataGridViewTextBoxColumn orderIdDataGridViewTextBoxColumn;
+	private DataGridViewTextBoxColumn customerDataGridViewTextBoxColumn;
+	private DataGridViewTextBoxColumn CustomerAddress;
+	private DataGridViewTextBoxColumn orderTimeDataGridViewTextBoxColumn;
+	private DataGridViewTextBoxColumn PriceStr;
+	private DataGridViewTextBoxColumn ItemName;
+	private DataGridViewTextBoxColumn UnitPriceStr;
+	private DataGridViewTextBoxColumn countDataGridViewTextBoxColumn;
+	private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+	private TableLayoutPanel tableLayoutPanel1;
+	private Label labelCreateCustomerName;
+	private TextBox textBoxCreateCustomerName;
+	private Label labelCreateCustomerAddress;
+	private TextBox textBoxCreateCustomerAddress;
+	private Label labelCreateOrderTime;
+	private DateTimePicker dateTimePickerCreateOrderTime;
+	private Label labelCreateOrderDetails;
+	private Button buttonCreateOrderDetails;
 	private Button buttonCreateOrder;
 	private TableLayoutPanel tableLayoutPanel2;
 	private Label labelModifyCustomerName;

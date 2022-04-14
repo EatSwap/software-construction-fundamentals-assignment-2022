@@ -21,7 +21,7 @@ public class Demo {
 			Console.WriteLine("Welcome to OrderManage CLI!");
 			Console.WriteLine($"Your current order count is {orderService.Orders.Count}");
 
-			var choice = ConsoleReader.ChoiceReader(
+			int choice = ConsoleReader.ChoiceReader(
 				"Create an Order",
 				"Modify an Order",
 				"Delete an Order",
@@ -56,7 +56,7 @@ public class Demo {
 	private static void CreateOrder(ref OrderService orderService) {
 		Console.Clear();
 		Console.WriteLine("Creating an order, please enter the order information below:");
-		var order = ConsoleReader.ReadOrder();
+		Order? order = ConsoleReader.ReadOrder();
 		if (order == null) {
 			Console.WriteLine("Order creation cancelled.");
 			return;
@@ -70,7 +70,7 @@ public class Demo {
 	private static void ModifyOrder(ref OrderService orderService) {
 		Console.Clear();
 		Console.WriteLine("Modifying an order, choose one of the options below:");
-		var choice = ConsoleReader.ChoiceReader(
+		int choice = ConsoleReader.ChoiceReader(
 			"Modify by Order ID",
 			"Modify by Exact Order Information"
 		);
@@ -94,7 +94,7 @@ public class Demo {
 	private static bool ModifyOrderByOrderId(ref OrderService orderService) {
 		// Read Order ID from console
 		Console.Write("Please enter the Order ID you want to modify, empty to cancel > ");
-		var orderIdStr = Console.ReadLine();
+		string? orderIdStr = Console.ReadLine();
 
 		if (string.IsNullOrWhiteSpace(orderIdStr)) {
 			Console.WriteLine(ModifyCancelMsg);
@@ -120,7 +120,7 @@ public class Demo {
 
 		// Read Order information from console
 		Console.WriteLine("Please enter the new Order information below:");
-		var orderNew = ConsoleReader.ReadOrder();
+		Order? orderNew = ConsoleReader.ReadOrder();
 		if (orderNew == null) {
 			Console.WriteLine(ModifyCancelMsg);
 			return false;
@@ -133,21 +133,21 @@ public class Demo {
 	private static bool ModifyOrderByExactOrderInformation(ref OrderService orderService) {
 		// Read Order information from console
 		Console.WriteLine("Please enter the old Order information below:");
-		var orderOld = ConsoleReader.ReadOrder();
+		Order? orderOld = ConsoleReader.ReadOrder();
 		if (orderOld == null) {
 			Console.WriteLine(ModifyCancelMsg);
 			return false;
 		}
 
 		Console.WriteLine("Please enter the new Order information below:");
-		var orderNew = ConsoleReader.ReadOrder();
+		Order? orderNew = ConsoleReader.ReadOrder();
 		if (orderNew == null) {
 			Console.WriteLine(ModifyCancelMsg);
 			return false;
 		}
 
 		// Modify Order
-		var ret = orderService.ModifyOrder(orderOld, orderNew);
+		bool ret = orderService.ModifyOrder(orderOld, orderNew);
 
 		if (!ret)
 			Console.WriteLine(OrderNotFoundMsg);
@@ -158,7 +158,7 @@ public class Demo {
 	private static bool DeleteOrder(ref OrderService orderService) {
 		Console.Clear();
 		Console.WriteLine("Deleting an order, choose one of the options below:");
-		var choice = ConsoleReader.ChoiceReader(
+		int choice = ConsoleReader.ChoiceReader(
 			"Delete by Order ID",
 			"Delete by Exact Order Information"
 		);
@@ -183,7 +183,7 @@ public class Demo {
 	private static bool DeleteOrderByOrderId(ref OrderService orderService) {
 		// Read Order ID from console
 		Console.Write("Please enter the Order ID you want to delete, empty to cancel > ");
-		var orderIdStr = Console.ReadLine();
+		string? orderIdStr = Console.ReadLine();
 
 		if (string.IsNullOrWhiteSpace(orderIdStr)) {
 			Console.WriteLine(DeleteCancelMsg);
@@ -214,14 +214,14 @@ public class Demo {
 	private static bool DeleteOrderByExactOrderInformation(ref OrderService orderService) {
 		// Read Order information from console
 		Console.WriteLine("Please enter the old Order information below:");
-		var orderOld = ConsoleReader.ReadOrder();
+		Order? orderOld = ConsoleReader.ReadOrder();
 		if (orderOld == null) {
 			Console.WriteLine(DeleteCancelMsg);
 			return false;
 		}
 
 		// Delete Order
-		var ret = orderService.DeleteOrder(orderOld);
+		bool ret = orderService.DeleteOrder(orderOld);
 
 		if (!ret)
 			Console.WriteLine(OrderNotFoundMsg);
@@ -233,7 +233,7 @@ public class Demo {
 		Console.Clear();
 		Console.WriteLine("Printing all orders:");
 
-		foreach (var i in orderService) Console.WriteLine(i.ToString());
+		foreach (Order i in orderService) Console.WriteLine(i.ToString());
 
 		Console.WriteLine("Press any key to continue.");
 		Console.ReadKey();
@@ -242,7 +242,7 @@ public class Demo {
 	private static void SearchOrders(ref OrderService orderService) {
 		Console.Clear();
 		Console.WriteLine("Searching orders, choose one of the options below:");
-		var choice = ConsoleReader.ChoiceReader(
+		int choice = ConsoleReader.ChoiceReader(
 			"Search by Order ID",
 			"Search by Exact Order Information",
 			"Search by Customer",
@@ -282,7 +282,7 @@ public class Demo {
 	private static void SearchOrdersByOrderId(ref OrderService orderService) {
 		// Read Order ID from console
 		Console.Write("Please enter the Order ID you want to search, empty to cancel > ");
-		var orderIdStr = Console.ReadLine();
+		string? orderIdStr = Console.ReadLine();
 
 		if (string.IsNullOrWhiteSpace(orderIdStr)) {
 			Console.WriteLine(SearchCancelMsg);
@@ -313,7 +313,7 @@ public class Demo {
 	private static void SearchOrdersByExactOrderInformation(ref OrderService orderService) {
 		// Read Order information from console
 		Console.WriteLine("Please enter the old Order information below:");
-		var orderOld = ConsoleReader.ReadOrder();
+		Order? orderOld = ConsoleReader.ReadOrder();
 		if (orderOld == null) {
 			Console.WriteLine(SearchCancelMsg);
 			return;
@@ -333,7 +333,7 @@ public class Demo {
 		// Read Customer name from console
 		Console.WriteLine("Please enter the Customer you want to search below:");
 
-		var c = ConsoleReader.ReadCustomer();
+		Customer c = ConsoleReader.ReadCustomer();
 
 		// Find the order
 		var ret = orderService.Find(c);
@@ -343,7 +343,7 @@ public class Demo {
 			Console.WriteLine(OrderNotFoundMsg);
 		} else {
 			ConsoleReader.ReadOrderByAndSort(ref ret);
-			foreach (var i in ret)
+			foreach (Order i in ret)
 				Console.WriteLine(i.ToString());
 		}
 
@@ -355,7 +355,7 @@ public class Demo {
 		// Read Product name from console
 		Console.WriteLine("Please enter the Product you want to search below:");
 
-		var p = ConsoleReader.ReadProduct();
+		Goods p = ConsoleReader.ReadProduct();
 
 		// Find the order
 		var ret = orderService.Find(p);
@@ -365,7 +365,7 @@ public class Demo {
 			Console.WriteLine(OrderNotFoundMsg);
 		} else {
 			ConsoleReader.ReadOrderByAndSort(ref ret);
-			foreach (var i in ret)
+			foreach (Order i in ret)
 				Console.WriteLine(i.ToString());
 		}
 
@@ -377,10 +377,10 @@ public class Demo {
 		// Read Order Date from console
 		Console.WriteLine("Please enter the Order Date you want to search below:");
 
-		var d = ConsoleReader.ReadDate("date to search");
+		DateTime d = ConsoleReader.ReadDate("date to search");
 
-		var dStart = d.Date + TimeSpan.Zero;
-		var dEnd = d.Date + TimeSpan.FromDays(1);
+		DateTime dStart = d.Date + TimeSpan.Zero;
+		DateTime dEnd = d.Date + TimeSpan.FromDays(1);
 
 		// Find the order
 		var ret = orderService.FindByRange(dStart, dEnd);
@@ -390,7 +390,7 @@ public class Demo {
 			Console.WriteLine(OrderNotFoundMsg);
 		} else {
 			ConsoleReader.ReadOrderByAndSort(ref ret);
-			foreach (var i in ret)
+			foreach (Order i in ret)
 				Console.WriteLine(i.ToString());
 		}
 
@@ -402,8 +402,8 @@ public class Demo {
 		// Read Order Date Range from console
 		Console.WriteLine("Please enter the Order Date Range you want to search below:");
 
-		var dStart = ConsoleReader.ReadDate("start date & time to search");
-		var dEnd = ConsoleReader.ReadDate("end date & time to search");
+		DateTime dStart = ConsoleReader.ReadDate("start date & time to search");
+		DateTime dEnd = ConsoleReader.ReadDate("end date & time to search");
 
 		// Find the order
 		var ret = orderService.FindByRange(dStart, dEnd);
@@ -413,7 +413,7 @@ public class Demo {
 			Console.WriteLine(OrderNotFoundMsg);
 		} else {
 			ConsoleReader.ReadOrderByAndSort(ref ret);
-			foreach (var i in ret)
+			foreach (Order i in ret)
 				Console.WriteLine(i.ToString());
 		}
 
@@ -425,8 +425,8 @@ public class Demo {
 		// Read Order Amount Range from console
 		Console.WriteLine("Please enter the Order Amount Range you want to search below:");
 
-		var amountStart = ConsoleReader.ReadDouble("start amount to search (inclusive)");
-		var amountEnd = ConsoleReader.ReadDouble("end amount to search (exclusive)");
+		double amountStart = ConsoleReader.ReadDouble("start amount to search (inclusive)");
+		double amountEnd = ConsoleReader.ReadDouble("end amount to search (exclusive)");
 
 		// Find the order
 		var ret = orderService.FindByRange(amountStart, amountEnd);
@@ -436,7 +436,7 @@ public class Demo {
 			Console.WriteLine(OrderNotFoundMsg);
 		} else {
 			ConsoleReader.ReadOrderByAndSort(ref ret);
-			foreach (var i in ret)
+			foreach (Order i in ret)
 				Console.WriteLine(i.ToString());
 		}
 

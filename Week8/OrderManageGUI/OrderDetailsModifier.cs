@@ -6,8 +6,8 @@ public partial class OrderDetailsModifier : Form {
 	public OrderDetailsModifier(List<OrderDetails>? details = null) {
 		this.InitializeComponent();
 
-		OrderDetailsList = details ?? new List<OrderDetails>();
-		bindingSourceOrderDetails.DataSource = OrderDetailsList;
+		this.OrderDetailsList = details ?? new List<OrderDetails>();
+		this.bindingSourceOrderDetails.DataSource = this.OrderDetailsList;
 	}
 
 	public List<OrderDetails> OrderDetailsList { get; }
@@ -17,29 +17,29 @@ public partial class OrderDetailsModifier : Form {
 	}
 
 	private void buttonRemove_Click(object sender, EventArgs e) {
-		foreach (object? i in dataGridViewOrderDetails.SelectedRows)
+		foreach (object? i in this.dataGridViewOrderDetails.SelectedRows)
 			if (i is DataGridViewRow {DataBoundItem: OrderDetails d})
-				OrderDetailsList.Remove(d);
-		bindingSourceOrderDetails.ResetBindings(false);
+				this.OrderDetailsList.Remove(d);
+		this.bindingSourceOrderDetails.ResetBindings(false);
 	}
 
 	private void buttonAdd_Click(object sender, EventArgs e) {
-		if (string.IsNullOrEmpty(textBoxItemName.Text)) {
+		if (string.IsNullOrEmpty(this.textBoxItemName.Text)) {
 			Utility.ShowErrorDialogue("Item name shall not be empty");
 			return;
 		}
 
-		OrderDetailsList.Add(new OrderDetails(textBoxItemName.Text, decimal.ToDouble(numericUpDownUnitPrice.Value), decimal.ToInt32(numericUpDownCount.Value)));
-		bindingSourceOrderDetails.ResetBindings(false);
+		this.OrderDetailsList.Add(new OrderDetails(this.textBoxItemName.Text, decimal.ToDouble(this.numericUpDownUnitPrice.Value), decimal.ToInt32(this.numericUpDownCount.Value)));
+		this.bindingSourceOrderDetails.ResetBindings(false);
 	}
 
 	private void buttonClear_Click(object sender, EventArgs e) {
-		OrderDetailsList.Clear();
-		bindingSourceOrderDetails.ResetBindings(false);
+		this.OrderDetailsList.Clear();
+		this.bindingSourceOrderDetails.ResetBindings(false);
 	}
 
 	private void numericUpDownUnitPrice_ValueChanged(object sender, EventArgs e) {
-		Utility.ShowErrorDialogue("Value changed to " + numericUpDownUnitPrice.Value.ToString());
+		Utility.ShowErrorDialogue("Value changed to " + this.numericUpDownUnitPrice.Value);
 		; // debug
 	}
 }
