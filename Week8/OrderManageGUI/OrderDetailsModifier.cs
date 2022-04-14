@@ -25,7 +25,11 @@ public partial class OrderDetailsModifier : Form {
 	}
 
 	private void buttonRemove_Click(object sender, EventArgs e) {
-		dataGridViewOrderDetails.SelectedRows.Cast<OrderDetails>().ToList().ForEach(orderDetails => OrderDetailsList.Remove(orderDetails));
+		foreach (var i in dataGridViewOrderDetails.SelectedRows) {
+			if (!(i is DataGridViewRow r) || !(r.DataBoundItem is OrderDetails d))
+				continue;
+			OrderDetailsList.Remove(d);
+		}
 		bindingSourceOrderDetails.ResetBindings(false);
 	}
 
