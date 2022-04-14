@@ -26,4 +26,8 @@ public class Goods {
 	public override bool Equals(object? obj) {
 		return obj is Goods rhs && Name.Equals(rhs.Name) && Price.Equals(rhs.Price);
 	}
+	
+	public Goods Clone() {
+		return new Goods(Name, Price);
+	}
 }

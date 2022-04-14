@@ -99,4 +99,11 @@ public class Order {
 
 		return $"Order[ID={OrderId},Customer=[{Customer.ToString()}],OrderTime=[{OrderTime.ToString("R")}],OrderDetails=[{detailsStr.ToString()}],TotalPrice={TotalPrice()}]";
 	}
+	
+	public Order Clone() {
+		var ret = new Order(Customer, OrderTime);
+		foreach (var i in _orderDetailsList)
+			ret.AddRecord(i.Clone());
+		return ret;
+	}
 }

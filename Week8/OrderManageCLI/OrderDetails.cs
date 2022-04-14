@@ -41,4 +41,8 @@ public class OrderDetails {
 	public override string ToString() {
 		return $"OrderDetails[Item=({Item.ToString()}),Count={Count}]";
 	}
+	
+	public OrderDetails Clone() {
+		return new OrderDetails(Item.Clone(), Count);
+	}
 }
