@@ -71,4 +71,13 @@ public partial class MainForm : Form {
             // I still cannot understand where this "IndexOutOfBoundException" comes.
         }
     }
+
+    private void buttonCreateModifyDetails_Click(object sender, EventArgs e) {
+        var modifyForm = new OrderDetailsModifier();
+        modifyForm.ShowDialog();
+        var newList = modifyForm.OrderDetailsList;
+        if (newList != null) {
+            ;
+        }
+    }
 }
