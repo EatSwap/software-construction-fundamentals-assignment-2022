@@ -41,7 +41,7 @@ partial class MainForm {
 			this.labelCreateOrderTime = new System.Windows.Forms.Label();
 			this.dateTimePickerCreateOrderTime = new System.Windows.Forms.DateTimePicker();
 			this.labelCreateOrderDetails = new System.Windows.Forms.Label();
-			this.buttonCreateModifyDetails = new System.Windows.Forms.Button();
+			this.buttonCreateOrderDetails = new System.Windows.Forms.Button();
 			this.buttonCreateOrder = new System.Windows.Forms.Button();
 			this.tabPageModify = new System.Windows.Forms.TabPage();
 			this.dataGridViewOrders = new System.Windows.Forms.DataGridView();
@@ -57,16 +57,29 @@ partial class MainForm {
 			this.countDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.bindingSourceOrderDetails = new System.Windows.Forms.BindingSource(this.components);
+			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+			this.labelModifyCustomerName = new System.Windows.Forms.Label();
+			this.textBoxModifyCustomerName = new System.Windows.Forms.TextBox();
+			this.labelModifyCustomerAddress = new System.Windows.Forms.Label();
+			this.textBoxModisyCustomerAddress = new System.Windows.Forms.TextBox();
+			this.labelModifyOrderTime = new System.Windows.Forms.Label();
+			this.dateTimePickerModifyOrderTime = new System.Windows.Forms.DateTimePicker();
+			this.labelModifyOrderDetails = new System.Windows.Forms.Label();
+			this.buttonModifyOrderDetails = new System.Windows.Forms.Button();
+			this.button2 = new System.Windows.Forms.Button();
+			this.buttonModifyDelete = new System.Windows.Forms.Button();
 			this.menuStrip.SuspendLayout();
 			this.panelTableContainer.SuspendLayout();
 			this.tableLayoutPanelMain.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.tabPageCreate.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
+			this.tabPageModify.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSourceOrders)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrderDetails)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSourceOrderDetails)).BeginInit();
+			this.tableLayoutPanel2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// statusStrip
@@ -153,8 +166,8 @@ partial class MainForm {
 			// tableLayoutPanel1
 			// 
 			this.tableLayoutPanel1.ColumnCount = 2;
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.65693F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69.34306F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
 			this.tableLayoutPanel1.Controls.Add(this.labelCreateCustomerName, 0, 0);
 			this.tableLayoutPanel1.Controls.Add(this.textBoxCreateCustomerName, 1, 0);
 			this.tableLayoutPanel1.Controls.Add(this.labelCreateCustomerAddress, 0, 1);
@@ -162,7 +175,7 @@ partial class MainForm {
 			this.tableLayoutPanel1.Controls.Add(this.labelCreateOrderTime, 0, 2);
 			this.tableLayoutPanel1.Controls.Add(this.dateTimePickerCreateOrderTime, 1, 2);
 			this.tableLayoutPanel1.Controls.Add(this.labelCreateOrderDetails, 0, 3);
-			this.tableLayoutPanel1.Controls.Add(this.buttonCreateModifyDetails, 1, 3);
+			this.tableLayoutPanel1.Controls.Add(this.buttonCreateOrderDetails, 1, 3);
 			this.tableLayoutPanel1.Controls.Add(this.buttonCreateOrder, 0, 4);
 			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
@@ -183,7 +196,7 @@ partial class MainForm {
 			this.labelCreateCustomerName.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.labelCreateCustomerName.Location = new System.Drawing.Point(3, 0);
 			this.labelCreateCustomerName.Name = "labelCreateCustomerName";
-			this.labelCreateCustomerName.Size = new System.Drawing.Size(71, 30);
+			this.labelCreateCustomerName.Size = new System.Drawing.Size(69, 30);
 			this.labelCreateCustomerName.TabIndex = 0;
 			this.labelCreateCustomerName.Text = "Customer Name";
 			this.labelCreateCustomerName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -191,9 +204,9 @@ partial class MainForm {
 			// textBoxCreateCustomerName
 			// 
 			this.textBoxCreateCustomerName.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.textBoxCreateCustomerName.Location = new System.Drawing.Point(80, 3);
+			this.textBoxCreateCustomerName.Location = new System.Drawing.Point(78, 3);
 			this.textBoxCreateCustomerName.Name = "textBoxCreateCustomerName";
-			this.textBoxCreateCustomerName.Size = new System.Drawing.Size(169, 23);
+			this.textBoxCreateCustomerName.Size = new System.Drawing.Size(171, 23);
 			this.textBoxCreateCustomerName.TabIndex = 1;
 			// 
 			// labelCreateCustomerAddress
@@ -202,7 +215,7 @@ partial class MainForm {
 			this.labelCreateCustomerAddress.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.labelCreateCustomerAddress.Location = new System.Drawing.Point(3, 30);
 			this.labelCreateCustomerAddress.Name = "labelCreateCustomerAddress";
-			this.labelCreateCustomerAddress.Size = new System.Drawing.Size(71, 30);
+			this.labelCreateCustomerAddress.Size = new System.Drawing.Size(69, 30);
 			this.labelCreateCustomerAddress.TabIndex = 2;
 			this.labelCreateCustomerAddress.Text = "Customer Address";
 			this.labelCreateCustomerAddress.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -210,9 +223,9 @@ partial class MainForm {
 			// textBoxCreateCustomerAddress
 			// 
 			this.textBoxCreateCustomerAddress.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.textBoxCreateCustomerAddress.Location = new System.Drawing.Point(80, 33);
+			this.textBoxCreateCustomerAddress.Location = new System.Drawing.Point(78, 33);
 			this.textBoxCreateCustomerAddress.Name = "textBoxCreateCustomerAddress";
-			this.textBoxCreateCustomerAddress.Size = new System.Drawing.Size(169, 23);
+			this.textBoxCreateCustomerAddress.Size = new System.Drawing.Size(171, 23);
 			this.textBoxCreateCustomerAddress.TabIndex = 3;
 			// 
 			// labelCreateOrderTime
@@ -221,7 +234,7 @@ partial class MainForm {
 			this.labelCreateOrderTime.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.labelCreateOrderTime.Location = new System.Drawing.Point(3, 60);
 			this.labelCreateOrderTime.Name = "labelCreateOrderTime";
-			this.labelCreateOrderTime.Size = new System.Drawing.Size(71, 30);
+			this.labelCreateOrderTime.Size = new System.Drawing.Size(69, 30);
 			this.labelCreateOrderTime.TabIndex = 4;
 			this.labelCreateOrderTime.Text = "Order Time";
 			this.labelCreateOrderTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -231,9 +244,9 @@ partial class MainForm {
 			this.dateTimePickerCreateOrderTime.CustomFormat = "dd/MMM/yyyy HH:mm:ss";
 			this.dateTimePickerCreateOrderTime.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dateTimePickerCreateOrderTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dateTimePickerCreateOrderTime.Location = new System.Drawing.Point(80, 63);
+			this.dateTimePickerCreateOrderTime.Location = new System.Drawing.Point(78, 63);
 			this.dateTimePickerCreateOrderTime.Name = "dateTimePickerCreateOrderTime";
-			this.dateTimePickerCreateOrderTime.Size = new System.Drawing.Size(169, 23);
+			this.dateTimePickerCreateOrderTime.Size = new System.Drawing.Size(171, 23);
 			this.dateTimePickerCreateOrderTime.TabIndex = 5;
 			// 
 			// labelCreateOrderDetails
@@ -242,21 +255,21 @@ partial class MainForm {
 			this.labelCreateOrderDetails.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.labelCreateOrderDetails.Location = new System.Drawing.Point(3, 90);
 			this.labelCreateOrderDetails.Name = "labelCreateOrderDetails";
-			this.labelCreateOrderDetails.Size = new System.Drawing.Size(71, 30);
+			this.labelCreateOrderDetails.Size = new System.Drawing.Size(69, 30);
 			this.labelCreateOrderDetails.TabIndex = 6;
 			this.labelCreateOrderDetails.Text = "Order Details";
 			this.labelCreateOrderDetails.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
-			// buttonCreateModifyDetails
+			// buttonCreateOrderDetails
 			// 
-			this.buttonCreateModifyDetails.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.buttonCreateModifyDetails.Location = new System.Drawing.Point(80, 93);
-			this.buttonCreateModifyDetails.Name = "buttonCreateModifyDetails";
-			this.buttonCreateModifyDetails.Size = new System.Drawing.Size(169, 24);
-			this.buttonCreateModifyDetails.TabIndex = 7;
-			this.buttonCreateModifyDetails.Text = "Click to Modify";
-			this.buttonCreateModifyDetails.UseVisualStyleBackColor = true;
-			this.buttonCreateModifyDetails.Click += new System.EventHandler(this.buttonCreateModifyDetails_Click);
+			this.buttonCreateOrderDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.buttonCreateOrderDetails.Location = new System.Drawing.Point(78, 93);
+			this.buttonCreateOrderDetails.Name = "buttonCreateOrderDetails";
+			this.buttonCreateOrderDetails.Size = new System.Drawing.Size(171, 24);
+			this.buttonCreateOrderDetails.TabIndex = 7;
+			this.buttonCreateOrderDetails.Text = "Click to Modify";
+			this.buttonCreateOrderDetails.UseVisualStyleBackColor = true;
+			this.buttonCreateOrderDetails.Click += new System.EventHandler(this.buttonCreateModifyDetails_Click);
 			// 
 			// buttonCreateOrder
 			// 
@@ -272,6 +285,7 @@ partial class MainForm {
 			// 
 			// tabPageModify
 			// 
+			this.tabPageModify.Controls.Add(this.tableLayoutPanel2);
 			this.tabPageModify.Location = new System.Drawing.Point(4, 24);
 			this.tabPageModify.Name = "tabPageModify";
 			this.tabPageModify.Padding = new System.Windows.Forms.Padding(3);
@@ -395,6 +409,137 @@ partial class MainForm {
 			// 
 			this.bindingSourceOrderDetails.DataSource = typeof(OrderManageCLI.OrderDetails);
 			// 
+			// tableLayoutPanel2
+			// 
+			this.tableLayoutPanel2.ColumnCount = 2;
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+			this.tableLayoutPanel2.Controls.Add(this.labelModifyCustomerName, 0, 0);
+			this.tableLayoutPanel2.Controls.Add(this.textBoxModifyCustomerName, 1, 0);
+			this.tableLayoutPanel2.Controls.Add(this.labelModifyCustomerAddress, 0, 1);
+			this.tableLayoutPanel2.Controls.Add(this.textBoxModisyCustomerAddress, 1, 1);
+			this.tableLayoutPanel2.Controls.Add(this.labelModifyOrderTime, 0, 2);
+			this.tableLayoutPanel2.Controls.Add(this.dateTimePickerModifyOrderTime, 1, 2);
+			this.tableLayoutPanel2.Controls.Add(this.labelModifyOrderDetails, 0, 3);
+			this.tableLayoutPanel2.Controls.Add(this.buttonModifyOrderDetails, 1, 3);
+			this.tableLayoutPanel2.Controls.Add(this.button2, 0, 4);
+			this.tableLayoutPanel2.Controls.Add(this.buttonModifyDelete, 0, 5);
+			this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+			this.tableLayoutPanel2.RowCount = 7;
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel2.Size = new System.Drawing.Size(252, 313);
+			this.tableLayoutPanel2.TabIndex = 1;
+			// 
+			// labelModifyCustomerName
+			// 
+			this.labelModifyCustomerName.AutoSize = true;
+			this.labelModifyCustomerName.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.labelModifyCustomerName.Location = new System.Drawing.Point(3, 0);
+			this.labelModifyCustomerName.Name = "labelModifyCustomerName";
+			this.labelModifyCustomerName.Size = new System.Drawing.Size(69, 30);
+			this.labelModifyCustomerName.TabIndex = 0;
+			this.labelModifyCustomerName.Text = "Customer Name";
+			this.labelModifyCustomerName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// textBoxModifyCustomerName
+			// 
+			this.textBoxModifyCustomerName.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.textBoxModifyCustomerName.Location = new System.Drawing.Point(78, 3);
+			this.textBoxModifyCustomerName.Name = "textBoxModifyCustomerName";
+			this.textBoxModifyCustomerName.Size = new System.Drawing.Size(171, 23);
+			this.textBoxModifyCustomerName.TabIndex = 1;
+			// 
+			// labelModifyCustomerAddress
+			// 
+			this.labelModifyCustomerAddress.AutoSize = true;
+			this.labelModifyCustomerAddress.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.labelModifyCustomerAddress.Location = new System.Drawing.Point(3, 30);
+			this.labelModifyCustomerAddress.Name = "labelModifyCustomerAddress";
+			this.labelModifyCustomerAddress.Size = new System.Drawing.Size(69, 30);
+			this.labelModifyCustomerAddress.TabIndex = 2;
+			this.labelModifyCustomerAddress.Text = "Customer Address";
+			this.labelModifyCustomerAddress.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// textBoxModisyCustomerAddress
+			// 
+			this.textBoxModisyCustomerAddress.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.textBoxModisyCustomerAddress.Location = new System.Drawing.Point(78, 33);
+			this.textBoxModisyCustomerAddress.Name = "textBoxModisyCustomerAddress";
+			this.textBoxModisyCustomerAddress.Size = new System.Drawing.Size(171, 23);
+			this.textBoxModisyCustomerAddress.TabIndex = 3;
+			// 
+			// labelModifyOrderTime
+			// 
+			this.labelModifyOrderTime.AutoSize = true;
+			this.labelModifyOrderTime.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.labelModifyOrderTime.Location = new System.Drawing.Point(3, 60);
+			this.labelModifyOrderTime.Name = "labelModifyOrderTime";
+			this.labelModifyOrderTime.Size = new System.Drawing.Size(69, 30);
+			this.labelModifyOrderTime.TabIndex = 4;
+			this.labelModifyOrderTime.Text = "Order Time";
+			this.labelModifyOrderTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// dateTimePickerModifyOrderTime
+			// 
+			this.dateTimePickerModifyOrderTime.CustomFormat = "dd/MMM/yyyy HH:mm:ss";
+			this.dateTimePickerModifyOrderTime.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.dateTimePickerModifyOrderTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.dateTimePickerModifyOrderTime.Location = new System.Drawing.Point(78, 63);
+			this.dateTimePickerModifyOrderTime.Name = "dateTimePickerModifyOrderTime";
+			this.dateTimePickerModifyOrderTime.Size = new System.Drawing.Size(171, 23);
+			this.dateTimePickerModifyOrderTime.TabIndex = 5;
+			// 
+			// labelModifyOrderDetails
+			// 
+			this.labelModifyOrderDetails.AutoSize = true;
+			this.labelModifyOrderDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.labelModifyOrderDetails.Location = new System.Drawing.Point(3, 90);
+			this.labelModifyOrderDetails.Name = "labelModifyOrderDetails";
+			this.labelModifyOrderDetails.Size = new System.Drawing.Size(69, 30);
+			this.labelModifyOrderDetails.TabIndex = 6;
+			this.labelModifyOrderDetails.Text = "Order Details";
+			this.labelModifyOrderDetails.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// buttonModifyOrderDetails
+			// 
+			this.buttonModifyOrderDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.buttonModifyOrderDetails.Location = new System.Drawing.Point(78, 93);
+			this.buttonModifyOrderDetails.Name = "buttonModifyOrderDetails";
+			this.buttonModifyOrderDetails.Size = new System.Drawing.Size(171, 24);
+			this.buttonModifyOrderDetails.TabIndex = 7;
+			this.buttonModifyOrderDetails.Text = "Click to Modify";
+			this.buttonModifyOrderDetails.UseVisualStyleBackColor = true;
+			// 
+			// button2
+			// 
+			this.tableLayoutPanel2.SetColumnSpan(this.button2, 2);
+			this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.button2.Location = new System.Drawing.Point(3, 123);
+			this.button2.Name = "button2";
+			this.button2.Size = new System.Drawing.Size(246, 24);
+			this.button2.TabIndex = 8;
+			this.button2.Text = "Save";
+			this.button2.UseVisualStyleBackColor = true;
+			// 
+			// buttonModifyDelete
+			// 
+			this.tableLayoutPanel2.SetColumnSpan(this.buttonModifyDelete, 2);
+			this.buttonModifyDelete.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.buttonModifyDelete.Location = new System.Drawing.Point(3, 153);
+			this.buttonModifyDelete.Name = "buttonModifyDelete";
+			this.buttonModifyDelete.Size = new System.Drawing.Size(246, 24);
+			this.buttonModifyDelete.TabIndex = 9;
+			this.buttonModifyDelete.Text = "Delete this";
+			this.buttonModifyDelete.UseVisualStyleBackColor = true;
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -414,10 +559,13 @@ partial class MainForm {
 			this.tabPageCreate.ResumeLayout(false);
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
+			this.tabPageModify.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSourceOrders)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrderDetails)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSourceOrderDetails)).EndInit();
+			this.tableLayoutPanel2.ResumeLayout(false);
+			this.tableLayoutPanel2.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -455,6 +603,17 @@ partial class MainForm {
     private Label labelCreateOrderTime;
     private DateTimePicker dateTimePickerCreateOrderTime;
     private Label labelCreateOrderDetails;
-    private Button buttonCreateModifyDetails;
+    private Button buttonCreateOrderDetails;
 	private Button buttonCreateOrder;
+	private TableLayoutPanel tableLayoutPanel2;
+	private Label labelModifyCustomerName;
+	private TextBox textBoxModifyCustomerName;
+	private Label labelModifyCustomerAddress;
+	private TextBox textBoxModisyCustomerAddress;
+	private Label labelModifyOrderTime;
+	private DateTimePicker dateTimePickerModifyOrderTime;
+	private Label labelModifyOrderDetails;
+	private Button buttonModifyOrderDetails;
+	private Button button2;
+	private Button buttonModifyDelete;
 }
