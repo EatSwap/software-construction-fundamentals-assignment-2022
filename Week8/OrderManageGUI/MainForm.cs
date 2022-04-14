@@ -5,7 +5,13 @@ namespace OrderManageGUI;
 public partial class MainForm : Form {
     private OrderService orderService = new();
 
-    private List<OrderDetails> orderDetailsList = new();
+    private List<OrderDetails> currentOrderDetailsList = new();
+
+    public string CurrentCustomerName { get; set; }
+
+    public string CurrentCustomerAddress { get; set; }
+
+    public DateTime CurrentOrderTime { get; set; }
 
     public MainForm() {
         InitializeComponent();
@@ -48,6 +54,11 @@ public partial class MainForm : Form {
     private void MainForm_Load(object sender, EventArgs e) {
         GenerateRandomOrders();
         this.bindingSourceOrders.DataSource = this.orderService.Orders;
+
+        this.CurrentOrderTime = DateTime.Now;
+        this.textBoxCreateCustomerName.DataBindings.Add("Text", this, nameof(CurrentCustomerAddress));
+        this.textBoxCreateCustomerAddress.DataBindings.Add("Text", this, nameof(CurrentCustomerName));
+        this.dateTimePickerCreateOrderTime.DataBindings.Add("Text", this, nameof(CurrentOrderTime));
     }
 
     private void MainForm_Resize(object sender, EventArgs e) {
@@ -65,11 +76,23 @@ public partial class MainForm : Form {
     }
 
     private void buttonCreateModifyDetails_Click(object sender, EventArgs e) {
-        var modifyForm = new OrderDetailsModifier(orderDetailsList);
+        var modifyForm = new OrderDetailsModifier(currentOrderDetailsList);
         modifyForm.ShowDialog();
+        this.currentOrderDetailsList = modifyForm.OrderDetailsList;
     }
 
 	private void buttonCreateOrder_Click(object sender, EventArgs e) {
-       // this.orderService.AddOrder(new Order(new Customer()))
+        try {
+            this.orderService.AddOrder(new Order(new Customer(CurrentCustomerName, CurrentCustomerAddress), CurrentOrderTime, currentOrderDetailsList.ToArray()));
+        } catch (ArgumentException ex) {
+            Utility.ShowErrorDialogue(ex.Message);
+            return;
+		}
+        this.CurrentCustomerAddress = string.Empty;
+        this.CurrentCustomerName = string.Empty;
+        this.CurrentOrderTime = DateTime.Now;
+        this.currentOrderDetailsList.Clear();
+        this.bindingSourceOrders.ResetBindings(false);
+        this.bindingSourceOrderDetails.ResetBindings(false);
 	}
 }

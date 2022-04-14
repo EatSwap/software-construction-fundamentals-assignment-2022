@@ -228,7 +228,7 @@ partial class MainForm {
 			// 
 			// dateTimePickerCreateOrderTime
 			// 
-			this.dateTimePickerCreateOrderTime.CustomFormat = "dd/MM/yyyy hh:mm:ss";
+			this.dateTimePickerCreateOrderTime.CustomFormat = "dd/MMM/yyyy HH:mm:ss";
 			this.dateTimePickerCreateOrderTime.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dateTimePickerCreateOrderTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.dateTimePickerCreateOrderTime.Location = new System.Drawing.Point(80, 63);

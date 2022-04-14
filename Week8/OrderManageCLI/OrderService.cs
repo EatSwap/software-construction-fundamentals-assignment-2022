@@ -11,22 +11,22 @@ public class OrderService {
 
 	public void AddOrder(Order order) {
 		if (Orders.Where(o => o.EqualsIgnoreId(order)).ToList().Count > 0)
-			throw new Exception("OrderService: Order already exists");
+			throw new ArgumentException("OrderService: Order already exists");
 		if (Orders.FindIndex(o => o.OrderId == order.OrderId) != -1)
-			throw new Exception("OrderService: Duplicated OrderId");
+			throw new ArgumentException("OrderService: Duplicated OrderId");
 		Orders.Add(order);
 	}
 
 	public void RemoveOrder(Order? order) {
 		if (order == null || !Orders.Contains(order))
-			throw new Exception("OrderService: Order not found");
+			throw new ArgumentException("OrderService: Order not found");
 		Orders.Remove(order);
 	}
 	
 	public void RemoveOrder(long orderId) {
 		var o = FindOrder(orderId);
 		if (o == null)
-			throw new Exception("OrderService: Order not found");
+			throw new ArgumentException("OrderService: Order not found");
 		RemoveOrder(o);
 	}
 	
@@ -158,7 +158,7 @@ public class OrderService {
 			using var stream = new FileStream(fileName, FileMode.Create);
 			formatter.Serialize(stream, this);
 			return true;
-		} catch (Exception e) {
+		} catch {
 			return false;
 		}
 	}
@@ -168,7 +168,7 @@ public class OrderService {
 			var formatter = new XmlSerializer(typeof(OrderService));
 			using var stream = new FileStream(fileName, FileMode.Open);
 			return formatter.Deserialize(stream) as OrderService;
-		} catch (Exception e) {
+		} catch {
 			return null;
 		}
 	}

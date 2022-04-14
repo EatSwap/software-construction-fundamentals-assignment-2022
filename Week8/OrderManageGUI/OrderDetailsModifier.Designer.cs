@@ -256,6 +256,7 @@ partial class OrderDetailsModifier {
 			this.buttonClear.TabIndex = 10;
 			this.buttonClear.Text = "Clear All Items";
 			this.buttonClear.UseVisualStyleBackColor = true;
+			this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
 			// 
 			// buttonDone
 			// 

@@ -36,8 +36,8 @@ public partial class OrderDetailsModifier : Form {
 
 	private void buttonRemove_Click(object sender, EventArgs e) {
         this.dataGridViewOrderDetails.SelectedRows.Cast<OrderDetails>().ToList().ForEach(orderDetails => orderDetailsList.Remove(orderDetails));
-        this.bindingSourceOrderDetails.DataSource = orderDetailsList;
-	}
+        this.bindingSourceOrderDetails.ResetBindings(false);
+    }
 
 	private void buttonAdd_Click(object sender, EventArgs e) {
         if (string.IsNullOrEmpty(this.textBoxItemName.Text)) {
@@ -47,4 +47,9 @@ public partial class OrderDetailsModifier : Form {
         this.orderDetailsList.Add(new OrderDetails(this.textBoxItemName.Text, CurrentUnitPrice, currentCount));
         this.bindingSourceOrderDetails.ResetBindings(false);
     }
+
+	private void buttonClear_Click(object sender, EventArgs e) {
+        this.orderDetailsList.Clear();
+        this.bindingSourceOrderDetails.ResetBindings(false);
+	}
 }
