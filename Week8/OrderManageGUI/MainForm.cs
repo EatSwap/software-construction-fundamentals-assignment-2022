@@ -175,4 +175,9 @@ public partial class MainForm : Form {
 			Utility.ShowErrorDialogue("Loading has been cancelled!");
 		}
 	}
+
+	private void checkBoxCustomer_CheckedChanged(object sender, EventArgs e) {
+		this.textBoxQueryCustomerAddress.Enabled = this.checkBoxCustomer.Checked;
+		this.textBoxQueryCustomerName.Enabled = this.checkBoxCustomer.Checked;
+	}
 }

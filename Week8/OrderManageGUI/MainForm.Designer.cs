@@ -29,6 +29,7 @@ partial class MainForm {
 			this.menuStrip = new System.Windows.Forms.MenuStrip();
 			this.placeHolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.panelTableContainer = new System.Windows.Forms.Panel();
 			this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -55,6 +56,13 @@ partial class MainForm {
 			this.buttonModifyOrderDetails = new System.Windows.Forms.Button();
 			this.buttonModifySave = new System.Windows.Forms.Button();
 			this.buttonModifyDelete = new System.Windows.Forms.Button();
+			this.tabPageQuery = new System.Windows.Forms.TabPage();
+			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+			this.labelQueryCustomerName = new System.Windows.Forms.Label();
+			this.checkBoxCustomer = new System.Windows.Forms.CheckBox();
+			this.labelQueryCustomerAddress = new System.Windows.Forms.Label();
+			this.textBoxQueryCustomerName = new System.Windows.Forms.TextBox();
+			this.textBoxQueryCustomerAddress = new System.Windows.Forms.TextBox();
 			this.dataGridViewOrders = new System.Windows.Forms.DataGridView();
 			this.orderIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.customerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,7 +76,12 @@ partial class MainForm {
 			this.countDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.bindingSourceOrderDetails = new System.Windows.Forms.BindingSource(this.components);
-			this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.checkBoxItem = new System.Windows.Forms.CheckBox();
+			this.labelQueryItemName = new System.Windows.Forms.Label();
+			this.textBoxQueryItemName = new System.Windows.Forms.TextBox();
+			this.checkBoxOrderTime = new System.Windows.Forms.CheckBox();
+			this.label1 = new System.Windows.Forms.Label();
+			this.label2 = new System.Windows.Forms.Label();
 			this.menuStrip.SuspendLayout();
 			this.panelTableContainer.SuspendLayout();
 			this.tableLayoutPanelMain.SuspendLayout();
@@ -77,6 +90,8 @@ partial class MainForm {
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tabPageModify.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
+			this.tabPageQuery.SuspendLayout();
+			this.tableLayoutPanel3.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSourceOrders)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrderDetails)).BeginInit();
@@ -85,9 +100,9 @@ partial class MainForm {
 			// 
 			// statusStrip
 			// 
-			this.statusStrip.Location = new System.Drawing.Point(0, 377);
+			this.statusStrip.Location = new System.Drawing.Point(0, 439);
 			this.statusStrip.Name = "statusStrip";
-			this.statusStrip.Size = new System.Drawing.Size(839, 22);
+			this.statusStrip.Size = new System.Drawing.Size(884, 22);
 			this.statusStrip.TabIndex = 1;
 			this.statusStrip.Text = "statusStrip";
 			// 
@@ -97,7 +112,7 @@ partial class MainForm {
             this.placeHolderToolStripMenuItem});
 			this.menuStrip.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip.Name = "menuStrip";
-			this.menuStrip.Size = new System.Drawing.Size(839, 24);
+			this.menuStrip.Size = new System.Drawing.Size(884, 24);
 			this.menuStrip.TabIndex = 2;
 			this.menuStrip.Text = "menuStrip";
 			// 
@@ -114,9 +129,16 @@ partial class MainForm {
 			// saveToolStripMenuItem
 			// 
 			this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-			this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.saveToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
 			this.saveToolStripMenuItem.Text = "Save";
 			this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+			// 
+			// openToolStripMenuItem
+			// 
+			this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+			this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+			this.openToolStripMenuItem.Text = "Open";
+			this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
 			// 
 			// panelTableContainer
 			// 
@@ -124,7 +146,7 @@ partial class MainForm {
 			this.panelTableContainer.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panelTableContainer.Location = new System.Drawing.Point(0, 24);
 			this.panelTableContainer.Name = "panelTableContainer";
-			this.panelTableContainer.Size = new System.Drawing.Size(839, 353);
+			this.panelTableContainer.Size = new System.Drawing.Size(884, 415);
 			this.panelTableContainer.TabIndex = 3;
 			// 
 			// tableLayoutPanelMain
@@ -141,19 +163,20 @@ partial class MainForm {
 			this.tableLayoutPanelMain.RowCount = 2;
 			this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanelMain.Size = new System.Drawing.Size(839, 353);
+			this.tableLayoutPanelMain.Size = new System.Drawing.Size(884, 415);
 			this.tableLayoutPanelMain.TabIndex = 0;
 			// 
 			// tabControl1
 			// 
 			this.tabControl1.Controls.Add(this.tabPageCreate);
 			this.tabControl1.Controls.Add(this.tabPageModify);
+			this.tabControl1.Controls.Add(this.tabPageQuery);
 			this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tabControl1.Location = new System.Drawing.Point(570, 3);
+			this.tabControl1.Location = new System.Drawing.Point(600, 3);
 			this.tabControl1.Name = "tabControl1";
 			this.tableLayoutPanelMain.SetRowSpan(this.tabControl1, 2);
 			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(266, 347);
+			this.tabControl1.Size = new System.Drawing.Size(281, 409);
 			this.tabControl1.TabIndex = 0;
 			// 
 			// tabPageCreate
@@ -432,6 +455,105 @@ partial class MainForm {
 			this.buttonModifyDelete.UseVisualStyleBackColor = true;
 			this.buttonModifyDelete.Click += new System.EventHandler(this.buttonModifyDelete_Click);
 			// 
+			// tabPageQuery
+			// 
+			this.tabPageQuery.Controls.Add(this.tableLayoutPanel3);
+			this.tabPageQuery.Location = new System.Drawing.Point(4, 24);
+			this.tabPageQuery.Name = "tabPageQuery";
+			this.tabPageQuery.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPageQuery.Size = new System.Drawing.Size(273, 381);
+			this.tabPageQuery.TabIndex = 2;
+			this.tabPageQuery.Text = "Query";
+			this.tabPageQuery.UseVisualStyleBackColor = true;
+			// 
+			// tableLayoutPanel3
+			// 
+			this.tableLayoutPanel3.ColumnCount = 2;
+			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+			this.tableLayoutPanel3.Controls.Add(this.labelQueryCustomerName, 0, 1);
+			this.tableLayoutPanel3.Controls.Add(this.checkBoxCustomer, 0, 0);
+			this.tableLayoutPanel3.Controls.Add(this.labelQueryCustomerAddress, 0, 2);
+			this.tableLayoutPanel3.Controls.Add(this.textBoxQueryCustomerName, 1, 1);
+			this.tableLayoutPanel3.Controls.Add(this.textBoxQueryCustomerAddress, 1, 2);
+			this.tableLayoutPanel3.Controls.Add(this.checkBoxItem, 0, 3);
+			this.tableLayoutPanel3.Controls.Add(this.labelQueryItemName, 0, 4);
+			this.tableLayoutPanel3.Controls.Add(this.textBoxQueryItemName, 1, 4);
+			this.tableLayoutPanel3.Controls.Add(this.checkBoxOrderTime, 0, 5);
+			this.tableLayoutPanel3.Controls.Add(this.label1, 0, 6);
+			this.tableLayoutPanel3.Controls.Add(this.label2, 0, 7);
+			this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
+			this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+			this.tableLayoutPanel3.RowCount = 12;
+			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel3.Size = new System.Drawing.Size(267, 375);
+			this.tableLayoutPanel3.TabIndex = 0;
+			// 
+			// labelQueryCustomerName
+			// 
+			this.labelQueryCustomerName.AutoSize = true;
+			this.labelQueryCustomerName.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.labelQueryCustomerName.Location = new System.Drawing.Point(3, 30);
+			this.labelQueryCustomerName.Name = "labelQueryCustomerName";
+			this.labelQueryCustomerName.Size = new System.Drawing.Size(74, 30);
+			this.labelQueryCustomerName.TabIndex = 3;
+			this.labelQueryCustomerName.Text = "Customer Name";
+			this.labelQueryCustomerName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// checkBoxCustomer
+			// 
+			this.checkBoxCustomer.AutoSize = true;
+			this.tableLayoutPanel3.SetColumnSpan(this.checkBoxCustomer, 2);
+			this.checkBoxCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.checkBoxCustomer.Location = new System.Drawing.Point(3, 3);
+			this.checkBoxCustomer.Name = "checkBoxCustomer";
+			this.checkBoxCustomer.Size = new System.Drawing.Size(261, 24);
+			this.checkBoxCustomer.TabIndex = 0;
+			this.checkBoxCustomer.Text = "Filter By Customer";
+			this.checkBoxCustomer.UseVisualStyleBackColor = true;
+			this.checkBoxCustomer.CheckedChanged += new System.EventHandler(this.checkBoxCustomer_CheckedChanged);
+			// 
+			// labelQueryCustomerAddress
+			// 
+			this.labelQueryCustomerAddress.AutoSize = true;
+			this.labelQueryCustomerAddress.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.labelQueryCustomerAddress.Location = new System.Drawing.Point(3, 60);
+			this.labelQueryCustomerAddress.Name = "labelQueryCustomerAddress";
+			this.labelQueryCustomerAddress.Size = new System.Drawing.Size(74, 30);
+			this.labelQueryCustomerAddress.TabIndex = 4;
+			this.labelQueryCustomerAddress.Text = "Customer Address";
+			this.labelQueryCustomerAddress.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// textBoxQueryCustomerName
+			// 
+			this.textBoxQueryCustomerName.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.textBoxQueryCustomerName.Enabled = false;
+			this.textBoxQueryCustomerName.Location = new System.Drawing.Point(83, 33);
+			this.textBoxQueryCustomerName.Name = "textBoxQueryCustomerName";
+			this.textBoxQueryCustomerName.Size = new System.Drawing.Size(181, 23);
+			this.textBoxQueryCustomerName.TabIndex = 5;
+			// 
+			// textBoxQueryCustomerAddress
+			// 
+			this.textBoxQueryCustomerAddress.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.textBoxQueryCustomerAddress.Enabled = false;
+			this.textBoxQueryCustomerAddress.Location = new System.Drawing.Point(83, 63);
+			this.textBoxQueryCustomerAddress.Name = "textBoxQueryCustomerAddress";
+			this.textBoxQueryCustomerAddress.Size = new System.Drawing.Size(181, 23);
+			this.textBoxQueryCustomerAddress.TabIndex = 6;
+			// 
 			// dataGridViewOrders
 			// 
 			this.dataGridViewOrders.AllowUserToAddRows = false;
@@ -452,7 +574,7 @@ partial class MainForm {
 			this.dataGridViewOrders.ReadOnly = true;
 			this.dataGridViewOrders.RowTemplate.Height = 25;
 			this.dataGridViewOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dataGridViewOrders.Size = new System.Drawing.Size(561, 170);
+			this.dataGridViewOrders.Size = new System.Drawing.Size(591, 201);
 			this.dataGridViewOrders.TabIndex = 1;
 			this.dataGridViewOrders.SelectionChanged += new System.EventHandler(this.DataGridViewOrders_SelectionChanged);
 			// 
@@ -508,11 +630,11 @@ partial class MainForm {
             this.dataGridViewTextBoxColumn1});
 			this.dataGridViewOrderDetails.DataSource = this.bindingSourceOrderDetails;
 			this.dataGridViewOrderDetails.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.dataGridViewOrderDetails.Location = new System.Drawing.Point(3, 179);
+			this.dataGridViewOrderDetails.Location = new System.Drawing.Point(3, 210);
 			this.dataGridViewOrderDetails.Name = "dataGridViewOrderDetails";
 			this.dataGridViewOrderDetails.ReadOnly = true;
 			this.dataGridViewOrderDetails.RowTemplate.Height = 25;
-			this.dataGridViewOrderDetails.Size = new System.Drawing.Size(561, 171);
+			this.dataGridViewOrderDetails.Size = new System.Drawing.Size(591, 202);
 			this.dataGridViewOrderDetails.TabIndex = 2;
 			// 
 			// ItemName
@@ -547,18 +669,77 @@ partial class MainForm {
 			// 
 			this.bindingSourceOrderDetails.DataSource = typeof(OrderManageCLI.OrderDetails);
 			// 
-			// openToolStripMenuItem
+			// checkBoxItem
 			// 
-			this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-			this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.openToolStripMenuItem.Text = "Open";
-			this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+			this.checkBoxItem.AutoSize = true;
+			this.tableLayoutPanel3.SetColumnSpan(this.checkBoxItem, 2);
+			this.checkBoxItem.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.checkBoxItem.Location = new System.Drawing.Point(3, 93);
+			this.checkBoxItem.Name = "checkBoxItem";
+			this.checkBoxItem.Size = new System.Drawing.Size(261, 24);
+			this.checkBoxItem.TabIndex = 7;
+			this.checkBoxItem.Text = "Filter By Item";
+			this.checkBoxItem.UseVisualStyleBackColor = true;
+			// 
+			// labelQueryItemName
+			// 
+			this.labelQueryItemName.AutoSize = true;
+			this.labelQueryItemName.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.labelQueryItemName.Location = new System.Drawing.Point(3, 120);
+			this.labelQueryItemName.Name = "labelQueryItemName";
+			this.labelQueryItemName.Size = new System.Drawing.Size(74, 30);
+			this.labelQueryItemName.TabIndex = 8;
+			this.labelQueryItemName.Text = "Item Name";
+			this.labelQueryItemName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// textBoxQueryItemName
+			// 
+			this.textBoxQueryItemName.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.textBoxQueryItemName.Enabled = false;
+			this.textBoxQueryItemName.Location = new System.Drawing.Point(83, 123);
+			this.textBoxQueryItemName.Name = "textBoxQueryItemName";
+			this.textBoxQueryItemName.Size = new System.Drawing.Size(181, 23);
+			this.textBoxQueryItemName.TabIndex = 9;
+			// 
+			// checkBoxOrderTime
+			// 
+			this.checkBoxOrderTime.AutoSize = true;
+			this.tableLayoutPanel3.SetColumnSpan(this.checkBoxOrderTime, 2);
+			this.checkBoxOrderTime.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.checkBoxOrderTime.Location = new System.Drawing.Point(3, 153);
+			this.checkBoxOrderTime.Name = "checkBoxOrderTime";
+			this.checkBoxOrderTime.Size = new System.Drawing.Size(261, 24);
+			this.checkBoxOrderTime.TabIndex = 10;
+			this.checkBoxOrderTime.Text = "Filter By Order Time Range";
+			this.checkBoxOrderTime.UseVisualStyleBackColor = true;
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.label1.Location = new System.Drawing.Point(3, 180);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(74, 30);
+			this.label1.TabIndex = 11;
+			this.label1.Text = "From";
+			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.label2.Location = new System.Drawing.Point(3, 210);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(74, 30);
+			this.label2.TabIndex = 12;
+			this.label2.Text = "To";
+			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(839, 399);
+			this.ClientSize = new System.Drawing.Size(884, 461);
 			this.Controls.Add(this.panelTableContainer);
 			this.Controls.Add(this.statusStrip);
 			this.Controls.Add(this.menuStrip);
@@ -576,6 +757,9 @@ partial class MainForm {
 			this.tabPageModify.ResumeLayout(false);
 			this.tableLayoutPanel2.ResumeLayout(false);
 			this.tableLayoutPanel2.PerformLayout();
+			this.tabPageQuery.ResumeLayout(false);
+			this.tableLayoutPanel3.ResumeLayout(false);
+			this.tableLayoutPanel3.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSourceOrders)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrderDetails)).EndInit();
@@ -631,4 +815,17 @@ partial class MainForm {
 	private Button buttonModifyDelete;
 	private ToolStripMenuItem saveToolStripMenuItem;
 	private ToolStripMenuItem openToolStripMenuItem;
+	private TabPage tabPageQuery;
+	private TableLayoutPanel tableLayoutPanel3;
+	private CheckBox checkBoxCustomer;
+	private Label labelQueryCustomerName;
+	private Label labelQueryCustomerAddress;
+	private TextBox textBoxQueryCustomerName;
+	private TextBox textBoxQueryCustomerAddress;
+	private CheckBox checkBoxItem;
+	private Label labelQueryItemName;
+	private TextBox textBoxQueryItemName;
+	private CheckBox checkBoxOrderTime;
+	private Label label1;
+	private Label label2;
 }
