@@ -79,6 +79,10 @@ public partial class MainForm : Form {
 	}
 
 	private void buttonCreateOrder_Click(object sender, EventArgs e) {
+		if (string.IsNullOrEmpty(CurrentCustomerName) || string.IsNullOrEmpty(CurrentCustomerAddress)) {
+			Utility.ShowErrorDialogue("Customer information cannot be empty!");
+			return;
+		}
 		try {
 			orderService.AddOrder(new Order(new Customer(CurrentCustomerName, CurrentCustomerAddress), CurrentOrderTime, currentOrderDetailsList.ToArray()));
 		} catch (ArgumentException ex) {

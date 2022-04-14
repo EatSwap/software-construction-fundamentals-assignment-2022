@@ -6,9 +6,9 @@ public class Customer {
 		Address = "";
 	}
 	
-	public Customer(string name = "", string address = "") {
-		Name = name;
-		Address = address;
+	public Customer(string? name = null, string? address = null) {
+		Name = name ?? string.Empty;
+		Address = address ?? string.Empty;
 	}
 
 	public string Name { get; set; }
