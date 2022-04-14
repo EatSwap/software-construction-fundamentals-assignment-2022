@@ -288,6 +288,7 @@ partial class OrderDetailsModifier {
 			this.numericUpDownUnitPrice.Name = "numericUpDownUnitPrice";
 			this.numericUpDownUnitPrice.Size = new System.Drawing.Size(127, 23);
 			this.numericUpDownUnitPrice.TabIndex = 12;
+			this.numericUpDownUnitPrice.ValueChanged += new System.EventHandler(this.numericUpDownUnitPrice_ValueChanged);
 			// 
 			// numericUpDownCount
 			// 

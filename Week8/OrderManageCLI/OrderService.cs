@@ -87,6 +87,7 @@ public class OrderService {
 		var idx = Orders.FindIndex(o => o.OrderId == id);
 		if (idx < 0)
 			return false;
+		newOrder.OrderId = id;
 		Orders[idx] = newOrder;
 		return true;
 	}

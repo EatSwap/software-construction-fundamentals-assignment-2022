@@ -8,15 +8,7 @@ public partial class OrderDetailsModifier : Form {
 
 		OrderDetailsList = details ?? new List<OrderDetails>();
 		bindingSourceOrderDetails.DataSource = OrderDetailsList;
-
-		numericUpDownUnitPrice.DataBindings.Add("Value", this, "currentUnitPrice");
-		numericUpDownCount.DataBindings.Add("Value", this, "currentCount");
-		// this.textBoxItemName.DataBindings.Add("Text", this, "currentItemName");
 	}
-
-	public double CurrentUnitPrice { get; set; }
-
-	public int currentCount { get; set; }
 
 	public List<OrderDetails> OrderDetailsList { get; }
 
@@ -37,12 +29,17 @@ public partial class OrderDetailsModifier : Form {
 			return;
 		}
 
-		OrderDetailsList.Add(new OrderDetails(textBoxItemName.Text, CurrentUnitPrice, currentCount));
+		OrderDetailsList.Add(new OrderDetails(textBoxItemName.Text, decimal.ToDouble(numericUpDownUnitPrice.Value), decimal.ToInt32(numericUpDownCount.Value)));
 		bindingSourceOrderDetails.ResetBindings(false);
 	}
 
 	private void buttonClear_Click(object sender, EventArgs e) {
 		OrderDetailsList.Clear();
 		bindingSourceOrderDetails.ResetBindings(false);
+	}
+
+	private void numericUpDownUnitPrice_ValueChanged(object sender, EventArgs e) {
+		Utility.ShowErrorDialogue("Value changed to " + numericUpDownUnitPrice.Value.ToString());
+		; // debug
 	}
 }

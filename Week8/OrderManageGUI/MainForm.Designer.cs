@@ -43,7 +43,7 @@ partial class MainForm {
 			this.labelCreateOrderDetails = new System.Windows.Forms.Label();
 			this.buttonCreateModifyDetails = new System.Windows.Forms.Button();
 			this.buttonCreateOrder = new System.Windows.Forms.Button();
-			this.tabPage2 = new System.Windows.Forms.TabPage();
+			this.tabPageModify = new System.Windows.Forms.TabPage();
 			this.dataGridViewOrders = new System.Windows.Forms.DataGridView();
 			this.orderIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.customerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -130,7 +130,7 @@ partial class MainForm {
 			// tabControl1
 			// 
 			this.tabControl1.Controls.Add(this.tabPageCreate);
-			this.tabControl1.Controls.Add(this.tabPage2);
+			this.tabControl1.Controls.Add(this.tabPageModify);
 			this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tabControl1.Location = new System.Drawing.Point(570, 3);
 			this.tabControl1.Name = "tabControl1";
@@ -266,19 +266,19 @@ partial class MainForm {
 			this.buttonCreateOrder.Name = "buttonCreateOrder";
 			this.buttonCreateOrder.Size = new System.Drawing.Size(246, 24);
 			this.buttonCreateOrder.TabIndex = 8;
-			this.buttonCreateOrder.Text = "Create ";
+			this.buttonCreateOrder.Text = "Create new";
 			this.buttonCreateOrder.UseVisualStyleBackColor = true;
 			this.buttonCreateOrder.Click += new System.EventHandler(this.buttonCreateOrder_Click);
 			// 
-			// tabPage2
+			// tabPageModify
 			// 
-			this.tabPage2.Location = new System.Drawing.Point(4, 24);
-			this.tabPage2.Name = "tabPage2";
-			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage2.Size = new System.Drawing.Size(258, 319);
-			this.tabPage2.TabIndex = 1;
-			this.tabPage2.Text = "tabPage2";
-			this.tabPage2.UseVisualStyleBackColor = true;
+			this.tabPageModify.Location = new System.Drawing.Point(4, 24);
+			this.tabPageModify.Name = "tabPageModify";
+			this.tabPageModify.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPageModify.Size = new System.Drawing.Size(258, 319);
+			this.tabPageModify.TabIndex = 1;
+			this.tabPageModify.Text = "Modify / Delete";
+			this.tabPageModify.UseVisualStyleBackColor = true;
 			// 
 			// dataGridViewOrders
 			// 
@@ -433,7 +433,7 @@ partial class MainForm {
     private TableLayoutPanel tableLayoutPanelMain;
     private TabControl tabControl1;
     private TabPage tabPageCreate;
-    private TabPage tabPage2;
+    private TabPage tabPageModify;
     private BindingSource bindingSourceOrders;
     private DataGridView dataGridViewOrders;
     private DataGridView dataGridViewOrderDetails;
