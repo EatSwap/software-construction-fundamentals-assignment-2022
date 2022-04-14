@@ -180,4 +180,24 @@ public partial class MainForm : Form {
 		this.textBoxQueryCustomerAddress.Enabled = this.checkBoxCustomer.Checked;
 		this.textBoxQueryCustomerName.Enabled = this.checkBoxCustomer.Checked;
 	}
+
+	private void checkBoxPrice_CheckedChanged(object sender, EventArgs e) {
+		// same, ...
+	}
+
+	private void checkBoxOrderTime_CheckedChanged(object sender, EventArgs e) {
+		// same, ...
+	}
+
+	private void checkBoxItem_CheckedChanged(object sender, EventArgs e) {
+		// same, ...
+	}
+
+	private void buttonQuery_Click(object sender, EventArgs e) {
+		// Do query.
+	}
+
+	private void tabControl1_TabIndexChanged(object sender, EventArgs e) {
+		// identify query page.
+	}
 }

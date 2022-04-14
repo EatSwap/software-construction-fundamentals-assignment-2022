@@ -82,6 +82,14 @@ partial class MainForm {
 			this.checkBoxOrderTime = new System.Windows.Forms.CheckBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
+			this.dateTimePickerQueryFrom = new System.Windows.Forms.DateTimePicker();
+			this.dateTimePickerQueryTo = new System.Windows.Forms.DateTimePicker();
+			this.checkBoxPrice = new System.Windows.Forms.CheckBox();
+			this.label3 = new System.Windows.Forms.Label();
+			this.textBoxQueryPriceMin = new System.Windows.Forms.TextBox();
+			this.label4 = new System.Windows.Forms.Label();
+			this.textBoxQueryPriceMax = new System.Windows.Forms.TextBox();
+			this.buttonQuery = new System.Windows.Forms.Button();
 			this.menuStrip.SuspendLayout();
 			this.panelTableContainer.SuspendLayout();
 			this.tableLayoutPanelMain.SuspendLayout();
@@ -178,6 +186,7 @@ partial class MainForm {
 			this.tabControl1.SelectedIndex = 0;
 			this.tabControl1.Size = new System.Drawing.Size(281, 409);
 			this.tabControl1.TabIndex = 0;
+			this.tabControl1.TabIndexChanged += new System.EventHandler(this.tabControl1_TabIndexChanged);
 			// 
 			// tabPageCreate
 			// 
@@ -185,7 +194,7 @@ partial class MainForm {
 			this.tabPageCreate.Location = new System.Drawing.Point(4, 24);
 			this.tabPageCreate.Name = "tabPageCreate";
 			this.tabPageCreate.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPageCreate.Size = new System.Drawing.Size(258, 319);
+			this.tabPageCreate.Size = new System.Drawing.Size(273, 381);
 			this.tabPageCreate.TabIndex = 0;
 			this.tabPageCreate.Text = "Create";
 			this.tabPageCreate.UseVisualStyleBackColor = true;
@@ -214,7 +223,7 @@ partial class MainForm {
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(252, 313);
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(267, 375);
 			this.tableLayoutPanel1.TabIndex = 0;
 			// 
 			// labelCreateCustomerName
@@ -223,7 +232,7 @@ partial class MainForm {
 			this.labelCreateCustomerName.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.labelCreateCustomerName.Location = new System.Drawing.Point(3, 0);
 			this.labelCreateCustomerName.Name = "labelCreateCustomerName";
-			this.labelCreateCustomerName.Size = new System.Drawing.Size(69, 30);
+			this.labelCreateCustomerName.Size = new System.Drawing.Size(74, 30);
 			this.labelCreateCustomerName.TabIndex = 0;
 			this.labelCreateCustomerName.Text = "Customer Name";
 			this.labelCreateCustomerName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -231,9 +240,9 @@ partial class MainForm {
 			// textBoxCreateCustomerName
 			// 
 			this.textBoxCreateCustomerName.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.textBoxCreateCustomerName.Location = new System.Drawing.Point(78, 3);
+			this.textBoxCreateCustomerName.Location = new System.Drawing.Point(83, 3);
 			this.textBoxCreateCustomerName.Name = "textBoxCreateCustomerName";
-			this.textBoxCreateCustomerName.Size = new System.Drawing.Size(171, 23);
+			this.textBoxCreateCustomerName.Size = new System.Drawing.Size(181, 23);
 			this.textBoxCreateCustomerName.TabIndex = 1;
 			// 
 			// labelCreateCustomerAddress
@@ -242,7 +251,7 @@ partial class MainForm {
 			this.labelCreateCustomerAddress.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.labelCreateCustomerAddress.Location = new System.Drawing.Point(3, 30);
 			this.labelCreateCustomerAddress.Name = "labelCreateCustomerAddress";
-			this.labelCreateCustomerAddress.Size = new System.Drawing.Size(69, 30);
+			this.labelCreateCustomerAddress.Size = new System.Drawing.Size(74, 30);
 			this.labelCreateCustomerAddress.TabIndex = 2;
 			this.labelCreateCustomerAddress.Text = "Customer Address";
 			this.labelCreateCustomerAddress.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -250,9 +259,9 @@ partial class MainForm {
 			// textBoxCreateCustomerAddress
 			// 
 			this.textBoxCreateCustomerAddress.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.textBoxCreateCustomerAddress.Location = new System.Drawing.Point(78, 33);
+			this.textBoxCreateCustomerAddress.Location = new System.Drawing.Point(83, 33);
 			this.textBoxCreateCustomerAddress.Name = "textBoxCreateCustomerAddress";
-			this.textBoxCreateCustomerAddress.Size = new System.Drawing.Size(171, 23);
+			this.textBoxCreateCustomerAddress.Size = new System.Drawing.Size(181, 23);
 			this.textBoxCreateCustomerAddress.TabIndex = 3;
 			// 
 			// labelCreateOrderTime
@@ -261,7 +270,7 @@ partial class MainForm {
 			this.labelCreateOrderTime.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.labelCreateOrderTime.Location = new System.Drawing.Point(3, 60);
 			this.labelCreateOrderTime.Name = "labelCreateOrderTime";
-			this.labelCreateOrderTime.Size = new System.Drawing.Size(69, 30);
+			this.labelCreateOrderTime.Size = new System.Drawing.Size(74, 30);
 			this.labelCreateOrderTime.TabIndex = 4;
 			this.labelCreateOrderTime.Text = "Order Time";
 			this.labelCreateOrderTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -271,9 +280,9 @@ partial class MainForm {
 			this.dateTimePickerCreateOrderTime.CustomFormat = "dd/MMM/yyyy HH:mm:ss";
 			this.dateTimePickerCreateOrderTime.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dateTimePickerCreateOrderTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dateTimePickerCreateOrderTime.Location = new System.Drawing.Point(78, 63);
+			this.dateTimePickerCreateOrderTime.Location = new System.Drawing.Point(83, 63);
 			this.dateTimePickerCreateOrderTime.Name = "dateTimePickerCreateOrderTime";
-			this.dateTimePickerCreateOrderTime.Size = new System.Drawing.Size(171, 23);
+			this.dateTimePickerCreateOrderTime.Size = new System.Drawing.Size(181, 23);
 			this.dateTimePickerCreateOrderTime.TabIndex = 5;
 			// 
 			// labelCreateOrderDetails
@@ -282,7 +291,7 @@ partial class MainForm {
 			this.labelCreateOrderDetails.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.labelCreateOrderDetails.Location = new System.Drawing.Point(3, 90);
 			this.labelCreateOrderDetails.Name = "labelCreateOrderDetails";
-			this.labelCreateOrderDetails.Size = new System.Drawing.Size(69, 30);
+			this.labelCreateOrderDetails.Size = new System.Drawing.Size(74, 30);
 			this.labelCreateOrderDetails.TabIndex = 6;
 			this.labelCreateOrderDetails.Text = "Order Details";
 			this.labelCreateOrderDetails.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -290,9 +299,9 @@ partial class MainForm {
 			// buttonCreateOrderDetails
 			// 
 			this.buttonCreateOrderDetails.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.buttonCreateOrderDetails.Location = new System.Drawing.Point(78, 93);
+			this.buttonCreateOrderDetails.Location = new System.Drawing.Point(83, 93);
 			this.buttonCreateOrderDetails.Name = "buttonCreateOrderDetails";
-			this.buttonCreateOrderDetails.Size = new System.Drawing.Size(171, 24);
+			this.buttonCreateOrderDetails.Size = new System.Drawing.Size(181, 24);
 			this.buttonCreateOrderDetails.TabIndex = 7;
 			this.buttonCreateOrderDetails.Text = "Click to Modify";
 			this.buttonCreateOrderDetails.UseVisualStyleBackColor = true;
@@ -304,7 +313,7 @@ partial class MainForm {
 			this.buttonCreateOrder.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.buttonCreateOrder.Location = new System.Drawing.Point(3, 123);
 			this.buttonCreateOrder.Name = "buttonCreateOrder";
-			this.buttonCreateOrder.Size = new System.Drawing.Size(246, 24);
+			this.buttonCreateOrder.Size = new System.Drawing.Size(261, 24);
 			this.buttonCreateOrder.TabIndex = 8;
 			this.buttonCreateOrder.Text = "Create new";
 			this.buttonCreateOrder.UseVisualStyleBackColor = true;
@@ -471,6 +480,13 @@ partial class MainForm {
 			this.tableLayoutPanel3.ColumnCount = 2;
 			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
 			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+			this.tableLayoutPanel3.Controls.Add(this.textBoxQueryPriceMax, 1, 10);
+			this.tableLayoutPanel3.Controls.Add(this.label4, 0, 10);
+			this.tableLayoutPanel3.Controls.Add(this.textBoxQueryPriceMin, 1, 9);
+			this.tableLayoutPanel3.Controls.Add(this.label3, 0, 9);
+			this.tableLayoutPanel3.Controls.Add(this.checkBoxPrice, 0, 8);
+			this.tableLayoutPanel3.Controls.Add(this.dateTimePickerQueryTo, 1, 7);
+			this.tableLayoutPanel3.Controls.Add(this.dateTimePickerQueryFrom, 1, 6);
 			this.tableLayoutPanel3.Controls.Add(this.labelQueryCustomerName, 0, 1);
 			this.tableLayoutPanel3.Controls.Add(this.checkBoxCustomer, 0, 0);
 			this.tableLayoutPanel3.Controls.Add(this.labelQueryCustomerAddress, 0, 2);
@@ -482,10 +498,12 @@ partial class MainForm {
 			this.tableLayoutPanel3.Controls.Add(this.checkBoxOrderTime, 0, 5);
 			this.tableLayoutPanel3.Controls.Add(this.label1, 0, 6);
 			this.tableLayoutPanel3.Controls.Add(this.label2, 0, 7);
+			this.tableLayoutPanel3.Controls.Add(this.buttonQuery, 0, 11);
 			this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
 			this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-			this.tableLayoutPanel3.RowCount = 12;
+			this.tableLayoutPanel3.RowCount = 13;
+			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
 			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
 			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
 			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
@@ -680,6 +698,7 @@ partial class MainForm {
 			this.checkBoxItem.TabIndex = 7;
 			this.checkBoxItem.Text = "Filter By Item";
 			this.checkBoxItem.UseVisualStyleBackColor = true;
+			this.checkBoxItem.CheckedChanged += new System.EventHandler(this.checkBoxItem_CheckedChanged);
 			// 
 			// labelQueryItemName
 			// 
@@ -712,6 +731,7 @@ partial class MainForm {
 			this.checkBoxOrderTime.TabIndex = 10;
 			this.checkBoxOrderTime.Text = "Filter By Order Time Range";
 			this.checkBoxOrderTime.UseVisualStyleBackColor = true;
+			this.checkBoxOrderTime.CheckedChanged += new System.EventHandler(this.checkBoxOrderTime_CheckedChanged);
 			// 
 			// label1
 			// 
@@ -734,6 +754,93 @@ partial class MainForm {
 			this.label2.TabIndex = 12;
 			this.label2.Text = "To";
 			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// dateTimePickerQueryFrom
+			// 
+			this.dateTimePickerQueryFrom.CustomFormat = "dd/MMM/yyyy HH:mm:ss";
+			this.dateTimePickerQueryFrom.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.dateTimePickerQueryFrom.Enabled = false;
+			this.dateTimePickerQueryFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.dateTimePickerQueryFrom.Location = new System.Drawing.Point(83, 183);
+			this.dateTimePickerQueryFrom.Name = "dateTimePickerQueryFrom";
+			this.dateTimePickerQueryFrom.Size = new System.Drawing.Size(181, 23);
+			this.dateTimePickerQueryFrom.TabIndex = 13;
+			// 
+			// dateTimePickerQueryTo
+			// 
+			this.dateTimePickerQueryTo.CustomFormat = "dd/MMM/yyyy HH:mm:ss";
+			this.dateTimePickerQueryTo.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.dateTimePickerQueryTo.Enabled = false;
+			this.dateTimePickerQueryTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.dateTimePickerQueryTo.Location = new System.Drawing.Point(83, 213);
+			this.dateTimePickerQueryTo.Name = "dateTimePickerQueryTo";
+			this.dateTimePickerQueryTo.Size = new System.Drawing.Size(181, 23);
+			this.dateTimePickerQueryTo.TabIndex = 14;
+			// 
+			// checkBoxPrice
+			// 
+			this.checkBoxPrice.AutoSize = true;
+			this.tableLayoutPanel3.SetColumnSpan(this.checkBoxPrice, 2);
+			this.checkBoxPrice.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.checkBoxPrice.Location = new System.Drawing.Point(3, 243);
+			this.checkBoxPrice.Name = "checkBoxPrice";
+			this.checkBoxPrice.Size = new System.Drawing.Size(261, 24);
+			this.checkBoxPrice.TabIndex = 15;
+			this.checkBoxPrice.Text = "Filter By Total Price Range";
+			this.checkBoxPrice.UseVisualStyleBackColor = true;
+			this.checkBoxPrice.CheckedChanged += new System.EventHandler(this.checkBoxPrice_CheckedChanged);
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.label3.Location = new System.Drawing.Point(3, 270);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(74, 30);
+			this.label3.TabIndex = 16;
+			this.label3.Text = "Minimum";
+			this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// textBoxQueryPriceMin
+			// 
+			this.textBoxQueryPriceMin.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.textBoxQueryPriceMin.Enabled = false;
+			this.textBoxQueryPriceMin.Location = new System.Drawing.Point(83, 273);
+			this.textBoxQueryPriceMin.Name = "textBoxQueryPriceMin";
+			this.textBoxQueryPriceMin.Size = new System.Drawing.Size(181, 23);
+			this.textBoxQueryPriceMin.TabIndex = 17;
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.label4.Location = new System.Drawing.Point(3, 300);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(74, 30);
+			this.label4.TabIndex = 18;
+			this.label4.Text = "Maximum";
+			this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// textBoxQueryPriceMax
+			// 
+			this.textBoxQueryPriceMax.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.textBoxQueryPriceMax.Enabled = false;
+			this.textBoxQueryPriceMax.Location = new System.Drawing.Point(83, 303);
+			this.textBoxQueryPriceMax.Name = "textBoxQueryPriceMax";
+			this.textBoxQueryPriceMax.Size = new System.Drawing.Size(181, 23);
+			this.textBoxQueryPriceMax.TabIndex = 19;
+			// 
+			// buttonQuery
+			// 
+			this.tableLayoutPanel3.SetColumnSpan(this.buttonQuery, 2);
+			this.buttonQuery.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.buttonQuery.Location = new System.Drawing.Point(3, 333);
+			this.buttonQuery.Name = "buttonQuery";
+			this.buttonQuery.Size = new System.Drawing.Size(261, 24);
+			this.buttonQuery.TabIndex = 20;
+			this.buttonQuery.Text = "Query";
+			this.buttonQuery.UseVisualStyleBackColor = true;
+			this.buttonQuery.Click += new System.EventHandler(this.buttonQuery_Click);
 			// 
 			// MainForm
 			// 
@@ -828,4 +935,12 @@ partial class MainForm {
 	private CheckBox checkBoxOrderTime;
 	private Label label1;
 	private Label label2;
+	private TextBox textBoxQueryPriceMax;
+	private Label label4;
+	private TextBox textBoxQueryPriceMin;
+	private Label label3;
+	private CheckBox checkBoxPrice;
+	private DateTimePicker dateTimePickerQueryTo;
+	private DateTimePicker dateTimePickerQueryFrom;
+	private Button buttonQuery;
 }
