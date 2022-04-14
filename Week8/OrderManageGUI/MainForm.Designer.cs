@@ -426,6 +426,7 @@ partial class MainForm {
 			this.buttonModifyDelete.TabIndex = 9;
 			this.buttonModifyDelete.Text = "Delete this";
 			this.buttonModifyDelete.UseVisualStyleBackColor = true;
+			this.buttonModifyDelete.Click += new System.EventHandler(this.buttonModifyDelete_Click);
 			// 
 			// dataGridViewOrders
 			// 

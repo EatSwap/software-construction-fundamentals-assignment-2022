@@ -5,6 +5,10 @@ internal class Utility {
 		MessageBox.Show(message, "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
 	}
 
+	public static void ShowInfoDialogue(string message) {
+		MessageBox.Show(message, "Info", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+	}
+
 	public static void ResizeLabel(ref Label L, float ratio = 0.80F) {
 		SizeF extent = TextRenderer.MeasureText(L.Text, L.Font);
 

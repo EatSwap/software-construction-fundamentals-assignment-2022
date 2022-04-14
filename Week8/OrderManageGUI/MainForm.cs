@@ -121,5 +121,13 @@ public partial class MainForm : Form {
 		orderService.ModifyOrder(CurrentOrder.OrderId, CurrentOrder);
 		this.bindingSourceOrders.ResetBindings(false);
 		this.bindingSourceOrderDetails.ResetBindings(false);
+		Utility.ShowInfoDialogue("Your changes has been saved.");
+	}
+
+	private void buttonModifyDelete_Click(object sender, EventArgs e) {
+		orderService.DeleteOrder(CurrentOrder.OrderId);
+		this.bindingSourceOrders.ResetBindings(false);
+		this.bindingSourceOrderDetails.ResetBindings(false);
+		Utility.ShowInfoDialogue("Selected order has been deleted.");
 	}
 }
