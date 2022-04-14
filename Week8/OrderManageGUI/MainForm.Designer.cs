@@ -49,7 +49,7 @@ partial class MainForm {
 			this.labelModifyCustomerName = new System.Windows.Forms.Label();
 			this.textBoxModifyCustomerName = new System.Windows.Forms.TextBox();
 			this.labelModifyCustomerAddress = new System.Windows.Forms.Label();
-			this.textBoxModisyCustomerAddress = new System.Windows.Forms.TextBox();
+			this.textBoxModifyCustomerAddress = new System.Windows.Forms.TextBox();
 			this.labelModifyOrderTime = new System.Windows.Forms.Label();
 			this.dateTimePickerModifyOrderTime = new System.Windows.Forms.DateTimePicker();
 			this.labelModifyOrderDetails = new System.Windows.Forms.Label();
@@ -338,7 +338,7 @@ partial class MainForm {
 			this.tableLayoutPanel2.Controls.Add(this.labelModifyCustomerName, 0, 0);
 			this.tableLayoutPanel2.Controls.Add(this.textBoxModifyCustomerName, 1, 0);
 			this.tableLayoutPanel2.Controls.Add(this.labelModifyCustomerAddress, 0, 1);
-			this.tableLayoutPanel2.Controls.Add(this.textBoxModisyCustomerAddress, 1, 1);
+			this.tableLayoutPanel2.Controls.Add(this.textBoxModifyCustomerAddress, 1, 1);
 			this.tableLayoutPanel2.Controls.Add(this.labelModifyOrderTime, 0, 2);
 			this.tableLayoutPanel2.Controls.Add(this.dateTimePickerModifyOrderTime, 1, 2);
 			this.tableLayoutPanel2.Controls.Add(this.labelModifyOrderDetails, 0, 3);
@@ -391,11 +391,11 @@ partial class MainForm {
 			// 
 			// textBoxModisyCustomerAddress
 			// 
-			this.textBoxModisyCustomerAddress.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.textBoxModisyCustomerAddress.Location = new System.Drawing.Point(78, 33);
-			this.textBoxModisyCustomerAddress.Name = "textBoxModisyCustomerAddress";
-			this.textBoxModisyCustomerAddress.Size = new System.Drawing.Size(171, 23);
-			this.textBoxModisyCustomerAddress.TabIndex = 3;
+			this.textBoxModifyCustomerAddress.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.textBoxModifyCustomerAddress.Location = new System.Drawing.Point(78, 33);
+			this.textBoxModifyCustomerAddress.Name = "textBoxModifyCustomerAddress";
+			this.textBoxModifyCustomerAddress.Size = new System.Drawing.Size(171, 23);
+			this.textBoxModifyCustomerAddress.TabIndex = 3;
 			// 
 			// labelModifyOrderTime
 			// 
@@ -913,7 +913,7 @@ partial class MainForm {
 	private Label labelModifyCustomerName;
 	private TextBox textBoxModifyCustomerName;
 	private Label labelModifyCustomerAddress;
-	private TextBox textBoxModisyCustomerAddress;
+	private TextBox textBoxModifyCustomerAddress;
 	private Label labelModifyOrderTime;
 	private DateTimePicker dateTimePickerModifyOrderTime;
 	private Label labelModifyOrderDetails;

@@ -73,8 +73,8 @@ public partial class MainForm : Form {
 				this.CurrentOrder = order.Clone();
 				this.textBoxModifyCustomerName.DataBindings.Clear();
 				this.textBoxModifyCustomerName.DataBindings.Add("Text", this.CurrentOrder.Customer, nameof(this.CurrentOrder.Customer.Name));
-				this.textBoxModisyCustomerAddress.DataBindings.Clear();
-				this.textBoxModisyCustomerAddress.DataBindings.Add("Text", this.CurrentOrder.Customer, nameof(this.CurrentOrder.Customer.Address));
+				this.textBoxModifyCustomerAddress.DataBindings.Clear();
+				this.textBoxModifyCustomerAddress.DataBindings.Add("Text", this.CurrentOrder.Customer, nameof(this.CurrentOrder.Customer.Address));
 				this.dateTimePickerModifyOrderTime.DataBindings.Clear();
 				this.dateTimePickerModifyOrderTime.DataBindings.Add("Value", this.CurrentOrder, nameof(this.CurrentOrder.OrderTime));
 			}
