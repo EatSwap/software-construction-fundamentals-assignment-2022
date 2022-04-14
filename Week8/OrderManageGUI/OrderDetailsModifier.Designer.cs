@@ -26,7 +26,7 @@ partial class OrderDetailsModifier {
     private void InitializeComponent() {
 			this.components = new System.ComponentModel.Container();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-			this.dataGridView1 = new System.Windows.Forms.DataGridView();
+			this.dataGridViewOrderDetails = new System.Windows.Forms.DataGridView();
 			this.itemNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.unitPriceStrDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.countDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -37,18 +37,20 @@ partial class OrderDetailsModifier {
 			this.labelItemName = new System.Windows.Forms.Label();
 			this.textBoxItemName = new System.Windows.Forms.TextBox();
 			this.labelUnitPrice = new System.Windows.Forms.Label();
-			this.textBoxUnitPrice = new System.Windows.Forms.TextBox();
 			this.labelCount = new System.Windows.Forms.Label();
-			this.textBoxCount = new System.Windows.Forms.TextBox();
 			this.buttonAdd = new System.Windows.Forms.Button();
 			this.labelRemoveItem = new System.Windows.Forms.Label();
 			this.buttonRemove = new System.Windows.Forms.Button();
 			this.buttonClear = new System.Windows.Forms.Button();
 			this.buttonDone = new System.Windows.Forms.Button();
+			this.numericUpDownUnitPrice = new System.Windows.Forms.NumericUpDown();
+			this.numericUpDownCount = new System.Windows.Forms.NumericUpDown();
 			this.tableLayoutPanel1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrderDetails)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSourceOrderDetails)).BeginInit();
 			this.tableLayoutPanel2.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownUnitPrice)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownCount)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tableLayoutPanel1
@@ -56,7 +58,7 @@ partial class OrderDetailsModifier {
 			this.tableLayoutPanel1.ColumnCount = 2;
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-			this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 0);
+			this.tableLayoutPanel1.Controls.Add(this.dataGridViewOrderDetails, 0, 0);
 			this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
 			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -66,25 +68,26 @@ partial class OrderDetailsModifier {
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(700, 311);
 			this.tableLayoutPanel1.TabIndex = 0;
 			// 
-			// dataGridView1
+			// dataGridViewOrderDetails
 			// 
-			this.dataGridView1.AllowUserToAddRows = false;
-			this.dataGridView1.AllowUserToDeleteRows = false;
-			this.dataGridView1.AutoGenerateColumns = false;
-			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+			this.dataGridViewOrderDetails.AllowUserToAddRows = false;
+			this.dataGridViewOrderDetails.AllowUserToDeleteRows = false;
+			this.dataGridViewOrderDetails.AutoGenerateColumns = false;
+			this.dataGridViewOrderDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridViewOrderDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.itemNameDataGridViewTextBoxColumn,
             this.unitPriceStrDataGridViewTextBoxColumn,
             this.countDataGridViewTextBoxColumn,
             this.priceStrDataGridViewTextBoxColumn});
-			this.dataGridView1.DataSource = this.bindingSourceOrderDetails;
-			this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.ReadOnly = true;
-			this.dataGridView1.RowTemplate.Height = 25;
-			this.dataGridView1.Size = new System.Drawing.Size(484, 305);
-			this.dataGridView1.TabIndex = 0;
+			this.dataGridViewOrderDetails.DataSource = this.bindingSourceOrderDetails;
+			this.dataGridViewOrderDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.dataGridViewOrderDetails.Location = new System.Drawing.Point(3, 3);
+			this.dataGridViewOrderDetails.Name = "dataGridViewOrderDetails";
+			this.dataGridViewOrderDetails.ReadOnly = true;
+			this.dataGridViewOrderDetails.RowTemplate.Height = 25;
+			this.dataGridViewOrderDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+			this.dataGridViewOrderDetails.Size = new System.Drawing.Size(484, 305);
+			this.dataGridViewOrderDetails.TabIndex = 0;
 			// 
 			// itemNameDataGridViewTextBoxColumn
 			// 
@@ -127,14 +130,14 @@ partial class OrderDetailsModifier {
 			this.tableLayoutPanel2.Controls.Add(this.labelItemName, 0, 1);
 			this.tableLayoutPanel2.Controls.Add(this.textBoxItemName, 1, 1);
 			this.tableLayoutPanel2.Controls.Add(this.labelUnitPrice, 0, 2);
-			this.tableLayoutPanel2.Controls.Add(this.textBoxUnitPrice, 1, 2);
 			this.tableLayoutPanel2.Controls.Add(this.labelCount, 0, 3);
-			this.tableLayoutPanel2.Controls.Add(this.textBoxCount, 1, 3);
 			this.tableLayoutPanel2.Controls.Add(this.buttonAdd, 0, 4);
 			this.tableLayoutPanel2.Controls.Add(this.labelRemoveItem, 0, 5);
 			this.tableLayoutPanel2.Controls.Add(this.buttonRemove, 0, 6);
 			this.tableLayoutPanel2.Controls.Add(this.buttonClear, 0, 7);
 			this.tableLayoutPanel2.Controls.Add(this.buttonDone, 0, 8);
+			this.tableLayoutPanel2.Controls.Add(this.numericUpDownUnitPrice, 1, 2);
+			this.tableLayoutPanel2.Controls.Add(this.numericUpDownCount, 1, 3);
 			this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel2.Location = new System.Drawing.Point(493, 3);
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -195,14 +198,6 @@ partial class OrderDetailsModifier {
 			this.labelUnitPrice.Text = "Unit Price";
 			this.labelUnitPrice.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
-			// textBoxUnitPrice
-			// 
-			this.textBoxUnitPrice.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.textBoxUnitPrice.Location = new System.Drawing.Point(74, 63);
-			this.textBoxUnitPrice.Name = "textBoxUnitPrice";
-			this.textBoxUnitPrice.Size = new System.Drawing.Size(127, 23);
-			this.textBoxUnitPrice.TabIndex = 4;
-			// 
 			// labelCount
 			// 
 			this.labelCount.AutoSize = true;
@@ -214,14 +209,6 @@ partial class OrderDetailsModifier {
 			this.labelCount.Text = "Count";
 			this.labelCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
-			// textBoxCount
-			// 
-			this.textBoxCount.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.textBoxCount.Location = new System.Drawing.Point(74, 93);
-			this.textBoxCount.Name = "textBoxCount";
-			this.textBoxCount.Size = new System.Drawing.Size(127, 23);
-			this.textBoxCount.TabIndex = 6;
-			// 
 			// buttonAdd
 			// 
 			this.tableLayoutPanel2.SetColumnSpan(this.buttonAdd, 2);
@@ -232,6 +219,7 @@ partial class OrderDetailsModifier {
 			this.buttonAdd.TabIndex = 7;
 			this.buttonAdd.Text = "Add an Item";
 			this.buttonAdd.UseVisualStyleBackColor = true;
+			this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
 			// 
 			// labelRemoveItem
 			// 
@@ -256,6 +244,7 @@ partial class OrderDetailsModifier {
 			this.buttonRemove.TabIndex = 9;
 			this.buttonRemove.Text = "Remove Selected Items";
 			this.buttonRemove.UseVisualStyleBackColor = true;
+			this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
 			// 
 			// buttonClear
 			// 
@@ -280,6 +269,38 @@ partial class OrderDetailsModifier {
 			this.buttonDone.UseVisualStyleBackColor = true;
 			this.buttonDone.Click += new System.EventHandler(this.buttonDone_Click);
 			// 
+			// numericUpDownUnitPrice
+			// 
+			this.numericUpDownUnitPrice.DecimalPlaces = 2;
+			this.numericUpDownUnitPrice.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.numericUpDownUnitPrice.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+			this.numericUpDownUnitPrice.Location = new System.Drawing.Point(74, 63);
+			this.numericUpDownUnitPrice.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+			this.numericUpDownUnitPrice.Name = "numericUpDownUnitPrice";
+			this.numericUpDownUnitPrice.Size = new System.Drawing.Size(127, 23);
+			this.numericUpDownUnitPrice.TabIndex = 12;
+			// 
+			// numericUpDownCount
+			// 
+			this.numericUpDownCount.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.numericUpDownCount.Location = new System.Drawing.Point(74, 93);
+			this.numericUpDownCount.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+			this.numericUpDownCount.Name = "numericUpDownCount";
+			this.numericUpDownCount.Size = new System.Drawing.Size(127, 23);
+			this.numericUpDownCount.TabIndex = 13;
+			// 
 			// OrderDetailsModifier
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -289,10 +310,12 @@ partial class OrderDetailsModifier {
 			this.Name = "OrderDetailsModifier";
 			this.Text = "OrderDetailsModifier";
 			this.tableLayoutPanel1.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrderDetails)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSourceOrderDetails)).EndInit();
 			this.tableLayoutPanel2.ResumeLayout(false);
 			this.tableLayoutPanel2.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownUnitPrice)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownCount)).EndInit();
 			this.ResumeLayout(false);
 
     }
@@ -300,7 +323,7 @@ partial class OrderDetailsModifier {
     #endregion
 
     private TableLayoutPanel tableLayoutPanel1;
-    private DataGridView dataGridView1;
+    private DataGridView dataGridViewOrderDetails;
     private DataGridViewTextBoxColumn itemNameDataGridViewTextBoxColumn;
     private DataGridViewTextBoxColumn unitPriceStrDataGridViewTextBoxColumn;
     private DataGridViewTextBoxColumn countDataGridViewTextBoxColumn;
@@ -311,12 +334,12 @@ partial class OrderDetailsModifier {
     private Label labelItemName;
     private TextBox textBoxItemName;
     private Label labelUnitPrice;
-    private TextBox textBoxUnitPrice;
     private Label labelCount;
-    private TextBox textBoxCount;
     private Button buttonAdd;
     private Label labelRemoveItem;
     private Button buttonRemove;
     private Button buttonClear;
 	private Button buttonDone;
+	private NumericUpDown numericUpDownUnitPrice;
+	private NumericUpDown numericUpDownCount;
 }

@@ -5,6 +5,8 @@ namespace OrderManageGUI;
 public partial class MainForm : Form {
     private OrderService orderService = new();
 
+    private List<OrderDetails> orderDetailsList = new();
+
     public MainForm() {
         InitializeComponent();
     }
@@ -28,7 +30,7 @@ public partial class MainForm : Form {
             var odList = new List<OrderDetails>();
             int cnt = rnd.Next(15);
 
-            /**
+            /*
              * --> is a brand new operator, called "Tends To",
              * which is introduced in C# 11.0 / .NET 7.0.
              * 
@@ -64,7 +66,7 @@ public partial class MainForm : Form {
 
     private void DataGridViewOrders_SelectionChanged(object sender, EventArgs e) {
         try {
-            var order = dataGridViewOrders.CurrentRow.DataBoundItem as Order;
+            var order = dataGridViewOrders.CurrentRow?.DataBoundItem as Order;
             bindingSourceOrderDetails.DataSource = order?.OrderDetails;
         } catch {
             // Does nothing
@@ -73,11 +75,11 @@ public partial class MainForm : Form {
     }
 
     private void buttonCreateModifyDetails_Click(object sender, EventArgs e) {
-        var modifyForm = new OrderDetailsModifier();
+        var modifyForm = new OrderDetailsModifier(orderDetailsList);
         modifyForm.ShowDialog();
-        var newList = modifyForm.OrderDetailsList;
-        if (newList != null) {
-            ;
-        }
     }
+
+	private void buttonCreateOrder_Click(object sender, EventArgs e) {
+       // this.orderService.AddOrder(new Order(new Customer()))
+	}
 }

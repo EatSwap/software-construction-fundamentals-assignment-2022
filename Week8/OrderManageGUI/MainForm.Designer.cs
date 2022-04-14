@@ -42,6 +42,7 @@ partial class MainForm {
 			this.dateTimePickerCreateOrderTime = new System.Windows.Forms.DateTimePicker();
 			this.labelCreateOrderDetails = new System.Windows.Forms.Label();
 			this.buttonCreateModifyDetails = new System.Windows.Forms.Button();
+			this.buttonCreateOrder = new System.Windows.Forms.Button();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
 			this.dataGridViewOrders = new System.Windows.Forms.DataGridView();
 			this.orderIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -162,6 +163,7 @@ partial class MainForm {
 			this.tableLayoutPanel1.Controls.Add(this.dateTimePickerCreateOrderTime, 1, 2);
 			this.tableLayoutPanel1.Controls.Add(this.labelCreateOrderDetails, 0, 3);
 			this.tableLayoutPanel1.Controls.Add(this.buttonCreateModifyDetails, 1, 3);
+			this.tableLayoutPanel1.Controls.Add(this.buttonCreateOrder, 0, 4);
 			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -255,6 +257,18 @@ partial class MainForm {
 			this.buttonCreateModifyDetails.Text = "Click to Modify";
 			this.buttonCreateModifyDetails.UseVisualStyleBackColor = true;
 			this.buttonCreateModifyDetails.Click += new System.EventHandler(this.buttonCreateModifyDetails_Click);
+			// 
+			// buttonCreateOrder
+			// 
+			this.tableLayoutPanel1.SetColumnSpan(this.buttonCreateOrder, 2);
+			this.buttonCreateOrder.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.buttonCreateOrder.Location = new System.Drawing.Point(3, 123);
+			this.buttonCreateOrder.Name = "buttonCreateOrder";
+			this.buttonCreateOrder.Size = new System.Drawing.Size(246, 24);
+			this.buttonCreateOrder.TabIndex = 8;
+			this.buttonCreateOrder.Text = "Create ";
+			this.buttonCreateOrder.UseVisualStyleBackColor = true;
+			this.buttonCreateOrder.Click += new System.EventHandler(this.buttonCreateOrder_Click);
 			// 
 			// tabPage2
 			// 
@@ -442,4 +456,5 @@ partial class MainForm {
     private DateTimePicker dateTimePickerCreateOrderTime;
     private Label labelCreateOrderDetails;
     private Button buttonCreateModifyDetails;
+	private Button buttonCreateOrder;
 }
