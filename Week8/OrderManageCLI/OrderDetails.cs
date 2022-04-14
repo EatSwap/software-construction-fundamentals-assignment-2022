@@ -22,9 +22,13 @@ public class OrderDetails {
 
 	public double Price => Item.Price * Count;
 
-	public double ItemPrice => Item.Price;
+	public double UnitPrice => Item.Price;
 
+	public string ItemName => Item.Name;
 
+	public string PriceStr => Price.ToString("0.00");
+
+	public string UnitPriceStr => UnitPrice.ToString("0.00");
 
 	public override bool Equals(object? obj) {
 		return obj is OrderDetails rhs && Item.Equals(rhs.Item) && Count == rhs.Count;

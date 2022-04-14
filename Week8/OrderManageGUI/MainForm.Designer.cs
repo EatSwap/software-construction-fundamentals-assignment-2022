@@ -32,7 +32,7 @@ partial class MainForm {
             this.panelTableContainer = new System.Windows.Forms.Panel();
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPageCreate = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridViewOrders = new System.Windows.Forms.DataGridView();
             this.orderIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,18 +41,21 @@ partial class MainForm {
             this.orderTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PriceStr = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSourceOrders = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.itemDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewOrderDetails = new System.Windows.Forms.DataGridView();
+            this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitPriceStr = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.countDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSourceOrderDetails = new System.Windows.Forms.BindingSource(this.components);
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.menuStrip.SuspendLayout();
             this.panelTableContainer.SuspendLayout();
             this.tableLayoutPanelMain.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tabPageCreate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceOrders)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrderDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceOrderDetails)).BeginInit();
             this.SuspendLayout();
             // 
@@ -104,7 +107,7 @@ partial class MainForm {
             this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.375F));
             this.tableLayoutPanelMain.Controls.Add(this.tabControl1, 1, 0);
             this.tableLayoutPanelMain.Controls.Add(this.dataGridViewOrders, 0, 0);
-            this.tableLayoutPanelMain.Controls.Add(this.dataGridView1, 0, 1);
+            this.tableLayoutPanelMain.Controls.Add(this.dataGridViewOrderDetails, 0, 1);
             this.tableLayoutPanelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelMain.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanelMain.Name = "tableLayoutPanelMain";
@@ -116,7 +119,7 @@ partial class MainForm {
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPageCreate);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(570, 3);
@@ -126,15 +129,16 @@ partial class MainForm {
             this.tabControl1.Size = new System.Drawing.Size(266, 347);
             this.tabControl1.TabIndex = 0;
             // 
-            // tabPage1
+            // tabPageCreate
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 24);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(258, 319);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPageCreate.Controls.Add(this.tableLayoutPanel1);
+            this.tabPageCreate.Location = new System.Drawing.Point(4, 24);
+            this.tabPageCreate.Name = "tabPageCreate";
+            this.tabPageCreate.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageCreate.Size = new System.Drawing.Size(258, 319);
+            this.tabPageCreate.TabIndex = 0;
+            this.tabPageCreate.Text = "Create";
+            this.tabPageCreate.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
@@ -209,31 +213,39 @@ partial class MainForm {
             // 
             this.bindingSourceOrders.DataSource = typeof(OrderManageCLI.Order);
             // 
-            // dataGridView1
+            // dataGridViewOrderDetails
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.itemDataGridViewTextBoxColumn,
+            this.dataGridViewOrderDetails.AllowUserToAddRows = false;
+            this.dataGridViewOrderDetails.AllowUserToDeleteRows = false;
+            this.dataGridViewOrderDetails.AutoGenerateColumns = false;
+            this.dataGridViewOrderDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewOrderDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ItemName,
+            this.UnitPriceStr,
             this.countDataGridViewTextBoxColumn,
-            this.priceDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.bindingSourceOrderDetails;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 179);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(561, 171);
-            this.dataGridView1.TabIndex = 2;
+            this.dataGridViewTextBoxColumn1});
+            this.dataGridViewOrderDetails.DataSource = this.bindingSourceOrderDetails;
+            this.dataGridViewOrderDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewOrderDetails.Location = new System.Drawing.Point(3, 179);
+            this.dataGridViewOrderDetails.Name = "dataGridViewOrderDetails";
+            this.dataGridViewOrderDetails.ReadOnly = true;
+            this.dataGridViewOrderDetails.RowTemplate.Height = 25;
+            this.dataGridViewOrderDetails.Size = new System.Drawing.Size(561, 171);
+            this.dataGridViewOrderDetails.TabIndex = 2;
             // 
-            // itemDataGridViewTextBoxColumn
+            // ItemName
             // 
-            this.itemDataGridViewTextBoxColumn.DataPropertyName = "Item";
-            this.itemDataGridViewTextBoxColumn.HeaderText = "Item";
-            this.itemDataGridViewTextBoxColumn.Name = "itemDataGridViewTextBoxColumn";
-            this.itemDataGridViewTextBoxColumn.ReadOnly = true;
+            this.ItemName.DataPropertyName = "ItemName";
+            this.ItemName.HeaderText = "Item Name";
+            this.ItemName.Name = "ItemName";
+            this.ItemName.ReadOnly = true;
+            // 
+            // UnitPriceStr
+            // 
+            this.UnitPriceStr.DataPropertyName = "UnitPriceStr";
+            this.UnitPriceStr.HeaderText = "Unit Price";
+            this.UnitPriceStr.Name = "UnitPriceStr";
+            this.UnitPriceStr.ReadOnly = true;
             // 
             // countDataGridViewTextBoxColumn
             // 
@@ -242,16 +254,30 @@ partial class MainForm {
             this.countDataGridViewTextBoxColumn.Name = "countDataGridViewTextBoxColumn";
             this.countDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // priceDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn1
             // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "PriceStr";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Total Price";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // bindingSourceOrderDetails
             // 
             this.bindingSourceOrderDetails.DataSource = typeof(OrderManageCLI.OrderDetails);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.65693F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69.34306F));
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(252, 313);
+            this.tableLayoutPanel1.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -269,9 +295,10 @@ partial class MainForm {
             this.panelTableContainer.ResumeLayout(false);
             this.tableLayoutPanelMain.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
+            this.tabPageCreate.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceOrders)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrderDetails)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceOrderDetails)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -287,18 +314,20 @@ partial class MainForm {
     private Panel panelTableContainer;
     private TableLayoutPanel tableLayoutPanelMain;
     private TabControl tabControl1;
-    private TabPage tabPage1;
+    private TabPage tabPageCreate;
     private TabPage tabPage2;
     private BindingSource bindingSourceOrders;
     private DataGridView dataGridViewOrders;
-    private DataGridView dataGridView1;
-    private DataGridViewTextBoxColumn itemDataGridViewTextBoxColumn;
-    private DataGridViewTextBoxColumn countDataGridViewTextBoxColumn;
-    private DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
+    private DataGridView dataGridViewOrderDetails;
     private BindingSource bindingSourceOrderDetails;
     private DataGridViewTextBoxColumn orderIdDataGridViewTextBoxColumn;
     private DataGridViewTextBoxColumn customerDataGridViewTextBoxColumn;
     private DataGridViewTextBoxColumn CustomerAddress;
     private DataGridViewTextBoxColumn orderTimeDataGridViewTextBoxColumn;
     private DataGridViewTextBoxColumn PriceStr;
+    private DataGridViewTextBoxColumn ItemName;
+    private DataGridViewTextBoxColumn UnitPriceStr;
+    private DataGridViewTextBoxColumn countDataGridViewTextBoxColumn;
+    private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+    private TableLayoutPanel tableLayoutPanel1;
 }
