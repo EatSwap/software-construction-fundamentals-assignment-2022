@@ -44,6 +44,17 @@ partial class MainForm {
 			this.buttonCreateOrderDetails = new System.Windows.Forms.Button();
 			this.buttonCreateOrder = new System.Windows.Forms.Button();
 			this.tabPageModify = new System.Windows.Forms.TabPage();
+			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+			this.labelModifyCustomerName = new System.Windows.Forms.Label();
+			this.textBoxModifyCustomerName = new System.Windows.Forms.TextBox();
+			this.labelModifyCustomerAddress = new System.Windows.Forms.Label();
+			this.textBoxModisyCustomerAddress = new System.Windows.Forms.TextBox();
+			this.labelModifyOrderTime = new System.Windows.Forms.Label();
+			this.dateTimePickerModifyOrderTime = new System.Windows.Forms.DateTimePicker();
+			this.labelModifyOrderDetails = new System.Windows.Forms.Label();
+			this.buttonModifyOrderDetails = new System.Windows.Forms.Button();
+			this.button2 = new System.Windows.Forms.Button();
+			this.buttonModifyDelete = new System.Windows.Forms.Button();
 			this.dataGridViewOrders = new System.Windows.Forms.DataGridView();
 			this.orderIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.customerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,17 +68,6 @@ partial class MainForm {
 			this.countDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.bindingSourceOrderDetails = new System.Windows.Forms.BindingSource(this.components);
-			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-			this.labelModifyCustomerName = new System.Windows.Forms.Label();
-			this.textBoxModifyCustomerName = new System.Windows.Forms.TextBox();
-			this.labelModifyCustomerAddress = new System.Windows.Forms.Label();
-			this.textBoxModisyCustomerAddress = new System.Windows.Forms.TextBox();
-			this.labelModifyOrderTime = new System.Windows.Forms.Label();
-			this.dateTimePickerModifyOrderTime = new System.Windows.Forms.DateTimePicker();
-			this.labelModifyOrderDetails = new System.Windows.Forms.Label();
-			this.buttonModifyOrderDetails = new System.Windows.Forms.Button();
-			this.button2 = new System.Windows.Forms.Button();
-			this.buttonModifyDelete = new System.Windows.Forms.Button();
 			this.menuStrip.SuspendLayout();
 			this.panelTableContainer.SuspendLayout();
 			this.tableLayoutPanelMain.SuspendLayout();
@@ -75,11 +75,11 @@ partial class MainForm {
 			this.tabPageCreate.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tabPageModify.SuspendLayout();
+			this.tableLayoutPanel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSourceOrders)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrderDetails)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSourceOrderDetails)).BeginInit();
-			this.tableLayoutPanel2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// statusStrip
@@ -294,121 +294,6 @@ partial class MainForm {
 			this.tabPageModify.Text = "Modify / Delete";
 			this.tabPageModify.UseVisualStyleBackColor = true;
 			// 
-			// dataGridViewOrders
-			// 
-			this.dataGridViewOrders.AllowUserToAddRows = false;
-			this.dataGridViewOrders.AllowUserToDeleteRows = false;
-			this.dataGridViewOrders.AutoGenerateColumns = false;
-			this.dataGridViewOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridViewOrders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.orderIdDataGridViewTextBoxColumn,
-            this.customerDataGridViewTextBoxColumn,
-            this.CustomerAddress,
-            this.orderTimeDataGridViewTextBoxColumn,
-            this.PriceStr});
-			this.dataGridViewOrders.DataSource = this.bindingSourceOrders;
-			this.dataGridViewOrders.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.dataGridViewOrders.Location = new System.Drawing.Point(3, 3);
-			this.dataGridViewOrders.MultiSelect = false;
-			this.dataGridViewOrders.Name = "dataGridViewOrders";
-			this.dataGridViewOrders.ReadOnly = true;
-			this.dataGridViewOrders.RowTemplate.Height = 25;
-			this.dataGridViewOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dataGridViewOrders.Size = new System.Drawing.Size(561, 170);
-			this.dataGridViewOrders.TabIndex = 1;
-			this.dataGridViewOrders.SelectionChanged += new System.EventHandler(this.DataGridViewOrders_SelectionChanged);
-			// 
-			// orderIdDataGridViewTextBoxColumn
-			// 
-			this.orderIdDataGridViewTextBoxColumn.DataPropertyName = "OrderId";
-			this.orderIdDataGridViewTextBoxColumn.HeaderText = "ID";
-			this.orderIdDataGridViewTextBoxColumn.Name = "orderIdDataGridViewTextBoxColumn";
-			this.orderIdDataGridViewTextBoxColumn.ReadOnly = true;
-			// 
-			// customerDataGridViewTextBoxColumn
-			// 
-			this.customerDataGridViewTextBoxColumn.DataPropertyName = "CustomerName";
-			this.customerDataGridViewTextBoxColumn.HeaderText = "Customer Name";
-			this.customerDataGridViewTextBoxColumn.Name = "customerDataGridViewTextBoxColumn";
-			this.customerDataGridViewTextBoxColumn.ReadOnly = true;
-			// 
-			// CustomerAddress
-			// 
-			this.CustomerAddress.DataPropertyName = "CustomerAddress";
-			this.CustomerAddress.HeaderText = "Customer Address";
-			this.CustomerAddress.Name = "CustomerAddress";
-			this.CustomerAddress.ReadOnly = true;
-			// 
-			// orderTimeDataGridViewTextBoxColumn
-			// 
-			this.orderTimeDataGridViewTextBoxColumn.DataPropertyName = "OrderTime";
-			this.orderTimeDataGridViewTextBoxColumn.HeaderText = "Order Time";
-			this.orderTimeDataGridViewTextBoxColumn.Name = "orderTimeDataGridViewTextBoxColumn";
-			this.orderTimeDataGridViewTextBoxColumn.ReadOnly = true;
-			// 
-			// PriceStr
-			// 
-			this.PriceStr.DataPropertyName = "PriceStr";
-			this.PriceStr.HeaderText = "Price";
-			this.PriceStr.Name = "PriceStr";
-			this.PriceStr.ReadOnly = true;
-			// 
-			// bindingSourceOrders
-			// 
-			this.bindingSourceOrders.DataSource = typeof(OrderManageCLI.Order);
-			// 
-			// dataGridViewOrderDetails
-			// 
-			this.dataGridViewOrderDetails.AllowUserToAddRows = false;
-			this.dataGridViewOrderDetails.AllowUserToDeleteRows = false;
-			this.dataGridViewOrderDetails.AutoGenerateColumns = false;
-			this.dataGridViewOrderDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridViewOrderDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ItemName,
-            this.UnitPriceStr,
-            this.countDataGridViewTextBoxColumn,
-            this.dataGridViewTextBoxColumn1});
-			this.dataGridViewOrderDetails.DataSource = this.bindingSourceOrderDetails;
-			this.dataGridViewOrderDetails.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.dataGridViewOrderDetails.Location = new System.Drawing.Point(3, 179);
-			this.dataGridViewOrderDetails.Name = "dataGridViewOrderDetails";
-			this.dataGridViewOrderDetails.ReadOnly = true;
-			this.dataGridViewOrderDetails.RowTemplate.Height = 25;
-			this.dataGridViewOrderDetails.Size = new System.Drawing.Size(561, 171);
-			this.dataGridViewOrderDetails.TabIndex = 2;
-			// 
-			// ItemName
-			// 
-			this.ItemName.DataPropertyName = "ItemName";
-			this.ItemName.HeaderText = "Item Name";
-			this.ItemName.Name = "ItemName";
-			this.ItemName.ReadOnly = true;
-			// 
-			// UnitPriceStr
-			// 
-			this.UnitPriceStr.DataPropertyName = "UnitPriceStr";
-			this.UnitPriceStr.HeaderText = "Unit Price";
-			this.UnitPriceStr.Name = "UnitPriceStr";
-			this.UnitPriceStr.ReadOnly = true;
-			// 
-			// countDataGridViewTextBoxColumn
-			// 
-			this.countDataGridViewTextBoxColumn.DataPropertyName = "Count";
-			this.countDataGridViewTextBoxColumn.HeaderText = "Count";
-			this.countDataGridViewTextBoxColumn.Name = "countDataGridViewTextBoxColumn";
-			this.countDataGridViewTextBoxColumn.ReadOnly = true;
-			// 
-			// dataGridViewTextBoxColumn1
-			// 
-			this.dataGridViewTextBoxColumn1.DataPropertyName = "PriceStr";
-			this.dataGridViewTextBoxColumn1.HeaderText = "Total Price";
-			this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-			this.dataGridViewTextBoxColumn1.ReadOnly = true;
-			// 
-			// bindingSourceOrderDetails
-			// 
-			this.bindingSourceOrderDetails.DataSource = typeof(OrderManageCLI.OrderDetails);
-			// 
 			// tableLayoutPanel2
 			// 
 			this.tableLayoutPanel2.ColumnCount = 2;
@@ -540,6 +425,121 @@ partial class MainForm {
 			this.buttonModifyDelete.Text = "Delete this";
 			this.buttonModifyDelete.UseVisualStyleBackColor = true;
 			// 
+			// dataGridViewOrders
+			// 
+			this.dataGridViewOrders.AllowUserToAddRows = false;
+			this.dataGridViewOrders.AllowUserToDeleteRows = false;
+			this.dataGridViewOrders.AutoGenerateColumns = false;
+			this.dataGridViewOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridViewOrders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.orderIdDataGridViewTextBoxColumn,
+            this.customerDataGridViewTextBoxColumn,
+            this.CustomerAddress,
+            this.orderTimeDataGridViewTextBoxColumn,
+            this.PriceStr});
+			this.dataGridViewOrders.DataSource = this.bindingSourceOrders;
+			this.dataGridViewOrders.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.dataGridViewOrders.Location = new System.Drawing.Point(3, 3);
+			this.dataGridViewOrders.MultiSelect = false;
+			this.dataGridViewOrders.Name = "dataGridViewOrders";
+			this.dataGridViewOrders.ReadOnly = true;
+			this.dataGridViewOrders.RowTemplate.Height = 25;
+			this.dataGridViewOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+			this.dataGridViewOrders.Size = new System.Drawing.Size(561, 170);
+			this.dataGridViewOrders.TabIndex = 1;
+			this.dataGridViewOrders.SelectionChanged += new System.EventHandler(this.DataGridViewOrders_SelectionChanged);
+			// 
+			// orderIdDataGridViewTextBoxColumn
+			// 
+			this.orderIdDataGridViewTextBoxColumn.DataPropertyName = "OrderId";
+			this.orderIdDataGridViewTextBoxColumn.HeaderText = "ID";
+			this.orderIdDataGridViewTextBoxColumn.Name = "orderIdDataGridViewTextBoxColumn";
+			this.orderIdDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// customerDataGridViewTextBoxColumn
+			// 
+			this.customerDataGridViewTextBoxColumn.DataPropertyName = "CustomerName";
+			this.customerDataGridViewTextBoxColumn.HeaderText = "Customer Name";
+			this.customerDataGridViewTextBoxColumn.Name = "customerDataGridViewTextBoxColumn";
+			this.customerDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// CustomerAddress
+			// 
+			this.CustomerAddress.DataPropertyName = "CustomerAddress";
+			this.CustomerAddress.HeaderText = "Customer Address";
+			this.CustomerAddress.Name = "CustomerAddress";
+			this.CustomerAddress.ReadOnly = true;
+			// 
+			// orderTimeDataGridViewTextBoxColumn
+			// 
+			this.orderTimeDataGridViewTextBoxColumn.DataPropertyName = "OrderTime";
+			this.orderTimeDataGridViewTextBoxColumn.HeaderText = "Order Time";
+			this.orderTimeDataGridViewTextBoxColumn.Name = "orderTimeDataGridViewTextBoxColumn";
+			this.orderTimeDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// PriceStr
+			// 
+			this.PriceStr.DataPropertyName = "PriceStr";
+			this.PriceStr.HeaderText = "Price";
+			this.PriceStr.Name = "PriceStr";
+			this.PriceStr.ReadOnly = true;
+			// 
+			// bindingSourceOrders
+			// 
+			this.bindingSourceOrders.DataSource = typeof(OrderManageCLI.Order);
+			// 
+			// dataGridViewOrderDetails
+			// 
+			this.dataGridViewOrderDetails.AllowUserToAddRows = false;
+			this.dataGridViewOrderDetails.AllowUserToDeleteRows = false;
+			this.dataGridViewOrderDetails.AutoGenerateColumns = false;
+			this.dataGridViewOrderDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridViewOrderDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ItemName,
+            this.UnitPriceStr,
+            this.countDataGridViewTextBoxColumn,
+            this.dataGridViewTextBoxColumn1});
+			this.dataGridViewOrderDetails.DataSource = this.bindingSourceOrderDetails;
+			this.dataGridViewOrderDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.dataGridViewOrderDetails.Location = new System.Drawing.Point(3, 179);
+			this.dataGridViewOrderDetails.Name = "dataGridViewOrderDetails";
+			this.dataGridViewOrderDetails.ReadOnly = true;
+			this.dataGridViewOrderDetails.RowTemplate.Height = 25;
+			this.dataGridViewOrderDetails.Size = new System.Drawing.Size(561, 171);
+			this.dataGridViewOrderDetails.TabIndex = 2;
+			// 
+			// ItemName
+			// 
+			this.ItemName.DataPropertyName = "ItemName";
+			this.ItemName.HeaderText = "Item Name";
+			this.ItemName.Name = "ItemName";
+			this.ItemName.ReadOnly = true;
+			// 
+			// UnitPriceStr
+			// 
+			this.UnitPriceStr.DataPropertyName = "UnitPriceStr";
+			this.UnitPriceStr.HeaderText = "Unit Price";
+			this.UnitPriceStr.Name = "UnitPriceStr";
+			this.UnitPriceStr.ReadOnly = true;
+			// 
+			// countDataGridViewTextBoxColumn
+			// 
+			this.countDataGridViewTextBoxColumn.DataPropertyName = "Count";
+			this.countDataGridViewTextBoxColumn.HeaderText = "Count";
+			this.countDataGridViewTextBoxColumn.Name = "countDataGridViewTextBoxColumn";
+			this.countDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// dataGridViewTextBoxColumn1
+			// 
+			this.dataGridViewTextBoxColumn1.DataPropertyName = "PriceStr";
+			this.dataGridViewTextBoxColumn1.HeaderText = "Total Price";
+			this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+			this.dataGridViewTextBoxColumn1.ReadOnly = true;
+			// 
+			// bindingSourceOrderDetails
+			// 
+			this.bindingSourceOrderDetails.DataSource = typeof(OrderManageCLI.OrderDetails);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -560,12 +560,12 @@ partial class MainForm {
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
 			this.tabPageModify.ResumeLayout(false);
+			this.tableLayoutPanel2.ResumeLayout(false);
+			this.tableLayoutPanel2.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSourceOrders)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrderDetails)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSourceOrderDetails)).EndInit();
-			this.tableLayoutPanel2.ResumeLayout(false);
-			this.tableLayoutPanel2.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
