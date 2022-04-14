@@ -199,7 +199,10 @@ public partial class MainForm : Form {
 	}
 
 	private void buttonQuery_Click(object sender, EventArgs e) {
-		// Do query.
+		this.queriedOrders = this.orderService.Find((order) => {
+			return true && 
+			       (this.checkBoxCustomer.Checked ? false : false) // ...
+		})
 	}
 
 	private void tabControl1_Selected(object sender, TabControlEventArgs e) {
