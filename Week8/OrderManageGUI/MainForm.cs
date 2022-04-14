@@ -6,7 +6,10 @@ public partial class MainForm : Form {
 	private readonly OrderService orderService = new();
 
 	public Order CurrentOrder;
+	
 	private List<OrderDetails> currentOrderDetailsList = new();
+	
+	private List<Order> queriedOrders = new();
 
 	public MainForm() {
 		this.InitializeComponent();
@@ -182,7 +185,8 @@ public partial class MainForm : Form {
 	}
 
 	private void checkBoxPrice_CheckedChanged(object sender, EventArgs e) {
-		this.textBoxQueryItemName.Enabled = this.checkBoxPrice.Checked;
+		this.textBoxQueryPriceMax.Enabled = this.checkBoxItem.Checked;
+		this.textBoxQueryPriceMin.Enabled = this.checkBoxItem.Checked;
 	}
 
 	private void checkBoxOrderTime_CheckedChanged(object sender, EventArgs e) {
@@ -191,8 +195,7 @@ public partial class MainForm : Form {
 	}
 
 	private void checkBoxItem_CheckedChanged(object sender, EventArgs e) {
-		this.textBoxQueryPriceMax.Enabled = this.checkBoxItem.Checked;
-		this.textBoxQueryPriceMin.Enabled = this.checkBoxItem.Checked;
+		this.textBoxQueryItemName.Enabled = this.checkBoxPrice.Checked;
 	}
 
 	private void buttonQuery_Click(object sender, EventArgs e) {
