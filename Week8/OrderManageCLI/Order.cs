@@ -104,9 +104,11 @@ public class Order {
 	}
 	
 	public Order Clone() {
-		var ret = new Order(Customer, OrderTime);
+		var ret = new Order(Customer.Clone(), OrderTime);
 		foreach (var i in _orderDetailsList)
 			ret.AddRecord(i.Clone());
+		ret.OrderId = this.OrderId;
+		--_orderNum;
 		return ret;
 	}
 }
