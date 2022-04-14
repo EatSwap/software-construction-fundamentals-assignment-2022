@@ -6,6 +6,8 @@ public partial class MainForm : Form {
 	private readonly OrderService orderService = new();
 	private List<OrderDetails> currentOrderDetailsList = new();
 
+	public Order CurrentOrder;
+
 	public MainForm() {
 		this.InitializeComponent();
 	}
@@ -53,9 +55,11 @@ public partial class MainForm : Form {
 		bindingSourceOrders.DataSource = orderService.Orders;
 
 		CurrentOrderTime = DateTime.Now;
+
+		// Create Tab
 		textBoxCreateCustomerName.DataBindings.Add("Text", this, nameof(CurrentCustomerAddress));
 		textBoxCreateCustomerAddress.DataBindings.Add("Text", this, nameof(CurrentCustomerName));
-		dateTimePickerCreateOrderTime.DataBindings.Add("Text", this, nameof(CurrentOrderTime));
+		dateTimePickerCreateOrderTime.DataBindings.Add("Value", this, nameof(CurrentOrderTime));
 	}
 
 	private void MainForm_Resize(object sender, EventArgs e) {
@@ -65,6 +69,15 @@ public partial class MainForm : Form {
 	private void DataGridViewOrders_SelectionChanged(object sender, EventArgs e) {
 		try {
 			var order = dataGridViewOrders.CurrentRow?.DataBoundItem as Order;
+			if (order != null) {
+				this.CurrentOrder = order.Clone();
+				textBoxModifyCustomerName.DataBindings.Clear();
+				textBoxModifyCustomerName.DataBindings.Add("Text", this.CurrentOrder.Customer, nameof(CurrentOrder.Customer.Name));
+				textBoxModisyCustomerAddress.DataBindings.Clear();
+				textBoxModisyCustomerAddress.DataBindings.Add("Text", this.CurrentOrder.Customer, nameof(CurrentOrder.Customer.Address));
+				dateTimePickerModifyOrderTime.DataBindings.Clear();
+				dateTimePickerModifyOrderTime.DataBindings.Add("Value", this.CurrentOrder, nameof(CurrentOrder.OrderTime));
+			}
 			bindingSourceOrderDetails.DataSource = order?.OrderDetails;
 		} catch {
 			// Does nothing
@@ -96,5 +109,17 @@ public partial class MainForm : Form {
 		currentOrderDetailsList.Clear();
 		bindingSourceOrders.ResetBindings(false);
 		bindingSourceOrderDetails.ResetBindings(false);
+	}
+
+	private void buttonModifyOrderDetails_Click(object sender, EventArgs e) {
+		var modifyForm = new OrderDetailsModifier(this.CurrentOrder.OrderDetails);
+		modifyForm.ShowDialog();
+		this.CurrentOrder.OrderDetails = modifyForm.OrderDetailsList;
+	}
+
+	private void buttonModifySave_Click(object sender, EventArgs e) {
+		orderService.ModifyOrder(CurrentOrder.OrderId, CurrentOrder);
+		this.bindingSourceOrders.ResetBindings(false);
+		this.bindingSourceOrderDetails.ResetBindings(false);
 	}
 }

@@ -53,7 +53,7 @@ partial class MainForm {
 			this.dateTimePickerModifyOrderTime = new System.Windows.Forms.DateTimePicker();
 			this.labelModifyOrderDetails = new System.Windows.Forms.Label();
 			this.buttonModifyOrderDetails = new System.Windows.Forms.Button();
-			this.button2 = new System.Windows.Forms.Button();
+			this.buttonModifySave = new System.Windows.Forms.Button();
 			this.buttonModifyDelete = new System.Windows.Forms.Button();
 			this.dataGridViewOrders = new System.Windows.Forms.DataGridView();
 			this.orderIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -307,7 +307,7 @@ partial class MainForm {
 			this.tableLayoutPanel2.Controls.Add(this.dateTimePickerModifyOrderTime, 1, 2);
 			this.tableLayoutPanel2.Controls.Add(this.labelModifyOrderDetails, 0, 3);
 			this.tableLayoutPanel2.Controls.Add(this.buttonModifyOrderDetails, 1, 3);
-			this.tableLayoutPanel2.Controls.Add(this.button2, 0, 4);
+			this.tableLayoutPanel2.Controls.Add(this.buttonModifySave, 0, 4);
 			this.tableLayoutPanel2.Controls.Add(this.buttonModifyDelete, 0, 5);
 			this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
@@ -402,17 +402,19 @@ partial class MainForm {
 			this.buttonModifyOrderDetails.TabIndex = 7;
 			this.buttonModifyOrderDetails.Text = "Click to Modify";
 			this.buttonModifyOrderDetails.UseVisualStyleBackColor = true;
+			this.buttonModifyOrderDetails.Click += new System.EventHandler(this.buttonModifyOrderDetails_Click);
 			// 
-			// button2
+			// buttonModifySave
 			// 
-			this.tableLayoutPanel2.SetColumnSpan(this.button2, 2);
-			this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.button2.Location = new System.Drawing.Point(3, 123);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(246, 24);
-			this.button2.TabIndex = 8;
-			this.button2.Text = "Save";
-			this.button2.UseVisualStyleBackColor = true;
+			this.tableLayoutPanel2.SetColumnSpan(this.buttonModifySave, 2);
+			this.buttonModifySave.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.buttonModifySave.Location = new System.Drawing.Point(3, 123);
+			this.buttonModifySave.Name = "buttonModifySave";
+			this.buttonModifySave.Size = new System.Drawing.Size(246, 24);
+			this.buttonModifySave.TabIndex = 8;
+			this.buttonModifySave.Text = "Save";
+			this.buttonModifySave.UseVisualStyleBackColor = true;
+			this.buttonModifySave.Click += new System.EventHandler(this.buttonModifySave_Click);
 			// 
 			// buttonModifyDelete
 			// 
@@ -614,6 +616,6 @@ partial class MainForm {
 	private DateTimePicker dateTimePickerModifyOrderTime;
 	private Label labelModifyOrderDetails;
 	private Button buttonModifyOrderDetails;
-	private Button button2;
+	private Button buttonModifySave;
 	private Button buttonModifyDelete;
 }

@@ -6,7 +6,7 @@ namespace OrderManageCLI;
 public class Order {
 	private static long _orderNum = 0;
 
-	private readonly List<OrderDetails> _orderDetailsList;
+	private List<OrderDetails> _orderDetailsList;
 
 	public Order(Customer? c, DateTime orderTime, params OrderDetails[] details) {
 		Customer = c == null ? new Customer() : c;
@@ -29,7 +29,10 @@ public class Order {
 
 	public DateTime OrderTime { get; set; }
 
-	public List<OrderDetails> OrderDetails => _orderDetailsList;
+	public List<OrderDetails> OrderDetails {
+		get => _orderDetailsList;
+		set => _orderDetailsList = value;
+	}
 
 	public int Count => _orderDetailsList.Count;
 
