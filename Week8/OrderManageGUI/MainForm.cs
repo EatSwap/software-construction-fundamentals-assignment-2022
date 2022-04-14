@@ -10,16 +10,6 @@ public partial class MainForm : Form {
     public MainForm() {
         InitializeComponent();
     }
-    
-    private static void ResizeLabel(ref Label L, float ratio = 0.80F) {
-        SizeF extent = TextRenderer.MeasureText(L.Text, L.Font);
-
-        var hR = L.Height / extent.Height;
-        var wR = L.Width / extent.Width;
-        var R = ratio * ((hR < wR) ? hR : wR);
-
-        L.Font = new Font(L.Font.FontFamily, R * L.Font.Size, L.Font.Style);
-    }
 
     private void GenerateRandomOrders() {
         var rnd = new Random();

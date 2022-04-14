@@ -41,7 +41,7 @@ public partial class OrderDetailsModifier : Form {
 
 	private void buttonAdd_Click(object sender, EventArgs e) {
         if (string.IsNullOrEmpty(this.textBoxItemName.Text)) {
-            MessageBox.Show("Item Name shall not be empty!", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+            Utility.ShowErrorDialogue("Item name shall not be empty");
             return;
         }
         this.orderDetailsList.Add(new OrderDetails(this.textBoxItemName.Text, CurrentUnitPrice, currentCount));
