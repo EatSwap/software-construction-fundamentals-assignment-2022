@@ -182,15 +182,17 @@ public partial class MainForm : Form {
 	}
 
 	private void checkBoxPrice_CheckedChanged(object sender, EventArgs e) {
-		// same, ...
+		this.textBoxQueryItemName.Enabled = this.checkBoxPrice.Checked;
 	}
 
 	private void checkBoxOrderTime_CheckedChanged(object sender, EventArgs e) {
-		// same, ...
+		this.dateTimePickerQueryFrom.Enabled = this.checkBoxOrderTime.Checked;
+		this.dateTimePickerQueryTo.Enabled = this.checkBoxOrderTime.Checked;
 	}
 
 	private void checkBoxItem_CheckedChanged(object sender, EventArgs e) {
-		// same, ...
+		this.textBoxQueryPriceMax.Enabled = this.checkBoxItem.Checked;
+		this.textBoxQueryPriceMin.Enabled = this.checkBoxItem.Checked;
 	}
 
 	private void buttonQuery_Click(object sender, EventArgs e) {
