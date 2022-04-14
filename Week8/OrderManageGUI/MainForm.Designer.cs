@@ -1,4 +1,4 @@
-﻿namespace OrderManageGUI;
+namespace OrderManageGUI;
 
 partial class MainForm {
 	/// <summary>
@@ -28,7 +28,7 @@ partial class MainForm {
 			this.statusStrip = new System.Windows.Forms.StatusStrip();
 			this.menuStrip = new System.Windows.Forms.MenuStrip();
 			this.placeHolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.goodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.panelTableContainer = new System.Windows.Forms.Panel();
 			this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -68,6 +68,7 @@ partial class MainForm {
 			this.countDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.bindingSourceOrderDetails = new System.Windows.Forms.BindingSource(this.components);
+			this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip.SuspendLayout();
 			this.panelTableContainer.SuspendLayout();
 			this.tableLayoutPanelMain.SuspendLayout();
@@ -93,7 +94,7 @@ partial class MainForm {
 			// menuStrip
 			// 
 			this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.placeHolderToolStripMenuItem});
+            this.placeHolderToolStripMenuItem});
 			this.menuStrip.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip.Name = "menuStrip";
 			this.menuStrip.Size = new System.Drawing.Size(839, 24);
@@ -103,16 +104,19 @@ partial class MainForm {
 			// placeHolderToolStripMenuItem
 			// 
 			this.placeHolderToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.goodToolStripMenuItem});
+            this.saveToolStripMenuItem,
+            this.openToolStripMenuItem});
 			this.placeHolderToolStripMenuItem.Name = "placeHolderToolStripMenuItem";
-			this.placeHolderToolStripMenuItem.Size = new System.Drawing.Size(83, 20);
-			this.placeHolderToolStripMenuItem.Text = "PlaceHolder";
+			this.placeHolderToolStripMenuItem.ShortcutKeyDisplayString = "F";
+			this.placeHolderToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+			this.placeHolderToolStripMenuItem.Text = "File";
 			// 
-			// goodToolStripMenuItem
+			// saveToolStripMenuItem
 			// 
-			this.goodToolStripMenuItem.Name = "goodToolStripMenuItem";
-			this.goodToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.goodToolStripMenuItem.Text = "Good";
+			this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+			this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.saveToolStripMenuItem.Text = "Save";
+			this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
 			// 
 			// panelTableContainer
 			// 
@@ -435,11 +439,11 @@ partial class MainForm {
 			this.dataGridViewOrders.AutoGenerateColumns = false;
 			this.dataGridViewOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dataGridViewOrders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-			this.orderIdDataGridViewTextBoxColumn,
-			this.customerDataGridViewTextBoxColumn,
-			this.CustomerAddress,
-			this.orderTimeDataGridViewTextBoxColumn,
-			this.PriceStr});
+            this.orderIdDataGridViewTextBoxColumn,
+            this.customerDataGridViewTextBoxColumn,
+            this.CustomerAddress,
+            this.orderTimeDataGridViewTextBoxColumn,
+            this.PriceStr});
 			this.dataGridViewOrders.DataSource = this.bindingSourceOrders;
 			this.dataGridViewOrders.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dataGridViewOrders.Location = new System.Drawing.Point(3, 3);
@@ -498,10 +502,10 @@ partial class MainForm {
 			this.dataGridViewOrderDetails.AutoGenerateColumns = false;
 			this.dataGridViewOrderDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dataGridViewOrderDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-			this.ItemName,
-			this.UnitPriceStr,
-			this.countDataGridViewTextBoxColumn,
-			this.dataGridViewTextBoxColumn1});
+            this.ItemName,
+            this.UnitPriceStr,
+            this.countDataGridViewTextBoxColumn,
+            this.dataGridViewTextBoxColumn1});
 			this.dataGridViewOrderDetails.DataSource = this.bindingSourceOrderDetails;
 			this.dataGridViewOrderDetails.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dataGridViewOrderDetails.Location = new System.Drawing.Point(3, 179);
@@ -543,6 +547,13 @@ partial class MainForm {
 			// 
 			this.bindingSourceOrderDetails.DataSource = typeof(OrderManageCLI.OrderDetails);
 			// 
+			// openToolStripMenuItem
+			// 
+			this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+			this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.openToolStripMenuItem.Text = "Open";
+			this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -579,7 +590,6 @@ partial class MainForm {
 	private StatusStrip statusStrip;
 	private MenuStrip menuStrip;
 	private ToolStripMenuItem placeHolderToolStripMenuItem;
-	private ToolStripMenuItem goodToolStripMenuItem;
 	private Panel panelTableContainer;
 	private TableLayoutPanel tableLayoutPanelMain;
 	private TabControl tabControl1;
@@ -619,4 +629,6 @@ partial class MainForm {
 	private Button buttonModifyOrderDetails;
 	private Button buttonModifySave;
 	private Button buttonModifyDelete;
+	private ToolStripMenuItem saveToolStripMenuItem;
+	private ToolStripMenuItem openToolStripMenuItem;
 }

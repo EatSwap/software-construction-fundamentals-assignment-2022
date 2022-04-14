@@ -5,7 +5,7 @@ using System.Xml.Serialization;
 
 [Serializable]
 public class OrderService {
-	public List<Order> Orders { get; } = new();
+	public List<Order> Orders { get; set; } = new();
 
 	public int Count => this.Orders.Count;
 

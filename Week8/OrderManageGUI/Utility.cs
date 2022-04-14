@@ -1,12 +1,12 @@
-﻿namespace OrderManageGUI;
+namespace OrderManageGUI;
 
 internal class Utility {
 	public static void ShowErrorDialogue(string message) {
-		MessageBox.Show(message, "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+		MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 	}
 
 	public static void ShowInfoDialogue(string message) {
-		MessageBox.Show(message, "Info", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+		MessageBox.Show(message, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 	}
 
 	public static void ResizeLabel(ref Label L, float ratio = 0.80F) {

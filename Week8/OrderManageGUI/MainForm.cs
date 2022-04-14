@@ -130,4 +130,49 @@ public partial class MainForm : Form {
 		this.bindingSourceOrderDetails.ResetBindings(false);
 		Utility.ShowInfoDialogue("Selected order has been deleted.");
 	}
+
+	private void saveToolStripMenuItem_Click(object sender, EventArgs e) {
+		SaveFileDialog saveFileDialog = new SaveFileDialog();
+		saveFileDialog.Filter = "XML document|*.xml";
+		saveFileDialog.Title = "Choose Location to Save";
+		if (saveFileDialog.ShowDialog() == DialogResult.OK) {
+			try {
+				this.orderService.Export(saveFileDialog.FileName);
+			} catch (Exception ex) {
+				Utility.ShowErrorDialogue(ex.Message);
+				return;
+			}
+			Utility.ShowInfoDialogue("Orders exported successfully!");
+		} else {
+			Utility.ShowErrorDialogue("Saving has been cancelled!");
+		}
+	}
+
+	private void openToolStripMenuItem_Click(object sender, EventArgs e) {
+		OpenFileDialog openFileDialog = new OpenFileDialog();
+		openFileDialog.Filter = "XML document|*.xml";
+		openFileDialog.Title = "Choose File to Load";
+		if (openFileDialog.ShowDialog() == DialogResult.OK) {
+			try {
+				var newService = OrderService.Import(openFileDialog.FileName);
+				if (newService == null) {
+					Utility.ShowErrorDialogue("File is not a valid XML file!");
+					return;
+				}
+				if (MessageBox.Show("Your unsaved orders will be lost! Proceed loading?", "Potential Data Loss", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.Cancel)
+					return;
+				this.orderService.Orders = newService.Orders;
+			} catch (Exception ex) {
+				Utility.ShowErrorDialogue(ex.Message);
+			}
+			this.bindingSourceOrders.DataSource = this.orderService.Orders;
+			this.dataGridViewOrders.ClearSelection();
+			this.bindingSourceOrderDetails.DataSource = null;
+			this.bindingSourceOrders.ResetBindings(false);
+			this.bindingSourceOrderDetails.ResetBindings(false);
+			Utility.ShowInfoDialogue("Orders loaded successfully!");
+		} else {
+			Utility.ShowErrorDialogue("Loading has been cancelled!");
+		}
+	}
 }
