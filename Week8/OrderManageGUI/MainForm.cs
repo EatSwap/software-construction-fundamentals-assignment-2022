@@ -1,13 +1,13 @@
-using OrderManageCLI;
-
 namespace OrderManageGUI;
 
+using OrderManageCLI;
+
 public partial class MainForm : Form {
-	private List<OrderDetails> currentOrderDetailsList = new();
 	private readonly OrderService orderService = new();
+	private List<OrderDetails> currentOrderDetailsList = new();
 
 	public MainForm() {
-		InitializeComponent();
+		this.InitializeComponent();
 	}
 
 	public string CurrentCustomerName { get; set; }
@@ -23,7 +23,7 @@ public partial class MainForm : Form {
 		var randomChar = () => (char) ('a' + rnd.Next(26));
 		var getOrderDetails = () => {
 			var odList = new List<OrderDetails>();
-			var cnt = rnd.Next(15);
+			int cnt = rnd.Next(15);
 
 			/*
 			 * --> is a brand new operator, called "Tends To",
@@ -38,7 +38,7 @@ public partial class MainForm : Form {
 			 * 
 			 * From now on, use "-->" wisely and be successful in programming!
 			 */
-			while (cnt --> 0) odList.Add(new OrderDetails($"Product {randomChar()}{randomChar()}{randomChar()}{randomChar()}{randomChar()}", rnd.NextDouble(), rnd.Next(100)));
+			while (cnt-- > 0) odList.Add(new OrderDetails($"Product {randomChar()}{randomChar()}{randomChar()}{randomChar()}{randomChar()}", rnd.NextDouble(), rnd.Next(100)));
 			return odList.ToArray();
 		};
 
@@ -49,7 +49,7 @@ public partial class MainForm : Form {
 	}
 
 	private void MainForm_Load(object sender, EventArgs e) {
-		GenerateRandomOrders();
+		this.GenerateRandomOrders();
 		bindingSourceOrders.DataSource = orderService.Orders;
 
 		CurrentOrderTime = DateTime.Now;

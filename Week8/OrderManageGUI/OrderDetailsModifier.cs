@@ -1,10 +1,10 @@
-﻿using OrderManageCLI;
+﻿namespace OrderManageGUI;
 
-namespace OrderManageGUI;
+using OrderManageCLI;
 
 public partial class OrderDetailsModifier : Form {
 	public OrderDetailsModifier(List<OrderDetails>? details = null) {
-		InitializeComponent();
+		this.InitializeComponent();
 
 		OrderDetailsList = details ?? new List<OrderDetails>();
 		bindingSourceOrderDetails.DataSource = OrderDetailsList;
@@ -21,15 +21,13 @@ public partial class OrderDetailsModifier : Form {
 	public List<OrderDetails> OrderDetailsList { get; }
 
 	private void buttonDone_Click(object sender, EventArgs e) {
-		Close();
+		this.Close();
 	}
 
 	private void buttonRemove_Click(object sender, EventArgs e) {
-		foreach (var i in dataGridViewOrderDetails.SelectedRows) {
-			if (!(i is DataGridViewRow r) || !(r.DataBoundItem is OrderDetails d))
-				continue;
-			OrderDetailsList.Remove(d);
-		}
+		foreach (object? i in dataGridViewOrderDetails.SelectedRows)
+			if (i is DataGridViewRow {DataBoundItem: OrderDetails d})
+				OrderDetailsList.Remove(d);
 		bindingSourceOrderDetails.ResetBindings(false);
 	}
 
