@@ -202,7 +202,11 @@ public partial class MainForm : Form {
 		// Do query.
 	}
 
-	private void tabControl1_TabIndexChanged(object sender, EventArgs e) {
-		// identify query page.
+	private void tabControl1_Selected(object sender, TabControlEventArgs e) {
+		this.bindingSourceOrders.DataSource = this.tabControl1.SelectedIndex == 2 ? this.queriedOrders : this.orderService.Orders;
+		this.dataGridViewOrders.ClearSelection();
+		this.bindingSourceOrderDetails.DataSource = null;
+		this.bindingSourceOrders.ResetBindings(false);
+		this.bindingSourceOrderDetails.ResetBindings(false);
 	}
 }
