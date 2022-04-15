@@ -15,20 +15,20 @@ public struct CrawlEventArgs {
 
 public delegate void CrawlEventHandler(object sender, CrawlEventArgs pageInfo);
 
-public class SimpleCrawler {
+public class Crawler {
 	private int _count;
 	private readonly Queue<string> _urls = new();
 
 	private string _domain = string.Empty;
 	private bool _isSpecificDomain;
-	
-	public event CrawlEventHandler OnSuccess;
-	
-	public event CrawlEventHandler OnError;
-	
-	public event CrawlEventHandler OnStart;
 
-	public SimpleCrawler(params string[] u) {
+	public event CrawlEventHandler OnSuccess = (s, e) => { };
+	
+	public event CrawlEventHandler OnError = (s, e) => { };
+	
+	public event CrawlEventHandler OnStart = (s, e) => { };
+
+	public Crawler(params string[] u) {
 		this._count = 0;
 		foreach (var url in u) {
 			this._urls.Enqueue(url);
@@ -49,8 +49,10 @@ public class SimpleCrawler {
 			this.OnStart(this, new CrawlEventArgs(current));
 
 			string html;
+			var uri = new Uri(current);
+
 			try {
-				html = this.Download(current);
+				html = this.Download(uri);
 				this.OnSuccess(this, new CrawlEventArgs(current));
 			} catch (Exception ex) {
 				this.OnError(this, new CrawlEventArgs(current, ex.Message));
@@ -59,20 +61,23 @@ public class SimpleCrawler {
 			
 			++this._count;
 			
-			var uri = new Uri(current);
 			// Only when is .html, .aspx, .jsp, then crawl
 			if (true || uri.AbsolutePath.EndsWith(".html") || uri.AbsolutePath.EndsWith(".aspx") || uri.AbsolutePath.EndsWith(".jsp"))
 				this.Parse(html, uri);
 		}
 	}
 
-	private string Download(string url) {
+	private string Download(Uri uri) {
 		var webClient = new WebClientRedirect();
 		webClient.Encoding = Encoding.UTF8;
 		
-		string html = webClient.DownloadString(url);
+		string html = webClient.DownloadString(uri.AbsoluteUri);
+
+		string fileName = uri.Segments[^1];
+		while (fileName.EndsWith("\\") || fileName.EndsWith("/"))
+			fileName = fileName[..^1];
 		
-		File.WriteAllText(this._count.ToString(), html, Encoding.UTF8);
+		File.WriteAllText(fileName, html, Encoding.UTF8);
 		return html;
 	}
 

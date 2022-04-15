@@ -5,7 +5,7 @@ public class Demo {
 		var startUrl = "https://www.cnblogs.com/dstang2000/";
 		if (args.Length >= 1) startUrl = args[0];
 		
-		var myCrawler = new SimpleCrawler(startUrl);
+		var myCrawler = new Crawler(startUrl);
 		myCrawler.SetDomain("cnblogs.com");
 		new Thread(myCrawler.Crawl).Start();
 	}
