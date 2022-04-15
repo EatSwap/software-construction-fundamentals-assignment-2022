@@ -51,6 +51,10 @@ public class Order {
 	public bool HasGoods(Goods? g) {
 		return this.OrderDetails.Any(i => i.Item.Equals(g));
 	}
+	
+	public bool HasItemName(string name) {
+		return this.OrderDetails.Any(i => i.Item.Name.Equals(name));
+	}
 
 	public void AddRecord(OrderDetails od) {
 		if (this.OrderDetails.Contains(od))

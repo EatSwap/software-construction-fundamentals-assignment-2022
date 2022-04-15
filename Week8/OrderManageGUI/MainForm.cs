@@ -185,8 +185,8 @@ public partial class MainForm : Form {
 	}
 
 	private void checkBoxPrice_CheckedChanged(object sender, EventArgs e) {
-		this.textBoxQueryPriceMax.Enabled = this.checkBoxItem.Checked;
-		this.textBoxQueryPriceMin.Enabled = this.checkBoxItem.Checked;
+		this.numericUpDownQueryMin.Enabled = this.checkBoxItem.Checked;
+		this.numericUpDownQueryMax.Enabled = this.checkBoxItem.Checked;
 	}
 
 	private void checkBoxOrderTime_CheckedChanged(object sender, EventArgs e) {
@@ -200,9 +200,12 @@ public partial class MainForm : Form {
 
 	private void buttonQuery_Click(object sender, EventArgs e) {
 		this.queriedOrders = this.orderService.Find((order) => {
-			return true && 
-			       (this.checkBoxCustomer.Checked ? false : false) // ...
-		})
+			return true &&
+			       (!this.checkBoxCustomer.Checked || order.Customer.Equals(new Customer(this.textBoxQueryCustomerName.Text, this.textBoxQueryCustomerAddress.Text))) &&
+			       (!this.checkBoxItem.Checked || order.HasItemName(this.textBoxQueryItemName.Text)) &&
+			       (!this.checkBoxOrderTime.Checked || order.OrderTime >= this.dateTimePickerQueryFrom.Value && order.OrderTime <= this.dateTimePickerQueryTo.Value) &&
+			       (!this.checkBoxPrice.Checked || order.Price >= decimal.ToDouble(this.numericUpDownQueryMin.Value) && order.Price <= decimal.ToDouble(this.numericUpDownQueryMax.Value));
+		});
 	}
 
 	private void tabControl1_Selected(object sender, TabControlEventArgs e) {

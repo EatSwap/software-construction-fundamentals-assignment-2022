@@ -58,9 +58,7 @@ partial class MainForm {
 			this.buttonModifyDelete = new System.Windows.Forms.Button();
 			this.tabPageQuery = new System.Windows.Forms.TabPage();
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-			this.textBoxQueryPriceMax = new System.Windows.Forms.TextBox();
 			this.label4 = new System.Windows.Forms.Label();
-			this.textBoxQueryPriceMin = new System.Windows.Forms.TextBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.checkBoxPrice = new System.Windows.Forms.CheckBox();
 			this.dateTimePickerQueryTo = new System.Windows.Forms.DateTimePicker();
@@ -90,6 +88,8 @@ partial class MainForm {
 			this.countDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.bindingSourceOrderDetails = new System.Windows.Forms.BindingSource(this.components);
+			this.numericUpDownQueryMin = new System.Windows.Forms.NumericUpDown();
+			this.numericUpDownQueryMax = new System.Windows.Forms.NumericUpDown();
 			this.menuStrip.SuspendLayout();
 			this.panelTableContainer.SuspendLayout();
 			this.tableLayoutPanelMain.SuspendLayout();
@@ -104,6 +104,8 @@ partial class MainForm {
 			((System.ComponentModel.ISupportInitialize)(this.bindingSourceOrders)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrderDetails)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSourceOrderDetails)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownQueryMin)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownQueryMax)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// statusStrip
@@ -480,9 +482,8 @@ partial class MainForm {
 			this.tableLayoutPanel3.ColumnCount = 2;
 			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
 			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-			this.tableLayoutPanel3.Controls.Add(this.textBoxQueryPriceMax, 1, 10);
+			this.tableLayoutPanel3.Controls.Add(this.numericUpDownQueryMax, 1, 10);
 			this.tableLayoutPanel3.Controls.Add(this.label4, 0, 10);
-			this.tableLayoutPanel3.Controls.Add(this.textBoxQueryPriceMin, 1, 9);
 			this.tableLayoutPanel3.Controls.Add(this.label3, 0, 9);
 			this.tableLayoutPanel3.Controls.Add(this.checkBoxPrice, 0, 8);
 			this.tableLayoutPanel3.Controls.Add(this.dateTimePickerQueryTo, 1, 7);
@@ -499,6 +500,7 @@ partial class MainForm {
 			this.tableLayoutPanel3.Controls.Add(this.label1, 0, 6);
 			this.tableLayoutPanel3.Controls.Add(this.label2, 0, 7);
 			this.tableLayoutPanel3.Controls.Add(this.buttonQuery, 0, 11);
+			this.tableLayoutPanel3.Controls.Add(this.numericUpDownQueryMin, 1, 9);
 			this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
 			this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -519,15 +521,6 @@ partial class MainForm {
 			this.tableLayoutPanel3.Size = new System.Drawing.Size(267, 375);
 			this.tableLayoutPanel3.TabIndex = 0;
 			// 
-			// textBoxQueryPriceMax
-			// 
-			this.textBoxQueryPriceMax.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.textBoxQueryPriceMax.Enabled = false;
-			this.textBoxQueryPriceMax.Location = new System.Drawing.Point(83, 303);
-			this.textBoxQueryPriceMax.Name = "textBoxQueryPriceMax";
-			this.textBoxQueryPriceMax.Size = new System.Drawing.Size(181, 23);
-			this.textBoxQueryPriceMax.TabIndex = 19;
-			// 
 			// label4
 			// 
 			this.label4.AutoSize = true;
@@ -538,15 +531,6 @@ partial class MainForm {
 			this.label4.TabIndex = 18;
 			this.label4.Text = "Maximum";
 			this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			// 
-			// textBoxQueryPriceMin
-			// 
-			this.textBoxQueryPriceMin.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.textBoxQueryPriceMin.Enabled = false;
-			this.textBoxQueryPriceMin.Location = new System.Drawing.Point(83, 273);
-			this.textBoxQueryPriceMin.Name = "textBoxQueryPriceMin";
-			this.textBoxQueryPriceMin.Size = new System.Drawing.Size(181, 23);
-			this.textBoxQueryPriceMin.TabIndex = 17;
 			// 
 			// label3
 			// 
@@ -842,6 +826,34 @@ partial class MainForm {
 			// 
 			this.bindingSourceOrderDetails.DataSource = typeof(OrderManageCLI.OrderDetails);
 			// 
+			// numericUpDownQueryMin
+			// 
+			this.numericUpDownQueryMin.DecimalPlaces = 2;
+			this.numericUpDownQueryMin.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.numericUpDownQueryMin.Location = new System.Drawing.Point(83, 273);
+			this.numericUpDownQueryMin.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+			this.numericUpDownQueryMin.Name = "numericUpDownQueryMin";
+			this.numericUpDownQueryMin.Size = new System.Drawing.Size(181, 23);
+			this.numericUpDownQueryMin.TabIndex = 21;
+			// 
+			// numericUpDownQueryMax
+			// 
+			this.numericUpDownQueryMax.DecimalPlaces = 2;
+			this.numericUpDownQueryMax.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.numericUpDownQueryMax.Location = new System.Drawing.Point(83, 303);
+			this.numericUpDownQueryMax.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+			this.numericUpDownQueryMax.Name = "numericUpDownQueryMax";
+			this.numericUpDownQueryMax.Size = new System.Drawing.Size(181, 23);
+			this.numericUpDownQueryMax.TabIndex = 22;
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -871,6 +883,8 @@ partial class MainForm {
 			((System.ComponentModel.ISupportInitialize)(this.bindingSourceOrders)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrderDetails)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSourceOrderDetails)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownQueryMin)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownQueryMax)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -935,12 +949,12 @@ partial class MainForm {
 	private CheckBox checkBoxOrderTime;
 	private Label label1;
 	private Label label2;
-	private TextBox textBoxQueryPriceMax;
 	private Label label4;
-	private TextBox textBoxQueryPriceMin;
 	private Label label3;
 	private CheckBox checkBoxPrice;
 	private DateTimePicker dateTimePickerQueryTo;
 	private DateTimePicker dateTimePickerQueryFrom;
 	private Button buttonQuery;
+	private NumericUpDown numericUpDownQueryMax;
+	private NumericUpDown numericUpDownQueryMin;
 }
