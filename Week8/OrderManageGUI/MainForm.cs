@@ -206,6 +206,12 @@ public partial class MainForm : Form {
 			       (!this.checkBoxOrderTime.Checked || order.OrderTime >= this.dateTimePickerQueryFrom.Value && order.OrderTime <= this.dateTimePickerQueryTo.Value) &&
 			       (!this.checkBoxPrice.Checked || order.Price >= decimal.ToDouble(this.numericUpDownQueryMin.Value) && order.Price <= decimal.ToDouble(this.numericUpDownQueryMax.Value));
 		});
+		this.bindingSourceOrders.DataSource = this.queriedOrders;
+		this.dataGridViewOrders.ClearSelection();
+		this.bindingSourceOrderDetails.DataSource = null;
+		this.bindingSourceOrders.ResetBindings(false);
+		this.bindingSourceOrderDetails.ResetBindings(false);
+		Utility.ShowInfoDialogue("Query completed successfully!");
 	}
 
 	private void tabControl1_Selected(object sender, TabControlEventArgs e) {
