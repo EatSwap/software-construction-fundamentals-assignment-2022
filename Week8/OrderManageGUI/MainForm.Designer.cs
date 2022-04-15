@@ -58,6 +58,7 @@ partial class MainForm {
 			this.buttonModifyDelete = new System.Windows.Forms.Button();
 			this.tabPageQuery = new System.Windows.Forms.TabPage();
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+			this.numericUpDownQueryMax = new System.Windows.Forms.NumericUpDown();
 			this.label4 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.checkBoxPrice = new System.Windows.Forms.CheckBox();
@@ -75,6 +76,7 @@ partial class MainForm {
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.buttonQuery = new System.Windows.Forms.Button();
+			this.numericUpDownQueryMin = new System.Windows.Forms.NumericUpDown();
 			this.dataGridViewOrders = new System.Windows.Forms.DataGridView();
 			this.orderIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.customerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -88,8 +90,6 @@ partial class MainForm {
 			this.countDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.bindingSourceOrderDetails = new System.Windows.Forms.BindingSource(this.components);
-			this.numericUpDownQueryMin = new System.Windows.Forms.NumericUpDown();
-			this.numericUpDownQueryMax = new System.Windows.Forms.NumericUpDown();
 			this.menuStrip.SuspendLayout();
 			this.panelTableContainer.SuspendLayout();
 			this.tableLayoutPanelMain.SuspendLayout();
@@ -100,12 +100,12 @@ partial class MainForm {
 			this.tableLayoutPanel2.SuspendLayout();
 			this.tabPageQuery.SuspendLayout();
 			this.tableLayoutPanel3.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownQueryMax)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownQueryMin)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSourceOrders)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrderDetails)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSourceOrderDetails)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDownQueryMin)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDownQueryMax)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// statusStrip
@@ -521,6 +521,21 @@ partial class MainForm {
 			this.tableLayoutPanel3.Size = new System.Drawing.Size(267, 375);
 			this.tableLayoutPanel3.TabIndex = 0;
 			// 
+			// numericUpDownQueryMax
+			// 
+			this.numericUpDownQueryMax.DecimalPlaces = 2;
+			this.numericUpDownQueryMax.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.numericUpDownQueryMax.Enabled = false;
+			this.numericUpDownQueryMax.Location = new System.Drawing.Point(83, 303);
+			this.numericUpDownQueryMax.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+			this.numericUpDownQueryMax.Name = "numericUpDownQueryMax";
+			this.numericUpDownQueryMax.Size = new System.Drawing.Size(181, 23);
+			this.numericUpDownQueryMax.TabIndex = 22;
+			// 
 			// label4
 			// 
 			this.label4.AutoSize = true;
@@ -711,6 +726,21 @@ partial class MainForm {
 			this.buttonQuery.UseVisualStyleBackColor = true;
 			this.buttonQuery.Click += new System.EventHandler(this.buttonQuery_Click);
 			// 
+			// numericUpDownQueryMin
+			// 
+			this.numericUpDownQueryMin.DecimalPlaces = 2;
+			this.numericUpDownQueryMin.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.numericUpDownQueryMin.Enabled = false;
+			this.numericUpDownQueryMin.Location = new System.Drawing.Point(83, 273);
+			this.numericUpDownQueryMin.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+			this.numericUpDownQueryMin.Name = "numericUpDownQueryMin";
+			this.numericUpDownQueryMin.Size = new System.Drawing.Size(181, 23);
+			this.numericUpDownQueryMin.TabIndex = 21;
+			// 
 			// dataGridViewOrders
 			// 
 			this.dataGridViewOrders.AllowUserToAddRows = false;
@@ -826,34 +856,6 @@ partial class MainForm {
 			// 
 			this.bindingSourceOrderDetails.DataSource = typeof(OrderManageCLI.OrderDetails);
 			// 
-			// numericUpDownQueryMin
-			// 
-			this.numericUpDownQueryMin.DecimalPlaces = 2;
-			this.numericUpDownQueryMin.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.numericUpDownQueryMin.Location = new System.Drawing.Point(83, 273);
-			this.numericUpDownQueryMin.Maximum = new decimal(new int[] {
-            2147483647,
-            0,
-            0,
-            0});
-			this.numericUpDownQueryMin.Name = "numericUpDownQueryMin";
-			this.numericUpDownQueryMin.Size = new System.Drawing.Size(181, 23);
-			this.numericUpDownQueryMin.TabIndex = 21;
-			// 
-			// numericUpDownQueryMax
-			// 
-			this.numericUpDownQueryMax.DecimalPlaces = 2;
-			this.numericUpDownQueryMax.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.numericUpDownQueryMax.Location = new System.Drawing.Point(83, 303);
-			this.numericUpDownQueryMax.Maximum = new decimal(new int[] {
-            2147483647,
-            0,
-            0,
-            0});
-			this.numericUpDownQueryMax.Name = "numericUpDownQueryMax";
-			this.numericUpDownQueryMax.Size = new System.Drawing.Size(181, 23);
-			this.numericUpDownQueryMax.TabIndex = 22;
-			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -879,12 +881,12 @@ partial class MainForm {
 			this.tabPageQuery.ResumeLayout(false);
 			this.tableLayoutPanel3.ResumeLayout(false);
 			this.tableLayoutPanel3.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownQueryMax)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownQueryMin)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSourceOrders)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrderDetails)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSourceOrderDetails)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDownQueryMin)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDownQueryMax)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
