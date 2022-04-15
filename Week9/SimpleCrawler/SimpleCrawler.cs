@@ -7,29 +7,23 @@ using System.Text.RegularExpressions;
 
 public class SimpleCrawler {
 	private int count;
-	private readonly Hashtable urls = new();
-
-	private static void Main(string[] args) {
-		var myCrawler = new SimpleCrawler();
-		var startUrl = "http://www.cnblogs.com/dstang2000/";
-		if (args.Length >= 1) startUrl = args[0];
-		myCrawler.urls.Add(startUrl, false);
-		new Thread(myCrawler.Crawl).Start();
+	private readonly Queue<string> urls = new();
+	
+	public SimpleCrawler(params string[] u) {
+		this.count = 0;
+		foreach (var url in u) {
+			this.urls.Enqueue(url);
+		}
 	}
 
-	private void Crawl() {
+	public void Crawl() {
 		Console.WriteLine("开始爬行了.... ");
-		while (true) {
-			string? current = null;
-			foreach (string url in this.urls.Keys) {
-				if ((bool) (this.urls[url] ?? true)) continue;
-				current = url;
-			}
+		while (this.urls.Count > 0) {
+			string current = this.urls.Dequeue();
 
-			if (current == null || this.count > 10) break;
+			if (this.count > 10) break;
 			Console.WriteLine("爬行" + current + "页面!");
 			string html = this.DownLoad(current);
-			this.urls[current] = true;
 			++this.count;
 			this.Parse(html);
 			Console.WriteLine("爬行结束");
@@ -54,10 +48,9 @@ public class SimpleCrawler {
 		var strRef = @"(href|HREF)[]*=[]*[""'][^""'#>]+[""']";
 		MatchCollection matches = new Regex(strRef).Matches(html);
 		foreach (Match match in matches) {
-			strRef = match.Value.Substring(match.Value.IndexOf('=') + 1)
-				.Trim('"', '\"', '#', '>');
-			if (strRef.Length == 0) continue;
-			this.urls[strRef] ??= false;
+			strRef = match.Value[(match.Value.IndexOf('=') + 1)..].Trim('"', '\"', '#', '>');
+			if (!string.IsNullOrWhiteSpace(strRef) && strRef.StartsWith("http"))
+				this.urls.Enqueue(strRef);
 		}
 	}
 }
