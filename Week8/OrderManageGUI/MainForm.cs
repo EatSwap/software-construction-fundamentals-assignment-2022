@@ -185,8 +185,8 @@ public partial class MainForm : Form {
 	}
 
 	private void checkBoxPrice_CheckedChanged(object sender, EventArgs e) {
-		this.numericUpDownQueryMin.Enabled = this.checkBoxItem.Checked;
-		this.numericUpDownQueryMax.Enabled = this.checkBoxItem.Checked;
+		this.numericUpDownQueryMin.Enabled = this.checkBoxPrice.Checked;
+		this.numericUpDownQueryMax.Enabled = this.checkBoxPrice.Checked;
 	}
 
 	private void checkBoxOrderTime_CheckedChanged(object sender, EventArgs e) {
@@ -195,7 +195,7 @@ public partial class MainForm : Form {
 	}
 
 	private void checkBoxItem_CheckedChanged(object sender, EventArgs e) {
-		this.textBoxQueryItemName.Enabled = this.checkBoxPrice.Checked;
+		this.textBoxQueryItemName.Enabled = this.checkBoxItem.Checked;
 	}
 
 	private void buttonQuery_Click(object sender, EventArgs e) {
