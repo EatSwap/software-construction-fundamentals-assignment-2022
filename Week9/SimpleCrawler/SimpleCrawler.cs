@@ -45,7 +45,7 @@ public class SimpleCrawler {
 
 	public string DownLoad(string url) {
 		try {
-			var webClient = new WebClient();
+			var webClient = new WebClientRedirect();
 			webClient.Encoding = Encoding.UTF8;
 			string html = webClient.DownloadString(url);
 			var fileName = this._count.ToString();
