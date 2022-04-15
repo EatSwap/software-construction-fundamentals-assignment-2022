@@ -36,5 +36,5 @@ public class OrderDetails {
 
 	public override string ToString() => $"OrderDetails[Item=({this.Item.ToString()}),Count={this.Count}]";
 
-	public OrderDetails Clone() => new OrderDetails(this.Item.Clone(), this.Count);
+	public OrderDetails Clone() => new(this.Item.Clone(), this.Count);
 }

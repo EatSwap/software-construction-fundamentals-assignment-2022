@@ -6,9 +6,9 @@ public partial class MainForm : Form {
 	private readonly OrderService orderService = new();
 
 	public Order CurrentOrder;
-	
+
 	private List<OrderDetails> currentOrderDetailsList = new();
-	
+
 	private List<Order> queriedOrders = new();
 
 	public MainForm() {
@@ -43,7 +43,7 @@ public partial class MainForm : Form {
 			 * 
 			 * From now on, use "-->" wisely and be successful in programming!
 			 */
-			while (cnt-- > 0) odList.Add(new OrderDetails($"Product {randomChar()}{randomChar()}{randomChar()}{randomChar()}{randomChar()}", rnd.NextDouble(), rnd.Next(100)));
+			while (cnt --> 0) odList.Add(new OrderDetails($"Product {randomChar()}{randomChar()}{randomChar()}{randomChar()}{randomChar()}", rnd.NextDouble(), rnd.Next(100)));
 			return odList.ToArray();
 		};
 
@@ -135,7 +135,7 @@ public partial class MainForm : Form {
 	}
 
 	private void saveToolStripMenuItem_Click(object sender, EventArgs e) {
-		SaveFileDialog saveFileDialog = new SaveFileDialog();
+		var saveFileDialog = new SaveFileDialog();
 		saveFileDialog.Filter = "XML document|*.xml";
 		saveFileDialog.Title = "Choose Location to Save";
 		if (saveFileDialog.ShowDialog() == DialogResult.OK) {
@@ -152,12 +152,12 @@ public partial class MainForm : Form {
 	}
 
 	private void openToolStripMenuItem_Click(object sender, EventArgs e) {
-		OpenFileDialog openFileDialog = new OpenFileDialog();
+		var openFileDialog = new OpenFileDialog();
 		openFileDialog.Filter = "XML document|*.xml";
 		openFileDialog.Title = "Choose File to Load";
 		if (openFileDialog.ShowDialog() == DialogResult.OK) {
 			try {
-				var newService = OrderService.Import(openFileDialog.FileName);
+				OrderService? newService = OrderService.Import(openFileDialog.FileName);
 				if (newService == null) {
 					Utility.ShowErrorDialogue("File is not a valid XML file!");
 					return;
@@ -199,13 +199,11 @@ public partial class MainForm : Form {
 	}
 
 	private void buttonQuery_Click(object sender, EventArgs e) {
-		this.queriedOrders = this.orderService.Find((order) => {
-			return true &&
-			       (!this.checkBoxCustomer.Checked || order.Customer.Equals(new Customer(this.textBoxQueryCustomerName.Text, this.textBoxQueryCustomerAddress.Text))) &&
-			       (!this.checkBoxItem.Checked || order.HasItemName(this.textBoxQueryItemName.Text)) &&
-			       (!this.checkBoxOrderTime.Checked || order.OrderTime >= this.dateTimePickerQueryFrom.Value && order.OrderTime <= this.dateTimePickerQueryTo.Value) &&
-			       (!this.checkBoxPrice.Checked || order.Price >= decimal.ToDouble(this.numericUpDownQueryMin.Value) && order.Price <= decimal.ToDouble(this.numericUpDownQueryMax.Value));
-		});
+		this.queriedOrders = this.orderService.Find(order => true &&
+		                                                     (!this.checkBoxCustomer.Checked || order.Customer.Equals(new Customer(this.textBoxQueryCustomerName.Text, this.textBoxQueryCustomerAddress.Text))) &&
+		                                                     (!this.checkBoxItem.Checked || order.HasItemName(this.textBoxQueryItemName.Text)) &&
+		                                                     (!this.checkBoxOrderTime.Checked || order.OrderTime >= this.dateTimePickerQueryFrom.Value && order.OrderTime <= this.dateTimePickerQueryTo.Value) &&
+		                                                     (!this.checkBoxPrice.Checked || order.Price >= decimal.ToDouble(this.numericUpDownQueryMin.Value) && order.Price <= decimal.ToDouble(this.numericUpDownQueryMax.Value)));
 		this.bindingSourceOrders.DataSource = this.queriedOrders;
 		this.dataGridViewOrders.ClearSelection();
 		this.bindingSourceOrderDetails.DataSource = null;

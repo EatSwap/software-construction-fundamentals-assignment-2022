@@ -21,5 +21,5 @@ public class Goods {
 
 	public override bool Equals(object? obj) => obj is Goods rhs && this.Name.Equals(rhs.Name) && this.Price.Equals(rhs.Price);
 
-	public Goods Clone() => new Goods(this.Name, this.Price);
+	public Goods Clone() => new(this.Name, this.Price);
 }
