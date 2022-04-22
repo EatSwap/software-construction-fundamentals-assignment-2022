@@ -1,0 +1,11 @@
+# To learn more about .editorconfig see https://aka.ms/editorconfigdocs
+###############################
+# Core EditorConfig Options   #
+###############################
+# All files
+[*]
+indent_style = tab
+end_of_line = lf
+insert_final_newline = true
+charset = utf-8
+indent_size = tab
