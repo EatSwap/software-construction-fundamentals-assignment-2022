@@ -18,6 +18,8 @@ public partial class MainForm : Form {
 
 	private void buttonStart_Click(object sender, EventArgs e) {
 		var r = new Regex("(\\b(https?|ftp|file)://)?[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]");
+		if (string.IsNullOrWhiteSpace(StartUrl))
+			return;
 		var m = r.Match(StartUrl);
 		if (string.IsNullOrEmpty(StartUrl) || !m.Success) {
 			MessageBox.Show("Your URL is invalid!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -27,6 +29,7 @@ public partial class MainForm : Form {
 		var c = new Crawler(StartUrl);
 		var uri = new Uri(StartUrl);
 		c.SetDomain(uri.Host);
+		c.SetDepth(3);
 
 		this.textBox1.Text = $"[{DateTime.Now}] Simple Crawler GUI started crawling." + Environment.NewLine;
 
