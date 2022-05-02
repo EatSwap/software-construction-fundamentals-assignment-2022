@@ -16,6 +16,8 @@ public class OrderDetails {
 		this.Count = 0;
 	}
 
+	public long Id { get; set; }
+	
 	public Goods Item { get; set; }
 
 	public int Count { get; set; }

@@ -8,8 +8,6 @@ using models;
 public class OrderService {
 	public List<Order> Orders { get; set; } = new();
 
-	public int Count => this.Orders.Count;
-
 	public void AddOrder(Order order) {
 		if (this.Orders.Where(o => o.EqualsIgnoreId(order)).ToList().Count > 0)
 			throw new ArgumentException("OrderService: Order already exists");

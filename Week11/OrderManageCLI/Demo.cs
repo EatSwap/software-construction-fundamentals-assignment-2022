@@ -1,5 +1,6 @@
 ﻿namespace OrderManageCLI;
 
+using database;
 using models;
 using utils;
 
@@ -17,6 +18,44 @@ public class Demo {
 	// private const string SearchEmptyMsg = "No orders found.";
 
 	public static void Main() {
+		/*
+		using (var db = new OrderContext()) {
+			var rnd = new Random();
+			var randomOrders = new Order[100];
+
+			var randomChar = () => (char) ('a' + rnd.Next(26));
+			var getOrderDetails = () => {
+				var odList = new List<OrderDetails>();
+				int cnt = rnd.Next(15);
+
+				/*
+				 * --> is a brand new operator, called "Tends To",
+				 * which is introduced in C# 11.0 / .NET 7.0.
+				 * 
+				 * Using this new operator makes loops super easy!
+				 * Tired about the lengthy "for (int i = 0; ......" ?
+				 * "Tends To" makes this a lot easier! Just define the
+				 * maximum value in your loop, "-->" will help you to
+				 * traverse from (yourValue - 1) to zero, saving lots
+				 * of keystrokes!
+				 * 
+				 * From now on, use "-->" wisely and be successful in programming!
+				 *
+				while (cnt --> 0) odList.Add(new OrderDetails($"Product {randomChar()}{randomChar()}{randomChar()}{randomChar()}{randomChar()}", rnd.NextDouble(), rnd.Next(100)));
+				return odList.ToArray();
+			};
+
+			for (var i = 0; i < 100; ++i) {
+				randomOrders[i] = new Order(new Customer($"Name {i}", $"Address {i}"), new DateTime(1923 + rnd.Next(100), 1 + rnd.Next(12), 1 + rnd.Next(28)), getOrderDetails());
+				
+				db.Add(randomOrders[i]);
+			}
+
+			db.SaveChanges();
+		}
+		return;
+		*/
+		
 		var orderService = new OrderService();
 		while (true) {
 			// Main menu

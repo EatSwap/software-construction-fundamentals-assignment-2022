@@ -11,6 +11,8 @@ public class Goods {
 		this.Price = 0.0;
 	}
 
+	public long Id { get; set; }
+	
 	public string Name { get; set; }
 
 	public double Price { get; set; }
