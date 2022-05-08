@@ -7,7 +7,12 @@ using models;
 
 [Serializable]
 public class OrderService {
-	public List<Order> Orders { get; set; }
+	public List<Order> Orders {
+		get {
+			using var db = new OrderContext();
+			return db.Orders.ToList();
+		}
+	}
 
 	public void AddOrder(Order order) {
 		using var db = new OrderContext();
