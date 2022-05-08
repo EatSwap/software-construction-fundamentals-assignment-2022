@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManageCLI", "OrderManageCLI\OrderManageCLI.csproj", "{679C7E5B-489D-491C-848F-3FDBA948A396}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderWeb", "OrderWeb\OrderWeb.csproj", "{787030E6-ACD8-443B-A74E-7C09AF2CE223}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{679C7E5B-489D-491C-848F-3FDBA948A396}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{679C7E5B-489D-491C-848F-3FDBA948A396}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{679C7E5B-489D-491C-848F-3FDBA948A396}.Release|Any CPU.Build.0 = Release|Any CPU
+		{787030E6-ACD8-443B-A74E-7C09AF2CE223}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{787030E6-ACD8-443B-A74E-7C09AF2CE223}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{787030E6-ACD8-443B-A74E-7C09AF2CE223}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{787030E6-ACD8-443B-A74E-7C09AF2CE223}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
