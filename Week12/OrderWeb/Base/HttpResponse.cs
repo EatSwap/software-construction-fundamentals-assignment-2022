@@ -27,19 +27,19 @@ public sealed class HttpResponse<T> {
 		};
 	}
 
-	public static HttpResponse<object> Error() {
-		return new HttpResponse<object> {
+	public static HttpResponse<T> Error() {
+		return new HttpResponse<T> {
 			code = -1,
 			message = "",
-			data = null
+			data = default
 		};
 	}
 	
-	public static HttpResponse<object> ErrorWithMessage(string message) {
-		return new HttpResponse<object> {
+	public static HttpResponse<T> ErrorWithMessage(string message) {
+		return new HttpResponse<T> {
 			code = -1,
 			message = message,
-			data = null
+			data = default
 		};
 	}
 	
@@ -51,20 +51,20 @@ public sealed class HttpResponse<T> {
 		};
 	}
 	
-	public static HttpResponse<object> ErrorWithCode(int code) {
-		return new HttpResponse<object> {
+	public static HttpResponse<T> ErrorWithCode(int code) {
+		return new HttpResponse<T> {
 			code = code,
 			message = "",
-			data = null
+			data = default
 		};
 	}
 	
 	
-	public static HttpResponse<object> ErrorWithCodeMessage(int code, string message = "") {
-		return new HttpResponse<object> {
+	public static HttpResponse<T> ErrorWithCodeMessage(int code, string message = "") {
+		return new HttpResponse<T> {
 			code = code,
 			message = message,
-			data = null
+			data = default
 		};
 	}
 	
