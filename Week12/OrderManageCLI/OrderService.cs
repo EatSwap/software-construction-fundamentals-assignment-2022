@@ -30,7 +30,6 @@ public class OrderService {
 	public void RemoveOrder(Order? order) {
 		if (order == null)
 			throw new ArgumentException("OrderService: Order is null");
-		this.Orders.Remove(order);
 		using var db = new OrderContext();
 		db.Remove(order);
 		db.SaveChanges();
